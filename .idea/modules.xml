@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RealidadAumentadaUCR.iml" filepath="$PROJECT_DIR$/RealidadAumentadaUCR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Realidad-Aumentada-UCR.iml" filepath="$PROJECT_DIR$/Realidad-Aumentada-UCR.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/wikitude/wikitude.iml" filepath="$PROJECT_DIR$/wikitude/wikitude.iml" />
     </modules>

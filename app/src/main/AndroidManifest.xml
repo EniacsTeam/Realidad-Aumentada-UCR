@@ -42,7 +42,8 @@
             android:value="AIzaSyBK2KJ9kEjegyd21cuftn9zuwdF638Os24" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".WikitudeActivity"
+            android:configChanges="screenSize|orientation"
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
