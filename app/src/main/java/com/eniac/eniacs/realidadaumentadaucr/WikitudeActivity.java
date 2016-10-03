@@ -6,6 +6,13 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.architect.StartupConfiguration;
 import android.Manifest;
@@ -18,6 +25,8 @@ import static android.os.Build.VERSION_CODES.M;
  */
 
 public class WikitudeActivity extends AppCompatActivity {
+
+    private GoogleMap mMap;
     private ArchitectView architectView;
     String [] StringPermisos = {Manifest.permission.CAMERA,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
@@ -25,6 +34,7 @@ public class WikitudeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wikitude);
+
 
         this.architectView = (ArchitectView)this.findViewById( R.id.architectView );
         /*Clave de licencia Wikitude*/
@@ -36,6 +46,8 @@ public class WikitudeActivity extends AppCompatActivity {
             requestPermission();
         }
     }
+
+
 
     /**
      * Carga la carpeta donde se tienen los archivos de imagenes para
