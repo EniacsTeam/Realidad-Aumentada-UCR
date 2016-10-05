@@ -1,8 +1,11 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -11,14 +14,19 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.architect.StartupConfiguration;
 import android.Manifest;
+import android.view.KeyEvent;
+import android.view.View;
 import android.widget.Toast;
 
 import static android.os.Build.VERSION_CODES.M;
+import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
 import static com.wikitude.architect.CameraPreviewBase.m;
 
 /**
@@ -49,7 +57,20 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         {
             requestPermission();
         }
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(MainActivity.this ,MapsActivity.class));
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
+            }
+        });
+
     }
+
+
 
 
     @Override
