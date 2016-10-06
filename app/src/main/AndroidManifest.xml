@@ -39,13 +39,8 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-<<<<<<< HEAD
-            android:value="AIzaSyBK2KJ9kEjegyd21cuftn9zuwdF638Os24" />
-        <activity android:name=".MapsActivity"
-=======
             android:value="AIzaSyCXrP5wRqE3bwQkrMmXp3Sxs_4wCiDJoFY" />
         <activity android:name=".MainActivity"
->>>>>>> origin/master
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,7 +49,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".MapsActivity"
             android:label="@string/title_activity_maps">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

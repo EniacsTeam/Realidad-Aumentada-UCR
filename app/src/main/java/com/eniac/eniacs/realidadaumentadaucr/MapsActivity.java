@@ -1,22 +1,18 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
 import android.content.Intent;
-<<<<<<< HEAD
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
-=======
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
->>>>>>> origin/master
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -24,7 +20,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-=======
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -34,8 +29,6 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
->>>>>>> origin/master
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -51,28 +44,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-<<<<<<< HEAD
-
 import java.util.Map;
 
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.fab;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
 import static com.wikitude.architect.CameraPreviewBase.m;
-
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
-
-    private GoogleMap mMap;
-    private Rutas mRuta;
-    Location mCurrentLocation;
-    private int iconVec[] = new int[28];
-    private String wordVec[] = {"derecho","oficBecas","biblio","arqui","comedor","inge","fisicamate","generales","biblio","preescolar",
-    "letras","centInform","geologia","economicas","ECCI","odonto","medicina","farmacia","microbiologia","biolo","quimica","musica",
-    "artes","educa","bosque","mariposario","plaza","plaza"};
-    private Marker marcas[] = new Marker[3];
-=======
 import java.text.DateFormat;
-
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
@@ -82,16 +59,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Location mLastLocation;
     Location mCurrentLocation;
     private static final String TAG = "MapsActivity";
->>>>>>> origin/master
+    private Rutas mRuta;
+    private int iconVec[] = new int[28];
+    private String wordVec[] = {"derecho","oficbecas","biblio","arqui","comedor","inge","fisicamate","generales","biblio","preescolar",
+    "letras","centinform","geologia","economicas","ecci","odonto","medicina","farmacia","microbiologia","biolo","quimica","musica",
+    "artes","educa","bosque","mariposario","plaza","plaza"};
+    private Marker marcas[] = new Marker[3];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-<<<<<<< HEAD
         llenarIconVec();
-=======
-
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
                     .addConnectionCallbacks(this)
@@ -99,8 +79,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     .addApi(LocationServices.API)
                     .build();
         }
-
->>>>>>> origin/master
+        createLocationRequest();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(map);
@@ -178,14 +157,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-<<<<<<< HEAD
+        String permission = "android.permission.ACCESS_FINE_LOCATION";
+        int res = MapsActivity.this.checkCallingOrSelfPermission(permission);
+        if (res == PackageManager.PERMISSION_GRANTED)
+        {
+            mMap.setMyLocationEnabled(true);
+        }
         mMap.getUiSettings().setCompassEnabled(false);
         mMap.getUiSettings().setMapToolbarEnabled(false);
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney").icon(BitmapDescriptorFactory.fromResource(R.drawable.biolo)));
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
     public void llenarIconVec()
@@ -196,51 +175,48 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-    public void addMarkers()
-    {
+    public void addMarkers() {
         int indice;
-        int i=0;
-        Map<Integer,Location> res = mRuta.edificiosMasCercanos(mCurrentLocation);
-        for (Map.Entry<Integer,Location> entry : res.entrySet())
-        {
+        int i = 0;
+        Map<Integer, Location> res = mRuta.edificiosMasCercanos(mCurrentLocation);
+        for (Map.Entry<Integer, Location> entry : res.entrySet()) {
             indice = entry.getKey();
             LatLng pos = new LatLng(entry.getValue().getLatitude(), entry.getValue().getLongitude());
             marcas[i] = mMap.addMarker(new MarkerOptions().position(pos).title(mRuta.edificios[indice]).icon(BitmapDescriptorFactory.fromResource(iconVec[indice])));
             ++i;
-            /*else //Si es indice
-            {
-                // Read your drawable from somewhere
-                Drawable dr = ResourcesCompat.getDrawable(getResources(),iconVec[indice],null);
-                Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
-                // Scale it to 50 x 50
-                Bitmap bitmapResized = Bitmap.createScaledBitmap(bitmap, 160, 160, false);
-                mMap.addMarker(new MarkerOptions().position(sydney).title("Prueba").icon(BitmapDescriptorFactory.fromBitmap(bitmapResized))); //Cambiar titulo
-            }*/
-
-=======
-        mMap.setMyLocationEnabled(true);
-        mMap.getUiSettings().setCompassEnabled(false);
-        mMap.getUiSettings().setMapToolbarEnabled(false);
+        }
     }
 
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         startLocationUpdates();
-        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-                mGoogleApiClient);
-        if (mLastLocation != null) {
-            LatLng posicion = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicion,18));
-        }else{
-            Toast.makeText(this, "Se cayó en el onConnected",Toast.LENGTH_LONG).show();
+        String permission = "android.permission.ACCESS_FINE_LOCATION";
+        int res = MapsActivity.this.checkCallingOrSelfPermission(permission);
+        if (res == PackageManager.PERMISSION_GRANTED)
+        {
+            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient);
+            if (mLastLocation != null) {
+                LatLng posicion = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicion,18));
+            }else{
+                Toast.makeText(this, "Se cayó en el onConnected",Toast.LENGTH_LONG).show();
+            }
         }
+
 
     }
 
     protected void startLocationUpdates() {
-        LocationServices.FusedLocationApi.requestLocationUpdates(
-                mGoogleApiClient, mLocationRequest, this);
+        String permission = "android.permission.ACCESS_FINE_LOCATION";
+        int res = MapsActivity.this.checkCallingOrSelfPermission(permission);
+        if (res == PackageManager.PERMISSION_GRANTED)
+        {
+            LocationServices.FusedLocationApi.requestLocationUpdates(
+                    mGoogleApiClient, mLocationRequest, this);
+        }
+
     }
 
     @Override
@@ -278,7 +254,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onResume();
         if (mGoogleApiClient.isConnected()) {
             startLocationUpdates();
->>>>>>> origin/master
         }
     }
 

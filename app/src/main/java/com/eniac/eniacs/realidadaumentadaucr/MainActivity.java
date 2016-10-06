@@ -21,13 +21,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.architect.StartupConfiguration;
 import android.Manifest;
-<<<<<<< HEAD
 import android.view.Window;
 import android.view.WindowManager;
-=======
 import android.view.KeyEvent;
 import android.view.View;
->>>>>>> origin/master
 import android.widget.Toast;
 
 import static android.os.Build.VERSION_CODES.M;
