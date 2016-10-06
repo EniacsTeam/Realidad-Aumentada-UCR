@@ -16,6 +16,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.architect.StartupConfiguration;
 import android.Manifest;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import static android.os.Build.VERSION_CODES.M;

@@ -11,11 +11,14 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.architect.StartupConfiguration;
 import android.Manifest;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import static android.os.Build.VERSION_CODES.M;
@@ -58,7 +61,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        //Disable Map Toolbar:
+        mMap.getUiSettings().setMapToolbarEnabled(false);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney").icon(BitmapDescriptorFactory.fromResource(R.drawable.biolo)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
