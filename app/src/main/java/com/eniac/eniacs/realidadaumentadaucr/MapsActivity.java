@@ -71,6 +71,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        mRuta = new Rutas();
         llenarIconVec();
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -89,13 +90,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     protected void onStart() {
-        mGoogleApiClient.connect();
         super.onStart();
+        if(mGoogleApiClient != null){
+            mGoogleApiClient.connect();
+        }
     }
 
     protected void onStop() {
-        mGoogleApiClient.disconnect();
         super.onStop();
+        if(mGoogleApiClient.isConnected()){
+            mGoogleApiClient.disconnect();
+        }
     }
 
     public void setToolbar(){
@@ -165,6 +170,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         mMap.getUiSettings().setCompassEnabled(false);
         mMap.getUiSettings().setMapToolbarEnabled(false);
+      //  addMarkers();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
+        switch (requestCode){
+            case 1:
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    //se crea bien
+                }else{
+                    Toast.makeText(this,"Need your location", Toast.LENGTH_SHORT).show();
+                }
+              break;
+
+        }
+
     }
 
     public void llenarIconVec()
@@ -185,18 +206,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             marcas[i] = mMap.addMarker(new MarkerOptions().position(pos).title(mRuta.edificios[indice]).icon(BitmapDescriptorFactory.fromResource(iconVec[indice])));
             ++i;
         }
+        res.clear();
     }
 
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        startLocationUpdates();
+
         String permission = "android.permission.ACCESS_FINE_LOCATION";
         int res = MapsActivity.this.checkCallingOrSelfPermission(permission);
         if (res == PackageManager.PERMISSION_GRANTED)
         {
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                     mGoogleApiClient);
+            mCurrentLocation = mLastLocation;
             if (mLastLocation != null) {
                 LatLng posicion = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicion,18));
@@ -205,7 +228,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         }
 
-
+        startLocationUpdates();
     }
 
     protected void startLocationUpdates() {
@@ -234,7 +257,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onLocationChanged(Location location) {
+        mMap.clear();
         mCurrentLocation = location;
+        addMarkers();
+        //Location apuntado= mRuta.edificioApuntado();//enviar el angulo como parametro
+
 
 
 
@@ -245,8 +272,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     protected void stopLocationUpdates() {
-        LocationServices.FusedLocationApi.removeLocationUpdates(
-                mGoogleApiClient, this);
+
+       if(mGoogleApiClient != null) {
+           LocationServices.FusedLocationApi.removeLocationUpdates(
+                   mGoogleApiClient, this);
+       }
     }
 
     @Override
@@ -256,6 +286,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             startLocationUpdates();
         }
     }
+
 
 }
 
