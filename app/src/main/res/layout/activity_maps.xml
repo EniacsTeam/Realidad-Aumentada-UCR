@@ -35,7 +35,7 @@ android:clickable="true"
 app:layout_anchor="@id/map"
 app:layout_anchorGravity="bottom|right|end"
 android:layout_margin="@dimen/fab_margin"
-app:srcCompat="@android:drawable/ic_menu_mapmode" />
+app:srcCompat="@android:drawable/ic_menu_camera" />
 
 
 </android.support.design.widget.CoordinatorLayout>
