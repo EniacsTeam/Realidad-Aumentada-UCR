@@ -26,6 +26,11 @@ public class Rutas {
     Location localizacion;
     boolean usado;
 
+
+    /**
+     * Constructor de rutas.
+     * Crea una lista de Locations con todos los puntos de interes.
+     */
     public Rutas(){
 
         mapaEnvio = new LinkedHashMap<Integer,Location>();
@@ -56,7 +61,15 @@ public class Rutas {
         }
     }
 
-
+    /**
+     * Se genera un map con los 3 edificios mas cercanos, este map tiene
+     * un integer con la posicion general del edificio en los vectores de la
+     * aplicacion y su location.
+     * <p>
+     *
+     * @param  location  codigo del permiso.
+     * @return map<Integer,Location> con los 3 edificios mas cercanos.
+     */
     public Map<Integer,Location> edificiosMasCercanos(Location location){
         Map<Double,Integer> mapaOrdenado = new TreeMap<Double,Integer>();
         mapaEnvio.clear();
@@ -80,7 +93,13 @@ public class Rutas {
         // return coordenadasResult;
     }
 
-
+    /**
+     * Se genera el location del edificio que se esta apuntando
+     * <p>
+     *
+     * @param  angle Angulo que apunta la brujula con respecto al norte.
+     * @return Returna un location si se esta apuntando algun edificio, si no retorna un null.
+     */
     public Location edificioApuntado(double angle){
         float bearing;
         //double arrow_rotation;
