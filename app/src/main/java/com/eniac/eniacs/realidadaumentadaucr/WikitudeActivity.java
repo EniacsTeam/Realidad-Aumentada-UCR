@@ -1,8 +1,10 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +18,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.architect.StartupConfiguration;
 import android.Manifest;
+import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -47,8 +53,63 @@ public class WikitudeActivity extends AppCompatActivity {
         {
             requestPermission();
         }
+
+
+        //setToolbar();
+
     }
 
+
+    /**
+     * Permite mostrar la barra superior de la
+     * aplicación
+     */
+    public void setToolbar(){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Mapa UCR");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+
+    /**
+     * Permite identificar cuál item se pulsó
+     * de la barra superior de la aplicación
+     * <p>
+     *
+     * @param  item  item seleccionado
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+
+    /**
+     * Define que hace el botón "back" de android
+     * en esta actividad
+     * <p>
+     *
+     * @param  keyCode  codigo del botón pulsado
+     * @param  event  evento del botón pulsado
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        if(keyCode == event.KEYCODE_BACK){
+            onBackPressed();
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
 
     /**

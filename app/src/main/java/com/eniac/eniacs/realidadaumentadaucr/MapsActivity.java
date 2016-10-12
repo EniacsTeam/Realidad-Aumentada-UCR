@@ -1,34 +1,17 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.location.Location;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.support.v4.app.NavUtils;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -38,18 +21,14 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.UiSettings;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.Map;
 
-import static com.eniac.eniacs.realidadaumentadaucr.R.id.fab;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
-import static com.wikitude.architect.CameraPreviewBase.m;
-import java.text.DateFormat;
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
@@ -85,10 +64,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(map);
         mapFragment.getMapAsync(this);
-        setToolbar();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(MapsActivity.this ,WikitudeActivity.class));
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
+            }
+        });
     }
 
 
+    /**
+     * Conecta la aplicación a los servicios
+     * de google
+     */
     protected void onStart() {
         super.onStart();
         if(mGoogleApiClient != null){
@@ -96,6 +89,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+
+    /**
+     * Detiene la conexión a los servicios
+     * de google
+     */
     protected void onStop() {
         super.onStop();
         if(mGoogleApiClient.isConnected()){
@@ -103,15 +101,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-    public void setToolbar(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Mapa UCR");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
 
-
+    /**
+     * Construye el googleApiClient para poder empezar a
+     * utilizarlo
+     */
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks( this)
@@ -121,28 +115,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mGoogleApiClient.connect();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event){
-        if(keyCode == event.KEYCODE_BACK){
-            onBackPressed();
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-        }
-        return super.onKeyDown(keyCode, event);
-    }
-
+    /**
+     * Permite localizar la posición del usuario cada segundo
+     */
     protected void createLocationRequest() {
         mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(1000);
@@ -173,6 +149,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
       //  addMarkers();
     }
 
+
+    /**
+     * Verifica que tenga los permisos apropiados
+     * para acceder a la ubicación de usuario
+     * <p>
+     *
+     * @param  requestCode  codigo del permiso
+     * @param  permissions  los permisos que se solicitan
+     * @param  grantResults  indica si permiso es concedido o no
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
         switch (requestCode){
@@ -188,6 +174,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
+
+    /**
+     * Llena el vector que contiene el id de cada ícono
+     * que se utiliza para usar de marcador
+     */
     public void llenarIconVec()
     {
         for(int i=0; i<28;++i)
@@ -196,6 +187,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+
+    /**
+     * Agrega los marcadores a los 3 edificios más cercanos
+     */
     public void addMarkers() {
         int indice;
         int i = 0;
@@ -210,6 +205,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
+    /**
+     * Actualiza posición de usuario y actualiza
+     * vista de usuario
+     * <p>
+     *
+     * @param  bundle
+     */
     @Override
     public void onConnected(@Nullable Bundle bundle) {
 
@@ -231,6 +233,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         startLocationUpdates();
     }
 
+
+    /**
+     * Permite iniciar el rastreo de la posición
+     * del usuario
+     */
     protected void startLocationUpdates() {
         String permission = "android.permission.ACCESS_FINE_LOCATION";
         int res = MapsActivity.this.checkCallingOrSelfPermission(permission);
@@ -242,6 +249,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
+
+    /**
+     * Permite re conectarse a los servicios de google
+     * en caso de perder conexión
+     * <p>
+     * @param  i
+     */
     @Override
     public void onConnectionSuspended(int i) {
         // The connection to Google Play services was lost for some reason. We call connect() to
@@ -250,11 +264,27 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mGoogleApiClient.connect();
     }
 
+
+    /**
+     * Permite identificar si la conexión a los servicios
+     * de google falló
+     * <p>
+     *
+     * @param  connectionResult  resultado de la conexión
+     */
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.i(TAG, "Connection failed: ConnectionResult.getErrorCode() = " + connectionResult.getErrorCode());
     }
 
+
+    /**
+     * Actualiza la vista cada vez que se cambia
+     * la posición del usuario
+     * <p>
+     *
+     * @param  location  ubicación del usuario
+     */
     @Override
     public void onLocationChanged(Location location) {
         mMap.clear();
@@ -266,11 +296,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     }
+
+    /**
+     * Método para pausar la actividad
+     */
     protected void onPause() {
         super.onPause();
         stopLocationUpdates();
     }
 
+
+    /**
+     * Método para detener la actividad
+     */
     protected void stopLocationUpdates() {
 
        if(mGoogleApiClient != null) {
@@ -279,6 +317,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
        }
     }
 
+
+    /**
+     * Método para resumir la actividad
+     */
     @Override
     public void onResume() {
         super.onResume();

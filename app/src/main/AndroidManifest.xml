@@ -42,19 +42,16 @@
             android:value="AIzaSyCXrP5wRqE3bwQkrMmXp3Sxs_4wCiDJoFY" />
         <activity android:name=".MainActivity"
             android:label="@string/title_activity_maps">
+
+        </activity>
+
+        <activity android:name=".MapsActivity"
+            android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity android:name=".MapsActivity"
-            android:label="@string/title_activity_maps">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"
-            />
 
         </activity>
 
@@ -62,6 +59,10 @@
             android:name=".WikitudeActivity"
             android:configChanges="screenSize|orientation"
             android:label="@string/title_activity_maps">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MapsActivity"
+                />
 
         </activity>
     </application>
