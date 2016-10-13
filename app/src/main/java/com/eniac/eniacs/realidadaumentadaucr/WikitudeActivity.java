@@ -31,6 +31,7 @@ import android.Manifest;
 import java.io.IOException;
 import java.util.Map;
 
+import static android.os.Build.VERSION_CODES.M;
 import static java.sql.Types.NULL;
 
 public class WikitudeActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
@@ -44,6 +45,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     Location mLastLocation;
     Location mCurrentLocation;
     private static final String TAG = "MainActivity";
+    Integer id1,id2,id3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,9 +140,10 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
         architectView.onPostCreate();
 
         try {
-            this.architectView.load("");/*Hay que poner ruta de directorio aqui*/
+            this.architectView.load("file:///android_asset/poi_1/index.html");/*Hay que poner ruta de directorio aqui*/
         } catch (Exception e){
-
+            e.printStackTrace();
+            Toast.makeText(this, "Se cayó", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -315,18 +318,31 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
 
         Map<Integer, Location> res = mRuta.edificiosMasCercanos(location);
 
+        Integer[] ids = new Integer[3];
+        int cont = 0;
 
         for (Map.Entry<Integer, Location> entry : res.entrySet()) {
-            try {
-                architectView.setLocation(entry.getValue().getLatitude(), entry.getValue().getLongitude(), entry.getKey(), location.getAccuracy());
-                this.architectView.load("file:///android_asset/poi_1/index.html");
-            } catch (IOException e) {
-                e.printStackTrace();
-                Toast.makeText(this, "Se cayó", Toast.LENGTH_SHORT).show();
-
-            }
-
+            ids[cont] = entry.getKey();
+            cont++;
         }
+
+        id1 = ids[0];
+        id2 = ids[1];
+        id3 = ids[2];
+
+       // try {
+
+            architectView.setLocation(location.getLatitude(), location.getLongitude(), location.getAltitude(), location.getAccuracy());
+           // this.architectView.load("poi_1/index.html");
+            architectView.callJavascript("World.loadPoisFromJsonData(" + id1 +"," + id2 + "," + id3 +")");
+
+        /*} catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Se cayó", Toast.LENGTH_SHORT).show();
+
+        }*/
+
+
         res.clear();
 
     }

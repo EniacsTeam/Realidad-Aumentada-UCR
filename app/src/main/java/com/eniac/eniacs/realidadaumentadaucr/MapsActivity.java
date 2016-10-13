@@ -1,5 +1,6 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
+import android.*;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -39,6 +41,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Location mCurrentLocation;
     private static final String TAG = "MapsActivity";
     private Rutas mRuta;
+    String [] StringPermisos = {android.Manifest.permission.CAMERA, android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private int iconVec[] = new int[28];
     private String wordVec[] = {"derecho","oficbecas","biblio","arqui","comedor","inge","fisicamate","generales","biblio","preescolar",
     "letras","centinform","geologia","economicas","ecci","odonto","medicina","farmacia","microbiologia","biolo","quimica","musica",
@@ -59,6 +62,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     .addApi(LocationServices.API)
                     .build();
         }
+        //requestPermission();
         createLocationRequest();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -147,6 +151,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.getUiSettings().setCompassEnabled(false);
         mMap.getUiSettings().setMapToolbarEnabled(false);
       //  addMarkers();
+    }
+
+
+    /**
+     * Método para preguntar permisos
+     */
+    private void requestPermission(){
+        //Preguntar por permiso
+        ActivityCompat.requestPermissions(this, StringPermisos, 0);
     }
 
 

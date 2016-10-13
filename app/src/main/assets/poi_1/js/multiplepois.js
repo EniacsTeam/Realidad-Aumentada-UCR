@@ -2,7 +2,7 @@
 var World = {
 
 	//Vector de locations.
-	edificios = [
+	edificios : [
                 "Facultad de Derecho","Oficina de Becas y Atención Socioeconómica",
                 "Biblioteca Luis Demetrio Tinoco","Escuela de Arquitectura","Comedor universitario","Facultad de Ingeniería",
                 "Escuela de Física y Matemáticas","Escuela de Estudios Generales","Biblioteca Carlos Monge",
@@ -12,8 +12,21 @@ var World = {
                 "Escuela de Artes Musicales","Escuela de Bellas Artes","Facultad de Educación","Bosque Leonel Oviedo",
                 "Mariposario","Plaza 24 de abril","El Pretil"],
 
+
+    latitud : [9.93639, 9.9355, 9.93601, 9.93486, 9.93724, 9.93595, 9.93648, 9.93612,
+                9.93603, 9.93867, 9.9386, 9.937654,
+                9.938080, 9.937046, 9.937932, 9.938255, 9.938637, 9.938880, 9.937950, 9.937640, 9.937178, 9.937408,
+                9.936547, 9.936083, 9.937604, 9.937249, 9.936307, 9.935916],
+                
+    longuitud : [-84.05386, -84.05422, -84.0527, -84.05261, -84.05309, -84.05194, -84.05157,
+                -84.05047, -84.05105, -84.0536,
+                -84.05286, -84.052356, -84.052452, -84.051656, -84.051992, -84.051683, -84.050404, -84.049967, -84.049292,
+                -84.049444, -84.048932,-84.048154, -84.048270, -84.048764, -84.050606, -84.050314, -84.050855, -84.050618 ],
+
+
+
     //Numero de llamados a location
-    num = 0,
+    num : 0,
 
 	// true once data was fetched
 	initiallyLoadedData: false,
@@ -29,29 +42,65 @@ var World = {
 	currentMarker: null,
 
 	// called to inject new POI data
-	loadPoisFromJsonData: function loadPoisFromJsonDataFn(poiData) {
+	loadPoisFromJsonData: function loadPoisFromJsonDataFn(id1, id2, id3) {
+		World.markerList = []; 
 
 		// start loading marker assets
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
 
 		// loop through POI-information and create an AR.GeoObject (=Marker) per POI
-		for (var currentPlaceNr = 0; currentPlaceNr < poiData.length; currentPlaceNr++) {
-			var singlePoi = {
-				"id": poiData[currentPlaceNr].id,
-				"latitude": parseFloat(poiData[currentPlaceNr].latitude),
-				"longitude": parseFloat(poiData[currentPlaceNr].longitude),
-				"title": poiData[currentPlaceNr].name,
-			};
+		
+		var singlePoi = {
+			"id": id2,
+			"latitude": parseFloat(World.latitud[id1]),
+			"longitude": parseFloat(World.longuitud[id1]),
+			"altitude": parseFloat(0),
+			"title": World.edificios[id1],
+			"description": World.edificios[id1]
+		};
 
 			/*
 				To be able to deselect a marker while the user taps on the empty screen, 
 				the World object holds an array that contains each marker.
 			*/
-			World.markerList.push(new Marker(singlePoi));
-		}
+		World.markerList.push(new Marker(singlePoi));
 
-		World.updateStatusMessage(currentPlaceNr + ' places loaded');
+
+		singlePoi = {
+			"id": id2,
+			"latitude": parseFloat(World.latitud[id2]),
+			"longitude": parseFloat(World.longuitud[id2]),
+			"altitude": parseFloat(0),
+			"title": World.edificios[id2],
+			"description": World.edificios[id2]
+		};
+
+			/*
+				To be able to deselect a marker while the user taps on the empty screen, 
+				the World object holds an array that contains each marker.
+			*/
+		World.markerList.push(new Marker(singlePoi));
+
+
+		singlePoi = {
+			"id": id3,
+			"latitude": parseFloat(World.latitud[id3]),
+			"longitude": parseFloat(World.longuitud[id3]),
+			"altitude": parseFloat(0),
+            "title": World.edificios[id3],
+            "description": World.edificios[id3]
+		};
+
+			/*
+				To be able to deselect a marker while the user taps on the empty screen, 
+				the World object holds an array that contains each marker.
+			*/
+		World.markerList.push(new Marker(singlePoi));
+
+
+
+		World.updateStatusMessage(3 + ' places loaded');
 	},
 
 	// updates status message shon in small "i"-button aligned bottom center
@@ -75,14 +124,13 @@ var World = {
 		/*
 			The custom function World.onLocationChanged checks with the flag World.initiallyLoadedData if the function was already called. With the first call of World.onLocationChanged an object that contains geo information will be created which will be later used to create a marker using the World.loadPoisFromJsonData function.
 		*/
-		if (!World.initiallyLoadedData) {
+		//if (!World.initiallyLoadedData) {
 			/* 
 				requestDataFromLocal with the geo information as parameters (latitude, longitude) creates different poi data to a random location in the user's vicinity.
 			*/
 
-			World.requestDataFromLocal(lat, lon, alt);
-			World.initiallyLoadedData = true;
-		}
+		//	World.initiallyLoadedData = true;
+		//}
 	},
 
 	// fired when user pressed maker in cam
@@ -110,7 +158,7 @@ var World = {
 
 	// request POI data
 	requestDataFromLocal: function requestDataFromLocalFn(lat, lon, indice) {
-		var poiData = [];
+		/*var poiData = [];
 		++num;
 
 
@@ -131,7 +179,7 @@ var World = {
 				"latitude": (lat),
 				"name": edificios[indice]
 			});
-		World.loadPoisFromJsonData(poiData);
+		World.loadPoisFromJsonData(poiData);*/
 
 	}
 
