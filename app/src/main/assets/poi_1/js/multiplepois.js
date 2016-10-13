@@ -43,7 +43,9 @@ var World = {
 
 	// called to inject new POI data
 	loadPoisFromJsonData: function loadPoisFromJsonDataFn(id1, id2, id3) {
-		World.markerList = []; 
+		World.markerList.pop();
+		 World.markerList.pop();
+		 World.markerList.pop();
 
 		// start loading marker assets
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");

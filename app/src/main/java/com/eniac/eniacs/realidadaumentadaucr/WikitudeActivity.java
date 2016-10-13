@@ -44,7 +44,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     LocationRequest mLocationRequest;
     Location mLastLocation;
     Location mCurrentLocation;
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "Wikitude";
     Integer id1,id2,id3;
 
     @Override
