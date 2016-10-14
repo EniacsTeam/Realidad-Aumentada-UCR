@@ -13,6 +13,7 @@ function Marker(poiData) {
     this.markerDrawable_idle = new AR.ImageDrawable(World.markerDrawable_idle, 2.5, {
         zOrder: 0,
         opacity: 1.0,
+
         /*
             To react on user interaction, an onClick property can be set for each AR.Drawable. The property is a function which will be called each time the user taps on the drawable. The function called on each tap is returned from the following helper function defined in marker.js. The function returns a function which checks the selected state with the help of the variable isSelected and executes the appropriate function. The clicked marker is passed as an argument.
         */
@@ -27,17 +28,20 @@ function Marker(poiData) {
     });
 
     // create an AR.Label for the marker's title 
-    this.titleLabel = new AR.Label(poiData.title.trunc(10), 1, {
+    this.titleLabel = new AR.Label(poiData.title, 0.5, {
         zOrder: 1,
         offsetY: 0.55,
         style: {
             textColor: '#FFFFFF',
-            fontStyle: AR.CONST.FONT_STYLE.BOLD
+            fontStyle: AR.CONST.FONT_STYLE.NORMAL,
+            horizontalAnchor: AR.CONST.HORIZONTAL_ANCHOR.CENTER
+            
+
         }
     });
 
     // create an AR.Label for the marker's description
-    this.descriptionLabel = new AR.Label(poiData.description.trunc(15), 0.8, {
+    this.descriptionLabel = new AR.Label(poiData.description, 0.3, {
         zOrder: 1,
         offsetY: -0.55,
         style: {
@@ -47,6 +51,7 @@ function Marker(poiData) {
 
     // create the AR.GeoObject with the drawable objects
     this.markerObject = new AR.GeoObject(markerLocation, {
+
         drawables: {
             cam: [this.markerDrawable_idle, this.markerDrawable_selected, this.titleLabel, this.descriptionLabel]
         }
