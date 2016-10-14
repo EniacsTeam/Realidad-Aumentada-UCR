@@ -42,5 +42,8 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-</project>
+ </component>
+ +  <component name="SvnConfiguration">
+ +    <configuration>C:\Users\kenca\AppData\Roaming\Subversion</configuration>
+ +  </component>
+  </project>
