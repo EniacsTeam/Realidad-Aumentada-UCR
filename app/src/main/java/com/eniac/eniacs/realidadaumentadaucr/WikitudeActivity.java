@@ -316,13 +316,13 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
 
     private void makeUseOfNewLocation(Location location) {
 
-        int[] res = mRuta.edificiosMasCercanos(location);
+        Map<Integer, Location> res = mRuta.edificiosMasCercanos(location);
 
         Integer[] ids = new Integer[3];
         int cont = 0;
 
-        for (int i=0; i<3; ++i) {
-            ids[cont] = res[i];
+        for (Map.Entry<Integer, Location> entry : res.entrySet()) {
+            ids[cont] = entry.getKey();
             cont++;
         }
 

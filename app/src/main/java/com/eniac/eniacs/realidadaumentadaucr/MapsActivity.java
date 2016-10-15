@@ -33,6 +33,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import static android.os.Build.VERSION_CODES.M;
@@ -40,10 +42,6 @@ import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener, SensorEventListener {
-
-
-    private SensorManager mSensorManager;//control de sensores
-    private Sensor distanceVector;
 
     private GoogleMap mMap;
     GoogleApiClient mGoogleApiClient;
@@ -57,10 +55,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private String wordVec[] = {"derecho", "oficbecas", "biblio", "arqui", "comedor", "inge", "fisicamate", "generales", "biblio", "preescolar",
             "letras", "centinform", "geologia", "economicas", "ecci", "odonto", "medicina", "farmacia", "microbiologia", "biolo", "quimica", "musica",
             "artes", "educa", "bosque", "mariposario", "plaza", "pretil"};//28
-    private int[] tresCercanos;
-    private Marker marcasTodas[] = new Marker[28];
-    private int apuntAnterior = -1;
-    private boolean correrApuntado = false;
+
+    /*para los sensores*/
+    private float azimuth;
+    private float[] rotationMatrix;
+    private float[] orientationVals;
+    private SensorManager mSensorManager;//control de sensores
+    private Sensor distanceVector;
+    private List<Location> marcas;
+    boolean primero;
+    private Marker marcasM[];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,9 +98,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
+        rotationMatrix = new float[9];
+        orientationVals = new float[3];
+        marcas = new ArrayList<Location>(3);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);//obtenemos el servicio
-        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         distanceVector = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
+        primero = true;
+        marcasM = new Marker[3];
 
     }
 
@@ -162,20 +172,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
         String permission = "android.permission.ACCESS_FINE_LOCATION";
         int res = MapsActivity.this.checkCallingOrSelfPermission(permission);
-        if (res == PackageManager.PERMISSION_GRANTED) {
+        if (res == PackageManager.PERMISSION_GRANTED)
+        {
             mMap.setMyLocationEnabled(true);
         }
         mMap.getUiSettings().setCompassEnabled(false);
         mMap.getUiSettings().setMapToolbarEnabled(false);
-        //  addMarkers();
-        for (int i = 0; i < mRuta.edificios.length; ++i) {
-            LatLng pos = new LatLng(mRuta.elatitud[i], mRuta.elonguitud[i]);
-            marcasTodas[i] = mMap.addMarker(new MarkerOptions().position(pos).alpha(0.3f)
-                    .title(mRuta.edificios[i]).icon(BitmapDescriptorFactory.fromResource(iconVec[i])));
-
-        }
-
-
     }
 
 
@@ -228,11 +230,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      * Agrega los marcadores a los 3 edificios más cercanos
      */
     public void addMarkers() {
-        tresCercanos = mRuta.edificiosMasCercanos(mCurrentLocation);
-        for (int i = 0; i < 3; ++i) {
-            marcasTodas[tresCercanos[i]].setAlpha(3);
+        int indice;
+        int i = 0;
+        Map<Integer, Location> res = mRuta.edificiosMasCercanos(mCurrentLocation);
+        for (Map.Entry<Integer, Location> entry : res.entrySet()) {
+            indice = entry.getKey();
+            LatLng pos = new LatLng(entry.getValue().getLatitude(), entry.getValue().getLongitude());
+            Location loc = new Location(mRuta.edificios[indice]);
+            loc.setLatitude(entry.getValue().getLatitude());
+            loc.setLongitude(entry.getValue().getLongitude());
+            marcas.add(loc);
+            marcasM[i]=mMap.addMarker(new MarkerOptions().position(pos).title(mRuta.edificios[indice]).icon(BitmapDescriptorFactory.fromResource(iconVec[indice])));
+            ++i;
         }
-        correrApuntado = true;
     }
 
     /**
@@ -316,19 +326,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      */
     @Override
     public void onLocationChanged(Location location) {
-        //  mMap.clear();
-
-        mCurrentLocation = location;
-        if (tresCercanos != null) {
-            for (int i = 0; i < 3; ++i) {
-                marcasTodas[tresCercanos[i]].setAlpha(0.3f);
+        for(int i =0;i<marcasM.length;i++){
+            if(marcasM[i]!=null){
+                marcasM[i].setVisible(false);
             }
         }
+        mCurrentLocation = location;
         addMarkers();
-
-        //Location apuntado= mRuta.edificioApuntado();//enviar el angulo como parametro
-
-
+        if(primero){
+            mSensorManager.registerListener(this, distanceVector, 1100);
+            primero = false;
+        }
     }
 
     /**
@@ -367,32 +375,27 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if (correrApuntado) {
-            final float[] rotationMatrix = new float[9];
-            final float[] orientationVals = new float[3];
-            mSensorManager.getRotationMatrixFromVector(rotationMatrix, event.values);
-            mSensorManager.remapCoordinateSystem(rotationMatrix, SensorManager.AXIS_X, SensorManager.AXIS_Z, rotationMatrix);
-            mSensorManager.getOrientation(rotationMatrix, orientationVals);
+        mSensorManager.getRotationMatrixFromVector(rotationMatrix, event.values);
+        mSensorManager.remapCoordinateSystem(rotationMatrix, SensorManager.AXIS_X, SensorManager.AXIS_Z, rotationMatrix);
+        mSensorManager.getOrientation(rotationMatrix, orientationVals);
+        orientationVals[0] = (float) Math.toDegrees(orientationVals[0]);
+        azimuth = ( orientationVals[0] + 360 ) % 360;
 
-            orientationVals[0] = (float) Math.toDegrees(orientationVals[0]);
-            orientationVals[1] = (float) Math.toDegrees(orientationVals[1]);
-            orientationVals[2] = (float) Math.toDegrees(orientationVals[2]);
-
-            // angle in [0 - 360] degree
-            float azimuth = (orientationVals[0] + 360) % 360;
-            int indice = mRuta.edificioApuntado(azimuth);
-
-            if (apuntAnterior != -1 && indice != apuntAnterior) {
-                //marcasTodas[tresCercanos[i]].setIcon(BitmapDescriptorFactory.fromResource(R.drawable.edimarcado));
-                marcasTodas[apuntAnterior].setIcon(BitmapDescriptorFactory.fromResource(iconVec[apuntAnterior]));
-
+        Map<Integer, Location> pointedBuilding =  mRuta.edificioApuntado(azimuth);
+        if(marcas!=null){
+            int i=0;
+            for (Map.Entry<Integer, Location> entry : pointedBuilding.entrySet()) {
+                if(entry.getKey()!=-1){
+                    marcasM[i].setIcon(BitmapDescriptorFactory.fromResource(iconVec[entry.getKey()]));
+                    if (entry.getValue().distanceTo(marcas.get(i))==0) {
+                        marcasM[i].setAlpha(6);
+                    }
+                    else {
+                        marcasM[i].setVisible(true);
+                    }
+                }
+                i++;
             }
-            if (indice != -1) {
-
-                marcasTodas[indice].setIcon(BitmapDescriptorFactory.fromResource(R.drawable.edimarcado));
-                apuntAnterior = indice;
-            }
-
         }
     }
 
