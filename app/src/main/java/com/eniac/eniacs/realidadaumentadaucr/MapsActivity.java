@@ -231,7 +231,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         tresCercanos = mRuta.edificiosMasCercanos(mCurrentLocation);
         for (int i = 0; i < 3; ++i) {
-            marcasTodas[tresCercanos[i]].setAlpha(5);
+            marcasTodas[tresCercanos[i]].setAlpha(3);
         }
         correrApuntado = true;
     }
