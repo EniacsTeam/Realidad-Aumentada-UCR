@@ -169,7 +169,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.getUiSettings().setMapToolbarEnabled(false);
         //  addMarkers();
         for (int i = 0; i < mRuta.edificios.length; ++i) {
-            añadirMarcador(i);
+            LatLng pos = new LatLng(mRuta.elatitud[i], mRuta.elonguitud[i]);
+            marcasTodas[i] = mMap.addMarker(new MarkerOptions().position(pos).alpha(0.3f)
+                    .title(mRuta.edificios[i]).icon(BitmapDescriptorFactory.fromResource(iconVec[i])));
 
         }
 
@@ -226,22 +228,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      * Agrega los marcadores a los 3 edificios más cercanos
      */
     public void addMarkers() {
-        int indice;
-
-
         tresCercanos = mRuta.edificiosMasCercanos(mCurrentLocation);
         for (int i = 0; i < 3; ++i) {
-            marcasTodas[tresCercanos[i]].setAlpha(5);
+            marcasTodas[tresCercanos[i]].setAlpha(3);
         }
         correrApuntado = true;
-    }
-
-    /**
-     * Agrega los marcadores de todos los edificios
-     */
-    public void añadirMarcador(int indice) {
-        LatLng pos = new LatLng(mRuta.elatitud[indice], mRuta.elonguitud[indice]);
-        marcasTodas[indice] = mMap.addMarker(new MarkerOptions().position(pos).alpha(0.3f).title(mRuta.edificios[indice]).icon(BitmapDescriptorFactory.fromResource(iconVec[indice])));
     }
 
     /**
@@ -326,7 +317,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onLocationChanged(Location location) {
         //  mMap.clear();
+
         mCurrentLocation = location;
+        if (tresCercanos != null) {
+            for (int i = 0; i < 3; ++i) {
+                marcasTodas[tresCercanos[i]].setAlpha(0.3f);
+            }
+        }
         addMarkers();
 
         //Location apuntado= mRuta.edificioApuntado();//enviar el angulo como parametro
@@ -385,7 +382,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             float azimuth = (orientationVals[0] + 360) % 360;
             int indice = mRuta.edificioApuntado(azimuth);
 
-            if (apuntAnterior != -1 && indice!=apuntAnterior) {
+            if (apuntAnterior != -1 && indice != apuntAnterior) {
                 //marcasTodas[tresCercanos[i]].setIcon(BitmapDescriptorFactory.fromResource(R.drawable.edimarcado));
                 marcasTodas[apuntAnterior].setIcon(BitmapDescriptorFactory.fromResource(iconVec[apuntAnterior]));
 
@@ -393,7 +390,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             if (indice != -1) {
 
                 marcasTodas[indice].setIcon(BitmapDescriptorFactory.fromResource(R.drawable.edimarcado));
-                apuntAnterior=indice;
+                apuntAnterior = indice;
             }
 
         }
