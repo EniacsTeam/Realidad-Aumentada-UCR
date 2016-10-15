@@ -10,6 +10,7 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -19,6 +20,9 @@ android {
     }
     sourceSets { main { res.srcDirs = ['src/main/res', 'src/main/res/drawable']
                         /*assets.srcDirs = ['src/main/assets/', 'src/main/assets']*/ } }
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
 }
 
 dependencies {
