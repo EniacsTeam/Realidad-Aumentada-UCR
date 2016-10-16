@@ -1,17 +1,12 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
 import android.location.Location;
-import android.util.Log;
-
-import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
-import static android.location.Location.distanceBetween;
 
 /**
  * Esta clase provee metodos que a partir de informacion con respecto a la posicion del usuario devuelve puntos de interes que podrian ser relevantes
@@ -20,10 +15,10 @@ import static android.location.Location.distanceBetween;
  * @author  EniacsTeam
  */
 public class Rutas {
-    List<Location> listaCoordenadas;
-    String[]edificios;
+    private final List<Location> listaCoordenadas;
+    final String[]edificios;
     Map<Integer,Location> mapaEnvio;
-    Location localizacion;
+    private Location localizacion;
     boolean usado;
 
 
@@ -34,7 +29,7 @@ public class Rutas {
      */
     public Rutas(){
 
-        mapaEnvio = new LinkedHashMap<Integer,Location>();
+        mapaEnvio = new LinkedHashMap<>();
         localizacion = new Location("current");
         edificios = new String[]
                 {"Facultad de Derecho","Oficina de Becas y Atención Socioeconómica",
@@ -67,10 +62,10 @@ public class Rutas {
      * aplicacion y su location.
      *
      * @param  location  Posicion actual del usuario dentro del mapa.
-     * @return Map<Integer,Location> Los 3 edificios mas cercanos a la posicion brindada por parametro.
+     * @return Los 3 edificios mas cercanos a la posicion brindada por parametro.
      */
     public Map<Integer,Location> edificiosMasCercanos(Location location){
-        Map<Double,Integer> mapaOrdenado = new TreeMap<Double,Integer>();
+        Map<Double,Integer> mapaOrdenado = new TreeMap<>();
         mapaEnvio.clear();
         for(int i =0;i<listaCoordenadas.size();i++){
             mapaOrdenado.put((double)location.distanceTo(listaCoordenadas.get(i)), i);
@@ -91,13 +86,13 @@ public class Rutas {
      * Se genera el {@code Location} del edificio que se esta apuntando con el dispositivo.
      *
      * @param  angle Angulo entre el eje "y" del dispositivo y el polo norte magnetico.
-     * @return Location Retorna la posicion del edificio apuntado, si no existe ninguno retorna {@code null}.
+     * @return Retorna la posicion del edificio apuntado y su respectivo identificador, si no existe ninguno retorna {@code null}.
      */
     public Map<Integer,Location> edificioApuntado(float angle){
         float bearing;
         float heading;
         float arrow_rotation;
-        Map<Integer,Location>retLoc=new LinkedHashMap<Integer, Location>();
+        Map<Integer,Location>retLoc=new LinkedHashMap<>();
         boolean isSet=false;
         for (Map.Entry<Integer, Location> entry : mapaEnvio.entrySet()) {
             bearing = localizacion.bearingTo(entry.getValue());    // -180 to 180

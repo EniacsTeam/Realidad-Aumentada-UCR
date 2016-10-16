@@ -1,6 +1,5 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
-import android.*;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -37,7 +36,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static android.os.Build.VERSION_CODES.M;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
 
 /**
@@ -50,26 +48,25 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         LocationListener, SensorEventListener {
 
     private GoogleMap mMap;
-    GoogleApiClient mGoogleApiClient;
-    LocationRequest mLocationRequest;
-    Location mLastLocation;
-    Location mCurrentLocation;
+    private GoogleApiClient mGoogleApiClient;
+    private LocationRequest mLocationRequest;
+    private Location mLastLocation;
+    private Location mCurrentLocation;
     private static final String TAG = "MapsActivity";
     private Rutas mRuta;
-    String[] StringPermisos = {android.Manifest.permission.CAMERA, android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
-    private int iconVec[] = new int[28];
-    private String wordVec[] = {"derecho", "oficbecas", "biblio", "arqui", "comedor", "inge", "fisicamate", "generales", "biblio", "preescolar",
+    private final String[] StringPermisos = {android.Manifest.permission.CAMERA, android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private final int iconVec[] = new int[28];
+    private final String wordVec[] = {"derecho", "oficbecas", "biblio", "arqui", "comedor", "inge", "fisicamate", "generales", "biblio", "preescolar",
             "letras", "centinform", "geologia", "economicas", "ecci", "odonto", "medicina", "farmacia", "microbiologia", "biolo", "quimica", "musica",
             "artes", "educa", "bosque", "mariposario", "plaza", "pretil"};//28
 
     /*para los sensores*/
-    private float azimuth;
     private float[] rotationMatrix;
     private float[] orientationVals;
     private SensorManager mSensorManager;//control de sensores
     private Sensor distanceVector;
     private List<Location> marcas;
-    boolean primero;
+    private boolean primero;
     private Marker marcasM[];
 
     /**
@@ -113,7 +110,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         rotationMatrix = new float[9];
         orientationVals = new float[3];
-        marcas = new ArrayList<Location>(3);
+        marcas = new ArrayList<>(3);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);//obtenemos el servicio
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         distanceVector = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
@@ -229,7 +226,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     /**
      * Llena el vector con los identificadores de cada icono que se utiliza para representar a cada marcador.
      */
-    public void llenarIconVec() {
+    private void llenarIconVec() {
         for (int i = 0; i < 28; ++i) {
             iconVec[i] = getResources().getIdentifier(wordVec[i], "drawable", getPackageName());
         }
@@ -239,7 +236,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     /**
      * Este metodo se encarga de agregar los marcadores respectivos a los 3 edificios mas cercanos a la posicion del usuario.
      */
-    public void addMarkers() {
+    private void addMarkers() {
         int indice;
         int i = 0;
         Map<Integer, Location> res = mRuta.edificiosMasCercanos(mCurrentLocation);
@@ -385,11 +382,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      */
     @Override
     public void onSensorChanged(SensorEvent event) {
-        mSensorManager.getRotationMatrixFromVector(rotationMatrix, event.values);
-        mSensorManager.remapCoordinateSystem(rotationMatrix, SensorManager.AXIS_X, SensorManager.AXIS_Z, rotationMatrix);
-        mSensorManager.getOrientation(rotationMatrix, orientationVals);
+        SensorManager.getRotationMatrixFromVector(rotationMatrix, event.values);
+        SensorManager.remapCoordinateSystem(rotationMatrix, SensorManager.AXIS_X, SensorManager.AXIS_Z, rotationMatrix);
+        SensorManager.getOrientation(rotationMatrix, orientationVals);
         orientationVals[0] = (float) Math.toDegrees(orientationVals[0]);
-        azimuth = ( orientationVals[0] + 360 ) % 360;
+        float azimuth = ( orientationVals[0] + 360 ) % 360;
 
         Map<Integer, Location> pointedBuilding =  mRuta.edificioApuntado(azimuth);
         if(marcas!=null){

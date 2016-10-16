@@ -19,20 +19,10 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.wikitude.architect.ArchitectView;
 import com.wikitude.architect.StartupConfiguration;
 import android.Manifest;
-
-import java.io.IOException;
 import java.util.Map;
-
-import static android.os.Build.VERSION_CODES.M;
-import static java.sql.Types.NULL;
 
 /**
  * Esta clase representa la camara de Wikitude. Contiene metodos para solicitar y manejar permisos de localizacion, para luego con ellos brindarle
@@ -45,13 +35,13 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
 
     private ArchitectView architectView;
     private Rutas mRuta;
-    String [] StringPermisos = {Manifest.permission.CAMERA,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.WRITE_EXTERNAL_STORAGE};
-    GoogleApiClient mGoogleApiClient;
-    LocationRequest mLocationRequest;
-    Location mLastLocation;
-    Location mCurrentLocation;
+    private final String [] StringPermisos = {Manifest.permission.CAMERA,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private GoogleApiClient mGoogleApiClient;
+    private LocationRequest mLocationRequest;
+    private Location mLastLocation;
+    private Location mCurrentLocation;
     private static final String TAG = "Wikitude";
-    Integer id1,id2,id3;
+    private Integer id1,id2,id3;
 
     /**
      * Este metodo es usado para inicializar la actividad. Se define la interfaz de usuario, se instancian clases auxiliares, se crea un
@@ -77,7 +67,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
         final StartupConfiguration config = new StartupConfiguration("E2+3OVGKbQcv6JrSgriX+czMlLGUGf9lfex/+wxB6b1Tbo7RyIoccealOwt4Kl1mAf5QBel8wQ818kRAeJfbHB/K5XO12aC0cptyGTO8NEDypO87dn19fTA3Hx7ULASgd4zhwStTH42bsGIEMsL4SPUNd2ucuE4R15y+4kJzQFNTYWx0ZWRfX3rT9ifimN5EoNAvY/2QDMkmhwD57VrGVyq6Y8lgwAQTwocP+1IW4choWR9mq3J7yJI2wMozzbp8kB2v7thM71zjTV42qnP6WdY13rCm3Vj5EuqCRdYOTNgPlUoLwSgTVIBSDwD9Jh984S0Zlr9TDw8Yn5il6OhlLYTug9dYV2PMQzt/uQ9ukisOGt0B49iEjJn1flOmx5PCjxo8+Vcm8xtM/1Nen79Ifrf63itCHjDZaPT37qW0Tm52KZJiGo9CoeMkDfWSGuv1hrZ0sABIFciRROmaF+tf//5C+FQAt8eE6TJzcCsenx9qwyMNAgdD+RORiZqF9mnzJaIUOvBB4TrzxmU2bAVgwd5TgYylm+itjUigNNfnD8z2i/cF0w7Z77W+ZUfEgfSEPfOLCrXg16PnHXrLxKw7FK2LR6txrAPmcKrHqUAUikFBWrwTqMK3nFPti0ksA2kYpRiCOklybe74Q6jvq3OXyzb8tSEDXXeC1RJw3oiUOiA=");
         this.architectView.onCreate( config );
         boolean check = askCompatibility();
-        if(check == true)
+        if(check)
         {
             requestPermission();
         }
@@ -126,7 +116,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event){
-        if(keyCode == event.KEYCODE_BACK){
+        if(keyCode == KeyEvent.KEYCODE_BACK){
             onBackPressed();
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
@@ -256,7 +246,8 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     /**
      * Actualiza posicion de usuario y actualiza vista de usuario.
      *
-     * @param  bundle
+     * @param  bundle Conjunto de datos proveidos a los clientes por los Google Play services.
+     *                Podria ser {@code null} si ningun contenido es brindado por el servicio.
      */
     @Override
     public void onConnected(@Nullable Bundle bundle) {
