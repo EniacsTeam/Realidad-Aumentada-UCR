@@ -40,6 +40,12 @@ import java.util.Map;
 import static android.os.Build.VERSION_CODES.M;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
 
+/**
+ * Esta clase representa un mapa de Google. Contiene metodos para solicitar y manejar permisos de localizacion, para luego con ellos ayudar
+ * al usuario de la aplicacion a moverse mas facilmente en el mundo real a partir de la informacion presentada en el mapa (i.e. puntos de interes).
+ *
+ * @author  EniacsTeam
+ */
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener, SensorEventListener {
 
@@ -66,7 +72,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     boolean primero;
     private Marker marcasM[];
 
-
+    /**
+     * Este metodo es usado para inicializar la actividad. Se define la interfaz de usuario, se instancian clases auxiliares, se crea un
+     * servicio de solicitud de localizacion, se inicializan referencias a los iconos de los marcadores para los edificios, se obtiene el
+     * mapa listo para usarlo, se recuperan las herramientas de interfaz de usuario con las que se quieren interactuar y se inicializan
+     * las variables necesarias para manejar el sensor de rotacion del dispositivo.
+     *
+     * @param savedInstanceState estado guardado de la aplicacion un valor {@code null} indica que la actividad no debe ser recreada a partir de información previa.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,8 +124,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Conecta la aplicación a los servicios
-     * de google
+     * Si la instancia de {@code GoogleApiClient} tiene un valor distinto de {@code null} es necesario reconectar la aplicación
+     * a los servicios de Google.
      */
     protected void onStart() {
         super.onStart();
@@ -123,8 +136,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Detiene la conexión a los servicios
-     * de google
+     * Cuando la actividad ya no es visible al usuario detiene la conexión a los servicios de Google.
      */
     protected void onStop() {
         super.onStop();
@@ -135,8 +147,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Construye el googleApiClient para poder empezar a
-     * utilizarlo
+     * Construye una instancia de {@code GoogleApiClient} el cual provee un punto de entrada a todos los servicios de Google Play.
      */
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -149,7 +160,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Permite localizar la posición del usuario cada segundo
+     * Permite definir parametro de calidad de servicio para las solicitudes de localizacion.
      */
     protected void createLocationRequest() {
         mLocationRequest = new LocationRequest();
@@ -159,13 +170,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
+     * Manipula el mapa una vez que esta disponible. Se habilitan herramientas como myLocation y el compass.
+     * <p>
+     * Esta retrollamada es desencadenada cuando el mapa esta listo para ser usado.
+     * <p>
+     * Si los Google Play services no estan instalados en el dispositivo, se le solicitara al usuario instalarlo dentro del
+     * SupportMapFragment. Este metodo solo se desencadenara una vez que el usuario ha instalado los Google Play services
+     * y ha retornado a la aplicacion.
+     *
+     * @param googleMap una instancia no nula de un GoogleMap
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -182,7 +195,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Método para preguntar permisos
+     * Metodo encargado de pedir que se le conceda a la aplicacion ciertos permisos.
      */
     private void requestPermission() {
         //Preguntar por permiso
@@ -191,13 +204,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Verifica que tenga los permisos apropiados
-     * para acceder a la ubicación de usuario
-     * <p>
+     * Verifica que tenga los permisos apropiados para acceder a la ubicación de usuario.
      *
-     * @param requestCode  codigo del permiso
-     * @param permissions  los permisos que se solicitan
-     * @param grantResults indica si permiso es concedido o no
+     * @param  requestCode  codigo del permiso
+     * @param  permissions  los permisos que se solicitan
+     * @param  grantResults  indica si permiso es concedido o no
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -216,8 +227,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Llena el vector que contiene el id de cada ícono
-     * que se utiliza para usar de marcador
+     * Llena el vector con los identificadores de cada icono que se utiliza para representar a cada marcador.
      */
     public void llenarIconVec() {
         for (int i = 0; i < 28; ++i) {
@@ -227,7 +237,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Agrega los marcadores a los 3 edificios más cercanos
+     * Este metodo se encarga de agregar los marcadores respectivos a los 3 edificios mas cercanos a la posicion del usuario.
      */
     public void addMarkers() {
         int indice;
@@ -246,11 +256,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     /**
-     * Actualiza posición de usuario y actualiza
-     * vista de usuario
-     * <p>
+     * Actualiza posicion de usuario y actualiza vista de usuario.
      *
-     * @param bundle
+     * @param  bundle Conjunto de datos proveidos a los clientes por los Google Play services.
+     *                Podria ser {@code null} si ningun contenido es brindado por el servicio.
      */
     @Override
     public void onConnected(@Nullable Bundle bundle) {
@@ -274,8 +283,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Permite iniciar el rastreo de la posición
-     * del usuario
+     * Si se han concedido los permisos de acceso a la localizacion permite iniciar el rastreo de la posición del usuario.
      */
     protected void startLocationUpdates() {
         String permission = "android.permission.ACCESS_FINE_LOCATION";
@@ -289,11 +297,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Permite re conectarse a los servicios de google
-     * en caso de perder conexión
-     * <p>
+     * Permite re-conectarse a los servicios de google en caso de perder conexion.
      *
-     * @param i
+     * @param  i la razon de la desconexion.
      */
     @Override
     public void onConnectionSuspended(int i) {
@@ -305,11 +311,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Permite identificar si la conexión a los servicios
-     * de google falló
-     * <p>
+     * Este metodo es llamado cuando hubo un error conectando el cliente a los servicios de Google.
      *
-     * @param connectionResult resultado de la conexión
+     * @param  connectionResult  resultado de la conexion
      */
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
@@ -318,11 +322,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Actualiza la vista cada vez que se cambia
-     * la posición del usuario
-     * <p>
+     * Actualiza la vista cada vez que se cambia la posicion del usuario. Constantemente actualiza los marcadores que deben ser presentados.
      *
-     * @param location ubicación del usuario
+     * @param  location  ubicacion del usuario
      */
     @Override
     public void onLocationChanged(Location location) {
@@ -340,7 +342,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     /**
-     * Método para pausar la actividad
+     * Este metodo para las actualizaciones de localizacion pues la actividad sera pausada, ya que esta se ira al "background".
      */
     protected void onPause() {
         super.onPause();
@@ -350,7 +352,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Método para detener la actividad
+     * Metodo para detener el rastreo de posicion y de esta manera no incurrir en un gasto de procesamiento y bateria innecesario.
      */
     protected void stopLocationUpdates() {
 
@@ -362,7 +364,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     /**
-     * Método para resumir la actividad
+     * Metodo para resumir la actividad.
      */
     @Override
     public void onResume() {
@@ -373,6 +375,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mSensorManager.registerListener(this, distanceVector, SensorManager.SENSOR_DELAY_UI);
     }
 
+    /**
+     * Este metodo es llamado cuando hay un nuevo evento del sensor.
+     * <p>
+     * Se encarga de constantemente escuchar cambios en la rotacion del dispositivo y revisar si en la direccion apuntada existe
+     * un marcador en las cercanias para resaltarlo dentro del mapa.
+     *
+     * @param event el evento ocurrido
+     */
     @Override
     public void onSensorChanged(SensorEvent event) {
         mSensorManager.getRotationMatrixFromVector(rotationMatrix, event.values);
@@ -399,6 +409,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+    /**
+     * Metodo llamado cuando la precision del sensor registrado ha cambiado.
+     *
+     * @param sensor el sensor registrado
+     * @param i la nueva precision del sensor
+     */
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
 

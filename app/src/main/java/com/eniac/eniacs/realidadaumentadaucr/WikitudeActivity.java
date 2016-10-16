@@ -34,6 +34,12 @@ import java.util.Map;
 import static android.os.Build.VERSION_CODES.M;
 import static java.sql.Types.NULL;
 
+/**
+ * Esta clase representa la camara de Wikitude. Contiene metodos para solicitar y manejar permisos de localizacion, para luego con ellos brindarle
+ * al usuario una experiencia de realidad aumentada donde puede observar e interactuar con puntos de interes mediante su dispositivo movil.
+ *
+ * @author  EniacsTeam
+ */
 public class WikitudeActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
@@ -47,6 +53,12 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     private static final String TAG = "Wikitude";
     Integer id1,id2,id3;
 
+    /**
+     * Este metodo es usado para inicializar la actividad. Se define la interfaz de usuario, se instancian clases auxiliares, se crea un
+     * servicio de solicitud de localizacion, se inicializa el componente de interfaz de usuario que encapsula la camara y superficie de renderizacion.
+     *
+     * @param savedInstanceState estado guardado de la aplicacion un valor {@code null} indica que la actividad no debe ser recreada a partir de información previa.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,8 +88,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
 
 
     /**
-     * Permite mostrar la barra superior de la
-     * aplicación
+     * Permite mostrar la barra superior de la aplicacion.
      */
     public void setToolbar(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -89,11 +100,9 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
 
 
     /**
-     * Permite identificar cuál item se pulsó
-     * de la barra superior de la aplicación
-     * <p>
+     * Permite identificar cual item se pulso de la barra superior de la aplicacion.
      *
-     * @param  item  item seleccionado
+     * @param  item  item seleccionado.
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -110,12 +119,10 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
 
 
     /**
-     * Define que hace el botón "back" de android
-     * en esta actividad
-     * <p>
+     * Define que al clicar el boton "back" de android en esta actividad se debe retornar a la actividad del mapa.
      *
-     * @param  keyCode  codigo del botón pulsado
-     * @param  event  evento del botón pulsado
+     * @param  keyCode  codigo del boton pulsado.
+     * @param  event  evento del boton pulsado.
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event){
@@ -128,11 +135,9 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
 
 
     /**
-     * Carga la carpeta donde se tienen los archivos de imagenes para
-     * la Realidad Aumentada.
-     * <p>
+     * Carga la carpeta donde se tienen los archivos de imagenes para la Realidad Aumentada.
      *
-     * @param  savedInstanceState  instancia del estado de la vista
+     * @param  savedInstanceState  instancia del estado de la vista.
      */
     @Override
     protected void onPostCreate(Bundle savedInstanceState){
@@ -148,7 +153,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     }
 
     /**
-     * Método para reanudar la actividad
+     * Metodo para reanudar la actividad.
      */
     @Override
     protected void onResume(){
@@ -157,7 +162,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     }
 
     /**
-     * Método para destruir la actividad
+     * Metodo para destruir la actividad.
      */
     @Override
     protected void onDestroy(){
@@ -166,7 +171,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     }
 
     /**
-     * Método para pausar la actividad
+     * Metodo para pausar la actividad.
      */
     @Override
     protected void onPause(){
@@ -175,12 +180,11 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     }
 
     /**
-     * Comprueba que los permisos fueron aprobados. Si este
-     * no es el caso, despliega un mensaje al usuario.
+     * Comprueba que los permisos fueron aprobados. Si este no es el caso, despliega un mensaje al usuario.
      *
-     * @param  requestCode  codigo de solicitud
-     * @param permissions los permisos solicitados
-     * @param grantResults permiso si es concedido o denegado
+     * @param  requestCode  codigo de solicitud.
+     * @param permissions los permisos solicitados.
+     * @param grantResults permiso si es concedido o denegado.
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -195,18 +199,18 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     }
 
     /**
-     * Verifica que la version de android sea M o mayor para
-     * preguntar por permisos.
+     * Verifica que la version de android sea M o mayor para preguntar por permisos.
      *
-     * @return   true/false  que indica si se puede preguntar por permisos
+     * @return {@code true}/{@code false} que indica si se puede preguntar por permisos.
      */
     private boolean askCompatibility(){
 
         return(Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP_MR1);
 
     }
+
     /**
-     * Método para preguntar permisos
+     * Metodo para preguntar permisos.
      */
     private void requestPermission(){
         //Preguntar por permiso
@@ -218,8 +222,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
 
 
     /**
-     * Conecta la aplicación a los servicios
-     * de google
+     * Conecta la aplicacion a los servicios de google.
      */
     protected void onStart() {
         super.onStart();
@@ -229,8 +232,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     }
 
     /**
-     * Detiene la conexión a los servicios
-     * de google
+     * Detiene la conexion a los servicios de google.
      */
     protected void onStop() {
         super.onStop();
@@ -242,7 +244,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
 
 
     /**
-     * Permite localizar la posición del usuario cada segundo
+     * Permite localizar la posicion del usuario cada segundo.
      */
     protected void createLocationRequest() {
         mLocationRequest = new LocationRequest();
@@ -252,9 +254,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     }
 
     /**
-     * Actualiza posición de usuario y actualiza
-     * vista de usuario
-     * <p>
+     * Actualiza posicion de usuario y actualiza vista de usuario.
      *
      * @param  bundle
      */
@@ -274,8 +274,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     }
 
     /**
-     * Permite iniciar el rastreo de la posición
-     * del usuario
+     * Permite iniciar el rastreo de la posicion del usuario.
      */
     protected void startLocationUpdates() {
         String permission = "android.permission.ACCESS_FINE_LOCATION";
@@ -289,11 +288,9 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     }
 
     /**
-     * Actualiza la vista cada vez que se cambia
-     * la posición del usuario
-     * <p>
+     * Actualiza la vista cada vez que se cambia la posición del usuario.
      *
-     * @param  location  ubicación del usuario
+     * @param  location  ubicacion del usuario.
      */
     @Override
     public void onLocationChanged(Location location) {
@@ -301,6 +298,11 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
         makeUseOfNewLocation(location);
     }
 
+    /**
+     * Permite re-conectarse a los servicios de google en caso de perder conexion.
+     *
+     * @param  i la razon de la desconexion.
+     */
     @Override
     public void onConnectionSuspended(int i) {
         // The connection to Google Play services was lost for some reason. We call connect() to
@@ -309,11 +311,22 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
         mGoogleApiClient.connect();
     }
 
+    /**
+     * Este metodo es llamado cuando hubo un error conectando el cliente a los servicios de Google.
+     *
+     * @param  connectionResult  resultado de la conexion
+     */
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.i(TAG, "Connection failed: ConnectionResult.getErrorCode() = " + connectionResult.getErrorCode());
     }
 
+    /**
+     * Este metodo obtiene el identificador de los 3 edificios mas cercanos con respecto al parametro de tipo {@code Location} recibido
+     * y luego a partir de esto carga los puntos de interes para que sean visibles a traves de la camara.
+     *
+     * @param location localizacion actual
+     */
     private void makeUseOfNewLocation(Location location) {
 
         Map<Integer, Location> res = mRuta.edificiosMasCercanos(location);

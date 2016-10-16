@@ -14,12 +14,11 @@ import java.util.TreeMap;
 import static android.location.Location.distanceBetween;
 
 /**
- * Created by Johan on 3/10/2016.
- * Updated by Cesar on 14/10/2016.
+ * Esta clase provee metodos que a partir de informacion con respecto a la posicion del usuario devuelve puntos de interes que podrian ser relevantes
+ * para el usuario debido a su localizacion y orientacion con respecto al mapa.
+ *
+ * @author  EniacsTeam
  */
-
-
-
 public class Rutas {
     List<Location> listaCoordenadas;
     String[]edificios;
@@ -29,8 +28,9 @@ public class Rutas {
 
 
     /**
-     * Constructor de rutas.
-     * Crea una lista de Locations con todos los puntos de interes.
+     * Constructor de {@code Rutas}.
+     * <p>
+     * Construye una una lista de {@code Location} compuesta por el edificio y su posicion latitud/longitud dentro del mapa y luego lo asocia a su correspondiente identificador entero.
      */
     public Rutas(){
 
@@ -63,13 +63,11 @@ public class Rutas {
     }
 
     /**
-     * Se genera un map con los 3 edificios mas cercanos, este map tiene
-     * un integer con la posicion general del edificio en los vectores de la
+     * Se genera un {@code Map} con los 3 edificios mas cercanos, este contiene un integer con la posicion general del edificio en los vectores de la
      * aplicacion y su location.
-     * <p>
      *
-     * @param  location  codigo del permiso.
-     * @return map<Integer,Location> con los 3 edificios mas cercanos.
+     * @param  location  Posicion actual del usuario dentro del mapa.
+     * @return Map<Integer,Location> Los 3 edificios mas cercanos a la posicion brindada por parametro.
      */
     public Map<Integer,Location> edificiosMasCercanos(Location location){
         Map<Double,Integer> mapaOrdenado = new TreeMap<Double,Integer>();
@@ -90,11 +88,10 @@ public class Rutas {
     }
 
     /**
-     * Se genera el location del edificio que se esta apuntando
-     * <p>
+     * Se genera el {@code Location} del edificio que se esta apuntando con el dispositivo.
      *
-     * @param  angle Angulo que apunta la brujula con respecto al norte.
-     * @return Returna un location si se esta apuntando algun edificio, si no retorna un null.
+     * @param  angle Angulo entre el eje "y" del dispositivo y el polo norte magnetico.
+     * @return Location Retorna la posicion del edificio apuntado, si no existe ninguno retorna {@code null}.
      */
     public Map<Integer,Location> edificioApuntado(float angle){
         float bearing;
