@@ -4,6 +4,8 @@ import android.*;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -14,6 +16,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -28,15 +31,19 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Map;
 
+import static android.R.attr.bitmap;
 import static android.os.Build.VERSION_CODES.M;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
+import static com.wikitude.architect.CameraPreviewBase.m;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener, SensorEventListener {
@@ -231,7 +238,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         tresCercanos = mRuta.edificiosMasCercanos(mCurrentLocation);
         for (int i = 0; i < 3; ++i) {
-            marcasTodas[tresCercanos[i]].setAlpha(5);
+            marcasTodas[tresCercanos[i]].setAlpha(3);
         }
         correrApuntado = true;
     }
@@ -391,9 +398,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             }
             if (indice != -1) {
+                BitmapDrawable bitmapdraw=(BitmapDrawable) ResourcesCompat.getDrawable(getResources(),iconVec[indice], null);
+                if (bitmapdraw != null)
+                {
+                    Bitmap b=bitmapdraw.getBitmap();
+                    int nHeight = b.getHeight()*2;
+                    int nWidth = b.getWidth()*2;
+                    Bitmap resizedBitmap = Bitmap.createScaledBitmap(
+                            b, nWidth, nHeight, false);
+                    marcasTodas[indice].setIcon(BitmapDescriptorFactory.fromBitmap(resizedBitmap));
+                    apuntAnterior=indice;
+                }
 
-                marcasTodas[indice].setIcon(BitmapDescriptorFactory.fromResource(R.drawable.edimarcado));
-                apuntAnterior=indice;
             }
 
         }

@@ -3,11 +3,11 @@ var World = {
 
 	//Vector de locations.
 	edificios : [
-                "Facultad de Derecho","Oficina de Becas y Atención Socioeconómica",
-                "Biblioteca Luis Demetrio Tinoco","Escuela de Arquitectura","Comedor universitario","Facultad de Ingeniería",
-                "Escuela de Física y Matemáticas","Escuela de Estudios Generales","Biblioteca Carlos Monge",
-                "Sección de Educación Preescolar","Facultad de Letras","Centro de Informática","Escuela Centroamericana de Geología",
-                "Facultad de Ciencias Económicas","Escuela de Computación e Informática","Facultad de Odontología","Facultad de Medicina",
+                "Facultad de Derecho","Oficina de Becas",
+                "Biblioteca Tinoco","Escuela de Arquitectura","Comedor universitario","Facultad de Ingeniería",
+                "Escuela de Física y Matemáticas","Escuela de Generales","Biblioteca Carlos Monge",
+                "Educación Preescolar","Facultad de Letras","Centro de Informática","Escuela de Geología",
+                "Ciencias Económicas","Computación e Informática","Facultad de Odontología","Facultad de Medicina",
                 "Facultad de Farmacia","Facultad de Microbiología","Escuela de Biología","Escuela de Química",
                 "Escuela de Artes Musicales","Escuela de Bellas Artes","Facultad de Educación","Bosque Leonel Oviedo",
                 "Mariposario","Plaza 24 de abril","El Pretil"],
