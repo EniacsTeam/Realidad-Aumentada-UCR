@@ -12,6 +12,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -31,6 +33,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Map;
 
 import static android.os.Build.VERSION_CODES.M;
+import static com.eniac.eniacs.realidadaumentadaucr.R.id.fab;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
@@ -48,6 +51,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     "letras","centinform","geologia","economicas","ecci","odonto","medicina","farmacia","microbiologia","biolo","quimica","musica",
     "artes","educa","bosque","mariposario","plaza","plaza"};
     private Marker marcas[] = new Marker[3];
+    FloatingActionButton fab;
+    Animation cargafab;
+    Animation quitafab;
 
 
     @Override
@@ -70,10 +76,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .findFragmentById(map);
         mapFragment.getMapAsync(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        cargafab = AnimationUtils.loadAnimation(this, R.anim.fab_show);
+        fab.startAnimation(cargafab);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                quitafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_hide);
+                fab.startAnimation(quitafab);
 
                 startActivity(new Intent(MapsActivity.this ,WikitudeActivity.class));
 
