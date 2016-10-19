@@ -6,8 +6,34 @@ function Marker(poiData) {
 
     this.poiData = poiData;
 
+
     // create the AR.GeoLocation from the poi data
     var markerLocation = new AR.GeoLocation(poiData.latitude, poiData.longitude, poiData.altitude);
+
+    // create an AR.Label for the marker's title 
+    this.titleLabel = new AR.Label(poiData.title.trunc(30), 0.5, {
+        zOrder: 1,
+        offsetY: 0.55,
+        style: {
+            textColor: '#FFFFFF',
+            fontStyle: AR.CONST.FONT_STYLE.NORMAL,
+            horizontalAnchor: AR.CONST.HORIZONTAL_ANCHOR.JUSTIFIED // hay que acomodarla -- no estoy seguro del JUSTIFIED
+            
+            
+
+        }
+    });
+
+    // create an AR.Label for the marker's description
+    this.descriptionLabel = new AR.Label(poiData.description.trunc(50), 0.3, {
+        zOrder: 1,
+        offsetY: -0.55,
+        style: {
+            textColor: '#FFFFFF'
+        }
+    });
+
+
 
     // create an AR.ImageDrawable for the marker in idle state
     this.markerDrawable_idle = new AR.ImageDrawable(World.markerDrawable_idle, 2.5, {
@@ -25,28 +51,6 @@ function Marker(poiData) {
         zOrder: 0,
         opacity: 0.0,
         onClick: null
-    });
-
-    // create an AR.Label for the marker's title 
-    this.titleLabel = new AR.Label(poiData.title, 0.5, {
-        zOrder: 1,
-        offsetY: 0.55,
-        style: {
-            textColor: '#FFFFFF',
-            fontStyle: AR.CONST.FONT_STYLE.NORMAL,
-            horizontalAnchor: AR.CONST.HORIZONTAL_ANCHOR.CENTER
-            
-
-        }
-    });
-
-    // create an AR.Label for the marker's description
-    this.descriptionLabel = new AR.Label(poiData.description, 0.3, {
-        zOrder: 1,
-        offsetY: -0.55,
-        style: {
-            textColor: '#FFFFFF'
-        }
     });
 
     // create the AR.GeoObject with the drawable objects

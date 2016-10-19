@@ -76,10 +76,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             public void onClick(View view) {
 
                 startActivity(new Intent(MapsActivity.this ,WikitudeActivity.class));
+
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
             }
         });
+    }
+
+    private void expand(){
+
+
     }
 
 

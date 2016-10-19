@@ -26,7 +26,7 @@ var World = {
 
 
     //Numero de llamados a location
-    num : 0,
+    altitud : 0,
 
 	// true once data was fetched
 	initiallyLoadedData: false,
@@ -57,7 +57,7 @@ var World = {
 			"id": id2,
 			"latitude": parseFloat(World.latitud[id1]),
 			"longitude": parseFloat(World.longuitud[id1]),
-			"altitude": parseFloat(0),
+			"altitude": parseFloat(World.altitud),  //"altitude": parseFloat(0),
 			"title": World.edificios[id1],
 			"description": World.edificios[id1]
 		};
@@ -73,7 +73,7 @@ var World = {
 			"id": id2,
 			"latitude": parseFloat(World.latitud[id2]),
 			"longitude": parseFloat(World.longuitud[id2]),
-			"altitude": parseFloat(0),
+			"altitude": parseFloat(World.altitud),
 			"title": World.edificios[id2],
 			"description": World.edificios[id2]
 		};
@@ -89,7 +89,7 @@ var World = {
 			"id": id3,
 			"latitude": parseFloat(World.latitud[id3]),
 			"longitude": parseFloat(World.longuitud[id3]),
-			"altitude": parseFloat(0),
+			"altitude": parseFloat(World.altitud),
             "title": World.edificios[id3],
             "description": World.edificios[id3]
 		};
@@ -122,6 +122,7 @@ var World = {
 
 	// location updates, fired every time you call architectView.setLocation() in native environment
 	locationChanged: function locationChangedFn(lat, lon, alt, acc) {
+		World.altitud= alt; // comentado
 
 		/*
 			The custom function World.onLocationChanged checks with the flag World.initiallyLoadedData if the function was already called. With the first call of World.onLocationChanged an object that contains geo information will be created which will be later used to create a marker using the World.loadPoisFromJsonData function.
