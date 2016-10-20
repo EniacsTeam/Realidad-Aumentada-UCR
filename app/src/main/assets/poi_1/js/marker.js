@@ -21,13 +21,13 @@ function Marker(poiData) {
     var markerLocation = new AR.GeoLocation(poiData.latitude, poiData.longitude, poiData.altitude);
 
     // create an AR.Label for the marker's title 
-    this.titleLabel = new AR.Label(poiData.title.trunc(30), 0.5, {
+    this.titleLabel = new AR.Label(poiData.title.trunc(25), 0.5, {
         zOrder: 1,
         offsetY: 0.55,
         style: {
             textColor: '#FFFFFF',
             fontStyle: AR.CONST.FONT_STYLE.NORMAL,
-            horizontalAnchor: AR.CONST.HORIZONTAL_ANCHOR.JUSTIFIED // hay que acomodarla -- no estoy seguro del JUSTIFIED
+            horizontalAnchor: AR.CONST.HORIZONTAL_ANCHOR.JUSTIFIED 
             
             
 
