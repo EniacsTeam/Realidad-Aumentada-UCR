@@ -27,6 +27,10 @@ var World = {
 
     //Numero de llamados a location
     altitud : 0,
+	// you may request new data from server periodically, however: in this sample data is only requested once
+	isRequestingData: false,
+	// true once data was fetched
+	initiallyLoadedData: false,
 
 	// true once data was fetched
 	initiallyLoadedData: false,
@@ -34,6 +38,7 @@ var World = {
 	// different POI-Marker assets
 	markerDrawable_idle: null,
 	markerDrawable_selected: null,
+	markerDrawable_directionIndicator: null,
 
 	// list of AR.GeoObjects that are currently shown in the scene / World
 	markerList: [],
@@ -50,6 +55,8 @@ var World = {
 		// start loading marker assets
 		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
 		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
+		World.markerDrawable_directionIndicator = new AR.ImageResource("assets/indi.png");
+
 
 		// loop through POI-information and create an AR.GeoObject (=Marker) per POI
 		
@@ -139,24 +146,37 @@ var World = {
 	// fired when user pressed maker in cam
 	onMarkerSelected: function onMarkerSelectedFn(marker) {
 
-		// deselect previous marker
-		if (World.currentMarker) {
-			if (World.currentMarker.poiData.id == marker.poiData.id) {
-				return;
-			}
-			World.currentMarker.setDeselected(World.currentMarker);
-		}
-
-		// highlight current one
-		marker.setSelected(marker);
 		World.currentMarker = marker;
+
+		/*
+			In this sample a POI detail panel appears when pressing a cam-marker (the blue box with title & description), 
+			compare index.html in the sample's directory.
+		*/
+		// update panel values
+		$("#poi-detail-title").html(marker.poiData.title);
+		$("#poi-detail-description").html(marker.poiData.description);
+
+		// distance and altitude are measured in meters by the SDK. You may convert them to miles / feet if required.
+		//var distanceToUserValue = (marker.distanceToUser > 999) ? ((marker.distanceToUser / 1000).toFixed(2) + " km") : (Math.round(marker.distanceToUser) + " m");
+
+		//$("#poi-detail-distance").html(distanceToUserValue);
+
+		// show panel
+		$("#panel-poidetail").panel("open", 123);
+
+		$(".ui-panel-dismiss").unbind("mousedown");
+
+		// deselect AR-marker when user exits detail screen div.
+		$("#panel-poidetail").on("panelbeforeclose", function(event, ui) {
+			World.currentMarker.setDeselected(World.currentMarker);
+		});
 	},
 
 	// screen was clicked but no geo-object was hit
 	onScreenClick: function onScreenClickFn() {
-		if (World.currentMarker) {
+		/*if (World.currentMarker) {
 			World.currentMarker.setDeselected(World.currentMarker);
-		}
+		}*/
 	},
 
 	// request POI data

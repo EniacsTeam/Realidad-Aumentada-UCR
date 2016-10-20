@@ -95,12 +95,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
 
-    private void expand(){
-
-
-    }
-
-
     /**
      * Conecta la aplicación a los servicios
      * de google
