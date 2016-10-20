@@ -1,8 +1,16 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -13,6 +21,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -28,11 +37,14 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -59,15 +71,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private final String wordVec[] = {"derecho", "oficbecas", "biblio", "arqui", "comedor", "inge", "fisicamate", "generales", "biblio", "preescolar",
             "letras", "centinform", "geologia", "economicas", "ecci", "odonto", "medicina", "farmacia", "microbiologia", "biolo", "quimica", "musica",
             "artes", "educa", "bosque", "mariposario", "plaza", "pretil"};//28
+    private Paint paint;
+
+    private int[] tresCercanos = new int[3];
+    private Marker marcasTodas[] = new Marker[28];
+    private int apuntAnterior = -1;
+    private boolean correrApuntado = false;
+
 
     /*para los sensores*/
     private float[] rotationMatrix;
     private float[] orientationVals;
     private SensorManager mSensorManager;//control de sensores
     private Sensor distanceVector;
-    private List<Location> marcas;
-    private boolean primero;
-    private Marker marcasM[];
 
     /**
      * Este metodo es usado para inicializar la actividad. Se define la interfaz de usuario, se instancian clases auxiliares, se crea un
@@ -110,13 +126,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         rotationMatrix = new float[9];
         orientationVals = new float[3];
-        marcas = new ArrayList<>(3);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);//obtenemos el servicio
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         distanceVector = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
-        primero = true;
-        marcasM = new Marker[3];
-
+        paint  = new Paint();
+        paint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP));
     }
 
 
@@ -188,6 +202,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         mMap.getUiSettings().setCompassEnabled(false);
         mMap.getUiSettings().setMapToolbarEnabled(false);
+        mMap.setMinZoomPreference(13);
+
+        for (int i = 0; i < mRuta.edificios.length; ++i) {
+            LatLng pos = new LatLng(mRuta.elatitud[i], mRuta.elonguitud[i]);
+            marcasTodas[i] = mMap.addMarker(new MarkerOptions().position(pos).alpha(0f)
+                    .title(mRuta.edificios[i]).icon(BitmapDescriptorFactory.fromResource(iconVec[i])));
+
+        }
     }
 
 
@@ -237,19 +259,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      * Este metodo se encarga de agregar los marcadores respectivos a los 3 edificios mas cercanos a la posicion del usuario.
      */
     private void addMarkers() {
-        int indice;
-        int i = 0;
         Map<Integer, Location> res = mRuta.edificiosMasCercanos(mCurrentLocation);
-        for (Map.Entry<Integer, Location> entry : res.entrySet()) {
-            indice = entry.getKey();
-            LatLng pos = new LatLng(entry.getValue().getLatitude(), entry.getValue().getLongitude());
-            Location loc = new Location(mRuta.edificios[indice]);
-            loc.setLatitude(entry.getValue().getLatitude());
-            loc.setLongitude(entry.getValue().getLongitude());
-            marcas.add(loc);
-            marcasM[i]=mMap.addMarker(new MarkerOptions().position(pos).title(mRuta.edificios[indice]).icon(BitmapDescriptorFactory.fromResource(iconVec[indice])));
-            ++i;
+
+        Iterator<Integer> it = res.keySet().iterator();
+
+        int indice;
+        while (it.hasNext())
+        {
+            indice = it.next();
+            marcasTodas[indice].setAlpha(3);
         }
+        correrApuntado = true;
     }
 
     /**
@@ -325,17 +345,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      */
     @Override
     public void onLocationChanged(Location location) {
-        for(int i =0;i<marcasM.length;i++){
-            if(marcasM[i]!=null){
-                marcasM[i].setVisible(false);
+        mCurrentLocation = location;
+        if (tresCercanos != null) {
+            for (int i = 0; i < 3; ++i) {
+                marcasTodas[tresCercanos[i]].setAlpha(0f);
             }
         }
-        mCurrentLocation = location;
         addMarkers();
-        if(primero){
-            mSensorManager.registerListener(this, distanceVector, 1100);
-            primero = false;
-        }
     }
 
     /**
@@ -382,26 +398,26 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      */
     @Override
     public void onSensorChanged(SensorEvent event) {
-        SensorManager.getRotationMatrixFromVector(rotationMatrix, event.values);
-        SensorManager.remapCoordinateSystem(rotationMatrix, SensorManager.AXIS_X, SensorManager.AXIS_Z, rotationMatrix);
-        SensorManager.getOrientation(rotationMatrix, orientationVals);
-        orientationVals[0] = (float) Math.toDegrees(orientationVals[0]);
-        float azimuth = ( orientationVals[0] + 360 ) % 360;
+        if (correrApuntado) {
+            SensorManager.getRotationMatrixFromVector(rotationMatrix, event.values);
+            SensorManager.remapCoordinateSystem(rotationMatrix, SensorManager.AXIS_X, SensorManager.AXIS_Z, rotationMatrix);
+            SensorManager.getOrientation(rotationMatrix, orientationVals);
+            orientationVals[0] = (float) Math.toDegrees(orientationVals[0]);
+            float azimuth = (orientationVals[0] + 360) % 360;
 
-        Map<Integer, Location> pointedBuilding =  mRuta.edificioApuntado(azimuth);
-        if(marcas!=null){
-            int i=0;
-            for (Map.Entry<Integer, Location> entry : pointedBuilding.entrySet()) {
-                if(entry.getKey()!=-1){
-                    marcasM[i].setIcon(BitmapDescriptorFactory.fromResource(iconVec[entry.getKey()]));
-                    if (entry.getValue().distanceTo(marcas.get(i))==0) {
-                        marcasM[i].setAlpha(6);
-                    }
-                    else {
-                        marcasM[i].setVisible(true);
-                    }
-                }
-                i++;
+            int indice = mRuta.edificioApuntado(azimuth);
+
+            if (apuntAnterior != -1 && indice != apuntAnterior) {
+                marcasTodas[apuntAnterior].setIcon(BitmapDescriptorFactory.fromResource(iconVec[apuntAnterior]));
+
+            }
+            if (indice != -1) {
+                Bitmap ob = BitmapFactory.decodeResource(this.getResources(), iconVec[indice]);
+                Bitmap obm = Bitmap.createBitmap(ob.getWidth(), ob.getHeight(), ob.getConfig());
+                Canvas canvas = new Canvas(obm);
+                canvas.drawBitmap(ob, 0f, 0f, paint);
+                marcasTodas[indice].setIcon(BitmapDescriptorFactory.fromBitmap(obm));
+                apuntAnterior = indice;
             }
         }
     }
