@@ -4,7 +4,11 @@
     <entry_points version="2.0" />
   </component>
   <component name="JavadocGenerationManager">
+<<<<<<< HEAD
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/Doc" />
+=======
+    <option name="OUTPUT_DIRECTORY" />
+>>>>>>> Kenneth
     <option name="OPTION_SCOPE" value="protected" />
     <option name="OPTION_HIERARCHY" value="true" />
     <option name="OPTION_NAVIGATOR" value="true" />
@@ -15,7 +19,11 @@
     <option name="OPTION_DOCUMENT_TAG_VERSION" value="false" />
     <option name="OPTION_DOCUMENT_TAG_DEPRECATED" value="true" />
     <option name="OPTION_DEPRECATED_LIST" value="true" />
+<<<<<<< HEAD
     <option name="OTHER_OPTIONS" />
+=======
+    <option name="OTHER_OPTIONS" value="" />
+>>>>>>> Kenneth
     <option name="HEAP_SIZE" />
     <option name="LOCALE" />
     <option name="OPEN_IN_BROWSER" value="true" />

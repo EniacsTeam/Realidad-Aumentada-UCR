@@ -25,6 +25,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -47,7 +49,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
+import static android.os.Build.VERSION_CODES.M;
+import static com.eniac.eniacs.realidadaumentadaucr.R.id.fab;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
 
 /**
@@ -77,6 +80,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Marker marcasTodas[] = new Marker[28];
     private int apuntAnterior = -1;
     private boolean correrApuntado = false;
+    private Marker marcas[] = new Marker[3];
+    FloatingActionButton fab;
+    Animation cargafab;
+    Animation quitafab;
 
 
     /*para los sensores*/
@@ -113,12 +120,21 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .findFragmentById(map);
         mapFragment.getMapAsync(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        cargafab = AnimationUtils.loadAnimation(this, R.anim.fab_show);
+        fab.startAnimation(cargafab);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+
                 startActivity(new Intent(MapsActivity.this, WikitudeActivity.class));
+
+                quitafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_hide);
+                fab.startAnimation(quitafab);
+                startActivity(new Intent(MapsActivity.this ,WikitudeActivity.class));
+
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
             }
@@ -132,7 +148,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         paint  = new Paint();
         paint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP));
     }
-
 
     /**
      * Si la instancia de {@code GoogleApiClient} tiene un valor distinto de {@code null} es necesario reconectar la aplicación
