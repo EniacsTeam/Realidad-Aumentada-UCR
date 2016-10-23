@@ -1,41 +1,38 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
 import android.location.Location;
-import android.util.Log;
-
-import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static android.location.Location.distanceBetween;
-
 /**
- * Created by johan on 3/10/2016.
+ * Esta clase provee metodos que a partir de informacion con respecto a la posicion del usuario devuelve puntos de interes que podrian ser relevantes
+ * para el usuario debido a su localizacion y orientacion con respecto al mapa.
+ *
+ * @author  EniacsTeam
  */
-
-
-
 public class Rutas {
-    List<Location> listaCoordenadas;
-    String[]edificios;
+    private final List<Location> listaCoordenadas;
+    final String[]edificios;
     double[] elatitud;
     double[] elonguitud;
     Map<Integer,Location> mapaEnvio;
-    Location localizacion;
+    private Location localizacion;
     boolean usado;
 
 
     /**
-     * Constructor de rutas.
-     * Crea una lista de Locations con todos los puntos de interes.
+     * Constructor de {@code Rutas}.
+     * <p>
+     * Construye una una lista de {@code Location} compuesta por el edificio y su posicion latitud/longitud dentro del mapa y luego lo asocia a su correspondiente identificador entero.
      */
     public Rutas(){
 
-        mapaEnvio = new LinkedHashMap<Integer,Location>();
+        mapaEnvio = new LinkedHashMap<>();
         localizacion = new Location("current");
         edificios = new String[]
                 {"Facultad de Derecho","Oficina de Becas y Atención Socioeconómica",
@@ -46,7 +43,7 @@ public class Rutas {
                 "Facultad de Farmacia","Facultad de Microbiología","Escuela de Biología","Escuela de Química",
                 "Escuela de Artes Musicales","Escuela de Bellas Artes","Facultad de Educación","Bosque Leonel Oviedo",
                 "Mariposario","Plaza 24 de abril","El Pretil"};
-         elatitud= new double[] {9.93639, 9.9355, 9.93601, 9.93486, 9.93724, 9.93595, 9.93648, 9.93612,
+        elatitud= new double[] {9.93639, 9.9355, 9.93601, 9.93486, 9.93724, 9.93595, 9.93648, 9.93612,
                 9.93603, 9.93867, 9.9386, 9.937654,
                 9.938080, 9.937046, 9.937932, 9.938255, 9.938637, 9.938880, 9.937950, 9.937640, 9.937178, 9.937408,
                 9.936547, 9.936083, 9.937604, 9.937249, 9.936307, 9.935916};
@@ -64,97 +61,54 @@ public class Rutas {
     }
 
     /**
-     * Se genera un map con los 3 edificios mas cercanos, este map tiene
-     * un integer con la posicion general del edificio en los vectores de la
+     * Se genera un {@code Map} con los 3 edificios mas cercanos, este contiene un integer con la posicion general del edificio en los vectores de la
      * aplicacion y su location.
-     * <p>
      *
-     * @param  location  codigo del permiso.
-     * @return map<Integer,Location> con los 3 edificios mas cercanos.
+     * @param  location  Posicion actual del usuario dentro del mapa.
+     * @return Los 3 edificios mas cercanos a la posicion brindada por parametro.
      */
-    public int[] edificiosMasCercanos(Location location){
-        Map<Double,Integer> mapaOrdenado = new TreeMap<Double,Integer>();
-        int[] mapaEnvio2= new int[3];
+    public Map<Integer,Location> edificiosMasCercanos(Location location){
+        Map<Double,Integer> mapaOrdenado = new TreeMap<>();
         mapaEnvio.clear();
         for(int i =0;i<listaCoordenadas.size();i++){
             mapaOrdenado.put((double)location.distanceTo(listaCoordenadas.get(i)), i);
         }
-            int j=0;
+
         for(Map.Entry<Double,Integer> entry : mapaOrdenado.entrySet()) {
             if (mapaEnvio.size()<3){
                 mapaEnvio.put(entry.getValue(),listaCoordenadas.get(entry.getValue()));
-                mapaEnvio2[j]=entry.getValue();
-                ++j;
             }else{
                 break;
             }
         }
         localizacion=location;
-        //usado = true;
-        return  mapaEnvio2;
-        //Map angleBearing = getArrow(location,mapaEnvio,angle);
-        //coordenadasResult.add(3,angleBearing);
-        //mapaEnvio.put();
-        // return coordenadasResult;
+        return  mapaEnvio;
     }
 
     /**
-     * Se genera el location del edificio que se esta apuntando
-     * <p>
+     * Se genera el identificador del edificio que se esta apuntando con el dispositivo.
      *
-     * @param  angle Angulo que apunta la brujula con respecto al norte.
-     * @return Returna un location si se esta apuntando algun edificio, si no retorna un null.
+     * @param  angle Angulo entre el eje "y" del dispositivo y el polo norte magnetico.
+     * @return int el identificador del edificio apuntado, si no existe ninguno retorna {@code null}.
      */
-    public int edificioApuntado(float angle) {
+    public int edificioApuntado(float angle){
         float bearing;
         float heading;
         float arrow_rotation;
-       // Map<Integer, Location> retLoc = null;
-        int ret = -1;
-        /*
-        //System.out.println("El tamaño del mapa es "+mapaEnvio.size());
-        for(int i = 0; i<mapaEnvio.size(); i++){
-            bearing = localizacion.bearingTo(mapaEnvio.get(i));    // -180 to 180
+        int retLoc = -1;
+        boolean found = false;
+
+        Iterator it = mapaEnvio.entrySet().iterator();
+        while (it.hasNext() && !found) {
+            Map.Entry<Integer, Location> pair = (Map.Entry<Integer, Location>) it.next();
+            bearing = localizacion.bearingTo(pair.getValue());    // -180 to 180
             heading = localizacion.getBearing();         // 0 to 360
             arrow_rotation = (360+((bearing + 360) % 360)-heading) % 360;
             if((angle-30)%360 < arrow_rotation && arrow_rotation < (angle+30)%360){
-                Map.Entry<Integer,Location>mapa= mapaEnvio.;
-                retLoc.put(mapa.getKey(),mapa.getValue());
-                        //.put(mapaEnvio.hashCode(),mapaEnvio.get(i));
-                i=i+3;
+                retLoc=pair.getKey();
+                found=true;
             }
         }
-        */
-        if (mapaEnvio.size() > 0) {
-            for (Map.Entry<Integer, Location> entry : mapaEnvio.entrySet()) {
-                bearing = localizacion.bearingTo(entry.getValue());    // -180 to 180
-                heading = localizacion.getBearing();         // 0 to 360
-                arrow_rotation = (360 + ((bearing + 360) % 360) - heading) % 360;
-                if ((angle - 20) % 360 < arrow_rotation && arrow_rotation < (angle + 20) % 360) {
-                    //retLoc = new LinkedHashMap<Integer, Location>();
-                    //retLoc.put(entry.getKey(), entry.getValue());
-                    ret = entry.getKey();
-                    break;
-                }
-                ret=-1;
-            }
-        }
-        return ret;
+        return retLoc;
     }
-/*
-    float bearing;
-    Location startingLocation=new Location("starting point");
-    Location endingLocation=new Location("ending point");
-    startingLocation.setLatitude(9.831949);
-    startingLocation.setLongitude(-84.210125);
-    endingLocation.setLatitude(9.837795);
-    endingLocation.setLongitude(-84.210043);
-    double dist = startingLocation.distanceTo(endingLocation);
-    bearing = startingLocation.bearingTo(endingLocation);    // -180 to 180
-    float heading = startingLocation.getBearing();         // 0 to 360
-    // *** Code to calculate where the arrow should point ***
-    float arrow_rotation = (360+((bearing + 360) % 360)-heading) % 360;
-    //mTextView.setText(mTextView.getText()+"norte_\ndistancia:"+ dist+"\n"+"bearing: (-180 180): "+bearing+"\n"+"heading (0 360): "+heading+"\n"+"arrow: "+arrow_rotation+"\n");
-    //mTextView.setText(mTextView.getText()+"\n"+"\n");
-*/
 }

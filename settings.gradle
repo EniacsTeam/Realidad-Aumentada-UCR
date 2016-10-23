@@ -1,1 +1,1 @@
-include ':app', ':wikitude'
+include ':app'

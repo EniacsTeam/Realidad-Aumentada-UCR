@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    buildToolsVersion "24.0.3"
 
     defaultConfig {
         applicationId "com.eniac.eniacs.realidadaumentadaucr"
@@ -10,6 +10,7 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -19,6 +20,9 @@ android {
     }
     sourceSets { main { res.srcDirs = ['src/main/res', 'src/main/res/drawable']
                         /*assets.srcDirs = ['src/main/assets/', 'src/main/assets']*/ } }
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
 }
 
 dependencies {
