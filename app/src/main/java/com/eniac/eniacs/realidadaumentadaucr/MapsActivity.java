@@ -221,7 +221,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         for (int i = 0; i < mRuta.edificios.length; ++i) {
             LatLng pos = new LatLng(mRuta.elatitud[i], mRuta.elonguitud[i]);
+<<<<<<< HEAD
             marcasTodas[i] = mMap.addMarker(new MarkerOptions().position(pos).visible(false)
+=======
+            marcasTodas[i] = mMap.addMarker(new MarkerOptions().position(pos).alpha(0.3f)
+>>>>>>> a4bcef7dca3a315ed285c069c5d67a42566cc828
                     .title(mRuta.edificios[i]).icon(BitmapDescriptorFactory.fromResource(iconVec[i])));
 
         }
@@ -273,6 +277,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     /**
      * Este metodo se encarga de agregar los marcadores respectivos a los 3 edificios mas cercanos a la posicion del usuario.
      */
+<<<<<<< HEAD
     private void addMarkers() {
         res = mRuta.edificiosMasCercanos(mCurrentLocation);
 
@@ -283,12 +288,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         {   indice = it.next();
             marcasTodas[indice].setVisible(true);
 
+=======
+    public void addMarkers() {
+        tresCercanos = mRuta.edificiosMasCercanos(mCurrentLocation);
+        for (int i = 0; i < 3; ++i) {
+            marcasTodas[tresCercanos[i]].setAlpha(3);
+>>>>>>> a4bcef7dca3a315ed285c069c5d67a42566cc828
         }
         correrApuntado = true;
     }
 
     /**
+<<<<<<< HEAD
      * Actualiza posicion de usuario y actualiza vista de usuario.
+=======
+     * Actualiza posición de usuario y actualiza
+     * vista de usuario
+     * <p>
+>>>>>>> a4bcef7dca3a315ed285c069c5d67a42566cc828
      *
      * @param  bundle Conjunto de datos proveidos a los clientes por los Google Play services.
      *                Podria ser {@code null} si ningun contenido es brindado por el servicio.
@@ -360,6 +377,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      */
     @Override
     public void onLocationChanged(Location location) {
+<<<<<<< HEAD
         mCurrentLocation = location;
         if (res != null) {
             Iterator<Integer> it = res.keySet().iterator();
@@ -367,6 +385,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             while (it.hasNext())
             {   indice = it.next();
                 marcasTodas[indice].setVisible(false);
+=======
+        //  mMap.clear();
+
+        mCurrentLocation = location;
+        if (tresCercanos != null) {
+            for (int i = 0; i < 3; ++i) {
+                marcasTodas[tresCercanos[i]].setAlpha(0.3f);
+            }
+        }
+        addMarkers();
+
+        //Location apuntado= mRuta.edificioApuntado();//enviar el angulo como parametro
+
+>>>>>>> a4bcef7dca3a315ed285c069c5d67a42566cc828
 
             }
         }
@@ -427,15 +459,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             int indice = mRuta.edificioApuntado(azimuth);
 
             if (apuntAnterior != -1 && indice != apuntAnterior) {
+<<<<<<< HEAD
+=======
+                //marcasTodas[tresCercanos[i]].setIcon(BitmapDescriptorFactory.fromResource(R.drawable.edimarcado));
+>>>>>>> a4bcef7dca3a315ed285c069c5d67a42566cc828
                 marcasTodas[apuntAnterior].setIcon(BitmapDescriptorFactory.fromResource(iconVec[apuntAnterior]));
 
             }
             if (indice != -1) {
+<<<<<<< HEAD
                 Bitmap ob = BitmapFactory.decodeResource(this.getResources(), iconVec[indice]);
                 Bitmap obm = Bitmap.createBitmap(ob.getWidth(), ob.getHeight(), ob.getConfig());
                 Canvas canvas = new Canvas(obm);
                 canvas.drawBitmap(ob, 0f, 0f, paint);
                 marcasTodas[indice].setIcon(BitmapDescriptorFactory.fromBitmap(obm));
+=======
+
+                marcasTodas[indice].setIcon(BitmapDescriptorFactory.fromResource(R.drawable.edimarcado));
+>>>>>>> a4bcef7dca3a315ed285c069c5d67a42566cc828
                 apuntAnterior = indice;
             }
         }
