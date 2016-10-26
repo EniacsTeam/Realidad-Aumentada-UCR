@@ -135,7 +135,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
         architectView.onPostCreate();
 
         try {
-            this.architectView.load("file:///android_asset/poi_1/index.html");/*Hay que poner ruta de directorio aqui*/
+            this.architectView.load("prueba/index.html");/*Hay que poner ruta de directorio aqui*/
         } catch (Exception e){
             e.printStackTrace();
             Toast.makeText(this, "Se cayó", Toast.LENGTH_SHORT).show();
@@ -286,7 +286,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     @Override
     public void onLocationChanged(Location location) {
         mCurrentLocation = location;
-        makeUseOfNewLocation(location);
+        //makeUseOfNewLocation(location);
     }
 
     /**
