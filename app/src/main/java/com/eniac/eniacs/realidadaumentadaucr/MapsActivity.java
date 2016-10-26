@@ -52,6 +52,7 @@ import java.util.Map;
 import static android.os.Build.VERSION_CODES.M;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.fab;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
+import static com.google.android.gms.internal.zznu.it;
 
 /**
  * Esta clase representa un mapa de Google. Contiene metodos para solicitar y manejar permisos de localizacion, para luego con ellos ayudar
@@ -76,11 +77,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             "artes", "educa", "bosque", "mariposario", "plaza", "pretil"};//28
     private Paint paint;
 
-    private int[] tresCercanos = new int[3];
     private Marker marcasTodas[] = new Marker[28];
+    private Map<Integer, Location> res;
     private int apuntAnterior = -1;
     private boolean correrApuntado = false;
-    private Marker marcas[] = new Marker[3];
     FloatingActionButton fab;
     Animation cargafab;
     Animation quitafab;
@@ -221,7 +221,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         for (int i = 0; i < mRuta.edificios.length; ++i) {
             LatLng pos = new LatLng(mRuta.elatitud[i], mRuta.elonguitud[i]);
-            marcasTodas[i] = mMap.addMarker(new MarkerOptions().position(pos).alpha(0f)
+            marcasTodas[i] = mMap.addMarker(new MarkerOptions().position(pos).visible(false)
                     .title(mRuta.edificios[i]).icon(BitmapDescriptorFactory.fromResource(iconVec[i])));
 
         }
@@ -274,15 +274,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      * Este metodo se encarga de agregar los marcadores respectivos a los 3 edificios mas cercanos a la posicion del usuario.
      */
     private void addMarkers() {
-        Map<Integer, Location> res = mRuta.edificiosMasCercanos(mCurrentLocation);
+        res = mRuta.edificiosMasCercanos(mCurrentLocation);
 
         Iterator<Integer> it = res.keySet().iterator();
 
         int indice;
         while (it.hasNext())
-        {
-            indice = it.next();
-            marcasTodas[indice].setAlpha(3);
+        {   indice = it.next();
+            marcasTodas[indice].setVisible(true);
+
         }
         correrApuntado = true;
     }
@@ -361,9 +361,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onLocationChanged(Location location) {
         mCurrentLocation = location;
-        if (tresCercanos != null) {
-            for (int i = 0; i < 3; ++i) {
-                marcasTodas[tresCercanos[i]].setAlpha(0f);
+        if (res != null) {
+            Iterator<Integer> it = res.keySet().iterator();
+            int indice;
+            while (it.hasNext())
+            {   indice = it.next();
+                marcasTodas[indice].setVisible(false);
+
             }
         }
         addMarkers();
