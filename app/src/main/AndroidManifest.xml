@@ -57,10 +57,13 @@
             android:label="@string/title_activity_maps">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MapsActivity"
-                />
+                android:value=".MapsActivity"/>
 
         </activity>
+        <activity android:name=".SamplePoiDetailActivity"
+            android:theme = "@android:style/Theme.Light.NoTitleBar"
+            />
+
     </application>
 
 </manifest>

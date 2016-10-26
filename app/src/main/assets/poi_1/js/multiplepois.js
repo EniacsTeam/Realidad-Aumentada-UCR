@@ -11,7 +11,15 @@ var World = {
                 "Facultad de Farmacia","Facultad de Microbiología","Escuela de Biología","Escuela de Química",
                 "Escuela de Artes Musicales","Escuela de Bellas Artes","Facultad de Educación","Bosque Leonel Oviedo",
                 "Mariposario","Plaza 24 de abril","El Pretil"],
-
+    edificiosDesc : [
+                "Facultad de Derecho","Oficina de Becas y Atención Socioeconómica",
+                "Biblioteca Luis Demetrio Tinoco","Escuela de Arquitectura","Comedor universitario","Facultad de Ingeniería",
+                "Escuela de Física y Matemáticas","Escuela de Estudios Generales","Biblioteca Carlos Monge",
+                "Sección de Educación Preescolar","Facultad de Letras","Centro de Informática","Escuela Centroamericana de Geología",
+                "Facultad de Ciencias Económicas","Escuela de Computación e Informática","Facultad de Odontología","Facultad de Medicina",
+                "Facultad de Farmacia","Facultad de Microbiología","Escuela de Biología","Escuela de Química",
+                "Escuela de Artes Musicales","Escuela de Bellas Artes","Facultad de Educación","Bosque Leonel Oviedo",
+                "Mariposario","Plaza 24 de abril","El Pretil"],
 
     latitud : [9.93639, 9.9355, 9.93601, 9.93486, 9.93724, 9.93595, 9.93648, 9.93612,
                 9.93603, 9.93867, 9.9386, 9.937654,
@@ -66,7 +74,7 @@ var World = {
 			"longitude": parseFloat(World.longuitud[id1]),
 			"altitude": parseFloat(World.altitud),  //"altitude": parseFloat(0),
 			"title": World.edificios[id1],
-			"description": World.edificios[id1]
+			"description": World.edificiosDesc[id1]
 		};
 
 			/*
@@ -126,6 +134,24 @@ var World = {
 			icon: iconToUse
 		});
 	},
+	/*
+    		It may make sense to display POI details in your native style.
+    		In this sample a very simple native screen opens when user presses the 'More' button in HTML.
+    		This demoes the interaction between JavaScript and native code.
+    	*/
+    	// user clicked "More" button in POI-detail panel -> fire event to open native screen
+    	onPoiDetailMoreButtonClicked: function onPoiDetailMoreButtonClickedFn() {
+    		var currentMarker = World.currentMarker;
+    		var architectSdkUrl = "architectsdk://markerselected?id=" + encodeURIComponent(currentMarker.poiData.id) + "&title=" + encodeURIComponent(currentMarker.poiData.title) + "&description=" + encodeURIComponent(currentMarker.poiData.description);
+    		/*
+    			The urlListener of the native project intercepts this call and parses the arguments.
+    			This is the only way to pass information from JavaSCript to your native code.
+    			Ensure to properly encode and decode arguments.
+    			Note: you must use 'document.location = "architectsdk://...' to pass information from JavaScript to native.
+    			! This will cause an HTTP error if you didn't register a urlListener in native architectView !
+    		*/
+    		document.location = architectSdkUrl;
+    	},
 
 	// location updates, fired every time you call architectView.setLocation() in native environment
 	locationChanged: function locationChangedFn(lat, lon, alt, acc) {
