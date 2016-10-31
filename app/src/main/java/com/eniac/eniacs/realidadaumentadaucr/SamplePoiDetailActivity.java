@@ -12,7 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class xSamplePoiDetailActivity extends Activity {
+public class SamplePoiDetailActivity extends Activity {
 
 	public static final String EXTRAS_KEY_POI_ID = "id";
 	public static final String EXTRAS_KEY_POI_TITILE = "title";
