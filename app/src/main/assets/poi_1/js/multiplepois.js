@@ -11,7 +11,112 @@ var World = {
                 "Facultad de Farmacia","Facultad de Microbiología","Escuela de Biología","Escuela de Química",
                 "Escuela de Artes Musicales","Escuela de Bellas Artes","Facultad de Educación","Bosque Leonel Oviedo",
                 "Mariposario","Plaza 24 de abril","El Pretil"],
+    edificiosDesc : [
+                "Facultad de Derecho",
+                "Oficina de Becas y Atención Socioeconómica",
 
+                "Esta biblioteca forma parte del Sistema de Bibliotecas, Documentación e Información"
+                +" (SIBDI) de la Universidad de Costa Rica, que tiene como misión apoyar los programas"
+                +" sustantivos de Docencia, Investigación, Acción Social y Administración, mediante la"
+                +" adquisición, organización, almacenamiento, acceso y recuperación efectiva de recursos de"
+                +" información y la prestación de servicios de calidad, acordes con las nuevas tecnologías y"
+                +" orientaciones de los procesos de enseñanza-aprendizaje, que estimulen la creatividad en el"
+                +" quehacer científico y promueven la asimilación, transformación y generación del conocimiento."
+                +"\n\nContiene materiales bibliográficos sobre:"
+                +"\n\t\tCiencias Económicas."
+                +"\n\t\tIngeniería."
+                +"\n\t\tArquitectura."
+                +"\n\t\tInformática."
+                +"\n\t\tFísica."
+                +"\n\t\tMatemática."
+                +"\n\t\tGeología."
+                +"\n\nHorarios:"
+                +"\n\t\tLunes a Viernes: 7:00 a.m. a 8:55 p.m."
+                +"\n\t\tSábados: 8:00 a.m. a 6:00 p.m."
+                +"\n\t\tDomingos y feriados: cerrado"
+                +"\n\nTeléfono: (506) 2511-4461"
+                +"\nWeb: http://sibdi.ucr.ac.cr",
+
+                "La Escuela de Arquitectura fue fundada en 1971, y su papel, además de la formación de profesionales, es desarrollar una visión crítica"
+                 +" sobre el acontecer arquitectónico, que le permita al profesional conservar la identidad cultural de su país, preservar su medio ecológico"
+                 +" y desarrollar una arquitectura contextualizada, con respecto a las necesidades socioeconómicas de la nación, en el momento histórico actual."
+                 +"\n\nCarreras:"
+                 +"\n\t\tArquitectura."
+                 +"\n\nTeléfono: (506) 2511-6881"
+                 +"\nCorreo: arquis@ucr.ac.cr"
+                 +"\nFacebook: https://www.facebook.com/arquitectura.ucr"
+                 +"\nWeb: http://www.arquis.ucr.ac.cr/",
+
+                "Comedor universitario",
+                "Facultad de Ingeniería",
+                "Escuela de Física y Matemáticas",
+                "Escuela de Estudios Generales",
+                "Biblioteca Carlos Monge",
+                "Sección de Educación Preescolar",
+
+                "La Facultad de Letras se fundó en marzo de 1941 y se encuentra integrada por las Escuelas de Lenguas Modernas,"
+                 +" Filología, Lingüística y Literatura y Filosofía, el Instituto de Investigaciones Lingüísticas (INIL), el Instituto"
+                 +" de Investigaciones Filosóficas (INIF) y varios programas de posgrado en lenguas modernas y clásicas, literaturas, lingüística y filosofía."
+                 +"\n\nCarreras:"
+                 +"\n\t\tFilología Española"
+                 +"\n\t\tFilología Clásica"
+                 +"\n\t\tFilosofía"
+                 +"\n\t\tInglés"
+                 +"\n\t\tLengua Inglesa"
+                 +"\n\t\tInglés a Distancia"
+                 +"\n\t\tFrancés"
+                 +"\n\nTeléfono: (506) 2511-8384"
+                 +"\nCorreo: facultad.letras@ucr.ac.cr"
+                 +"\nFacebook: https://www.facebook.com/Letrasucr"
+                 +"\nWeb: http://letras.ucr.ac.cr",
+
+                "Centro de Informática",
+
+                "Escuela fundada en noviembre de 1967, cuyo promotor fue César Dóndoli, ayudado por varios políticos y geólogos, como"
+                +" el Geólogo Gabriel Dengo como principal misión se propone desarrollar el conocimiento geocientífico de la región de América Central."
+                +"\n\nCarreras:"
+                +"\n\t\tGeología."
+                +"\n\nTeléfono: (506) 2511-5625"
+                +"\nCorreo: geologia@ucr.ac.cr"
+                +"\nFacebook: https://www.facebook.com/ECG.UCR/"
+                +"\nWeb: http://www.geologia.ucr.ac.cr/",
+
+                "La Facultad de Ciencias Económicas de la Universidad de Costa Rica inició actividades el 3 de Mayo de 1943. Hoy en día es"
+                +" la segunda facultad más grande de la Universidad de Costa Rica y está conformada por cuatro importantes escuelas: Administración"
+                +" de Negocios, Administración Pública, Economía y Estadística."
+                +"\n\nCarreras:"
+                +"\n\t\tContaduría Pública."
+                +"\n\t\tDirección de Empresas."
+                +"\n\t\tAdministración Aduanera."
+                +"\n\t\tAdministración Pública."
+                +"\n\t\tEconomía y Estadística."
+                +"\n\nTeléfono: (506) 2511-4360"
+                +"\nCorreo: decanato.ce@ucr.ac.cr"
+                +"\nFacebook: https://www.facebook.com/Facultad-de-Ciencias-Econ%C3%B3micas-UCR-444744115214/"
+                +"\nWeb: http://www.fce.ucr.ac.cr/",
+
+                "La Escuela de Ciencias de la Computación e Informática de la Universidad de Costa Rica se fundó en 1981, como resultado de la"
+                 +" fusión de dos programas distintos pero relacionados, el de Bachillerato en Informática y el de Bachillerato y Licenciatura en Computación."
+                +"\n\nCarreras:"
+                +"\n\t\tComputación e Informática."
+                +"\n\nTeléfono: (506) 2511-8000"
+                +"\nCorreo: secretaria@ecci.ucr.ac.cr"
+                +"\nFacebook: https://www.facebook.com/ECCIOficial"
+                +"\nWeb: http://www.ecci.ucr.ac.cr",
+
+                "Facultad de Odontología",
+                "Facultad de Medicina",
+                "Facultad de Farmacia",
+                "Facultad de Microbiología",
+                "Escuela de Biología",
+                "Escuela de Química",
+                "Escuela de Artes Musicales",
+                "Escuela de Bellas Artes",
+                "Facultad de Educación",
+                "Bosque Leonel Oviedo",
+                "Mariposario",
+                "Plaza 24 de abril",
+                "El Pretil"],
 
     latitud : [9.93639, 9.9355, 9.93601, 9.93486, 9.93724, 9.93595, 9.93648, 9.93612,
                 9.93603, 9.93867, 9.9386, 9.937654,
@@ -66,7 +171,7 @@ var World = {
 			"longitude": parseFloat(World.longuitud[id1]),
 			"altitude": parseFloat(World.altitud),  //"altitude": parseFloat(0),
 			"title": World.edificios[id1],
-			"description": World.edificios[id1]
+			"description": World.edificiosDesc[id1]
 		};
 
 			/*
@@ -82,7 +187,7 @@ var World = {
 			"longitude": parseFloat(World.longuitud[id2]),
 			"altitude": parseFloat(World.altitud),
 			"title": World.edificios[id2],
-			"description": World.edificios[id2]
+			"description": World.edificiosDesc[id2]
 		};
 
 			/*
@@ -91,14 +196,13 @@ var World = {
 			*/
 		World.markerList.push(new Marker(singlePoi));
 
-
 		singlePoi = {
 			"id": id3,
 			"latitude": parseFloat(World.latitud[id3]),
 			"longitude": parseFloat(World.longuitud[id3]),
 			"altitude": parseFloat(World.altitud),
             "title": World.edificios[id3],
-            "description": World.edificios[id3]
+            "description": World.edificiosDesc[id3]
 		};
 
 			/*
@@ -126,6 +230,24 @@ var World = {
 			icon: iconToUse
 		});
 	},
+	/*
+    		It may make sense to display POI details in your native style.
+    		In this sample a very simple native screen opens when user presses the 'More' button in HTML.
+    		This demoes the interaction between JavaScript and native code.
+    	*/
+    	// user clicked "More" button in POI-detail panel -> fire event to open native screen
+    	onPoiDetailMoreButtonClicked: function onPoiDetailMoreButtonClickedFn() {
+    		var currentMarker = World.currentMarker;
+    		var architectSdkUrl = "architectsdk://markerselected?id=" + encodeURIComponent(currentMarker.poiData.id) + "&title=" + encodeURIComponent(currentMarker.poiData.title) + "&description=" + encodeURIComponent(currentMarker.poiData.description);
+    		/*
+    			The urlListener of the native project intercepts this call and parses the arguments.
+    			This is the only way to pass information from JavaSCript to your native code.
+    			Ensure to properly encode and decode arguments.
+    			Note: you must use 'document.location = "architectsdk://...' to pass information from JavaScript to native.
+    			! This will cause an HTTP error if you didn't register a urlListener in native architectView !
+    		*/
+    		document.location = architectSdkUrl;
+    	},
 
 	// location updates, fired every time you call architectView.setLocation() in native environment
 	locationChanged: function locationChangedFn(lat, lon, alt, acc) {
@@ -154,7 +276,7 @@ var World = {
 		*/
 		// update panel values
 		$("#poi-detail-title").html(marker.poiData.title);
-		$("#poi-detail-description").html(marker.poiData.description);
+		$("#poi-detail-description").html(marker.poiData.description.substr(0,150)+"...");
 
 		// distance and altitude are measured in meters by the SDK. You may convert them to miles / feet if required.
 		//var distanceToUserValue = (marker.distanceToUser > 999) ? ((marker.distanceToUser / 1000).toFixed(2) + " km") : (Math.round(marker.distanceToUser) + " m");

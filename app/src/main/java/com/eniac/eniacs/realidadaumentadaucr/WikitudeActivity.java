@@ -1,11 +1,15 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -23,7 +27,7 @@ import com.wikitude.architect.ArchitectView;
 import com.wikitude.architect.StartupConfiguration;
 import android.Manifest;
 import java.util.Map;
-
+import com.wikitude.architect.ArchitectView.ArchitectUrlListener;
 /**
  * Esta clase representa la camara de Wikitude. Contiene metodos para solicitar y manejar permisos de localizacion, para luego con ellos brindarle
  * al usuario una experiencia de realidad aumentada donde puede observar e interactuar con puntos de interes mediante su dispositivo movil.
@@ -43,6 +47,10 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     private static final String TAG = "Wikitude";
     private Integer id1,id2,id3;
 
+    /**
+     * urlListener handling "document.location= 'architectsdk://...' " calls in JavaScript"
+     */
+    protected ArchitectView.ArchitectUrlListener urlListener;
     /**
      * Este metodo es usado para inicializar la actividad. Se define la interfaz de usuario, se instancian clases auxiliares, se crea un
      * servicio de solicitud de localizacion, se inicializa el componente de interfaz de usuario que encapsula la camara y superficie de renderizacion.
@@ -66,6 +74,28 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
         this.architectView = (ArchitectView)this.findViewById( R.id.architectView );
         final StartupConfiguration config = new StartupConfiguration("E2+3OVGKbQcv6JrSgriX+czMlLGUGf9lfex/+wxB6b1Tbo7RyIoccealOwt4Kl1mAf5QBel8wQ818kRAeJfbHB/K5XO12aC0cptyGTO8NEDypO87dn19fTA3Hx7ULASgd4zhwStTH42bsGIEMsL4SPUNd2ucuE4R15y+4kJzQFNTYWx0ZWRfX3rT9ifimN5EoNAvY/2QDMkmhwD57VrGVyq6Y8lgwAQTwocP+1IW4choWR9mq3J7yJI2wMozzbp8kB2v7thM71zjTV42qnP6WdY13rCm3Vj5EuqCRdYOTNgPlUoLwSgTVIBSDwD9Jh984S0Zlr9TDw8Yn5il6OhlLYTug9dYV2PMQzt/uQ9ukisOGt0B49iEjJn1flOmx5PCjxo8+Vcm8xtM/1Nen79Ifrf63itCHjDZaPT37qW0Tm52KZJiGo9CoeMkDfWSGuv1hrZ0sABIFciRROmaF+tf//5C+FQAt8eE6TJzcCsenx9qwyMNAgdD+RORiZqF9mnzJaIUOvBB4TrzxmU2bAVgwd5TgYylm+itjUigNNfnD8z2i/cF0w7Z77W+ZUfEgfSEPfOLCrXg16PnHXrLxKw7FK2LR6txrAPmcKrHqUAUikFBWrwTqMK3nFPti0ksA2kYpRiCOklybe74Q6jvq3OXyzb8tSEDXXeC1RJw3oiUOiA=");
         this.architectView.onCreate( config );
+
+        // set urlListener, any calls made in JS like "document.location = 'architectsdk://foo?bar=123'" is forwarded to this listener, use this to interact between JS and native Android activity/fragment
+        this.urlListener = new ArchitectUrlListener() {
+            @Override
+            public boolean urlWasInvoked(String uriString) {
+                Uri invokedUri = Uri.parse(uriString);
+
+                // pressed "More" button on POI-detail panel
+                if ("markerselected".equalsIgnoreCase(invokedUri.getHost())) {
+                    final Intent poiDetailIntent = new Intent(WikitudeActivity.this, SamplePoiDetailActivity.class);
+                    poiDetailIntent.putExtra(SamplePoiDetailActivity.EXTRAS_KEY_POI_ID, String.valueOf(invokedUri.getQueryParameter("id")) );
+                    poiDetailIntent.putExtra(SamplePoiDetailActivity.EXTRAS_KEY_POI_TITILE, String.valueOf(invokedUri.getQueryParameter("title")) );
+                    poiDetailIntent.putExtra(SamplePoiDetailActivity.EXTRAS_KEY_POI_DESCR, String.valueOf(invokedUri.getQueryParameter("description")) );
+                    WikitudeActivity.this.startActivity(poiDetailIntent);
+                    return true;
+                }
+
+                return true;
+            }
+
+        };
+        this.architectView.registerUrlListener(this.urlListener);
         boolean check = askCompatibility();
         if(check)
         {
@@ -350,6 +380,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
       //  res.clear();
 
     }
+
 
 
 
