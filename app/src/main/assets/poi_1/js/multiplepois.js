@@ -1,3 +1,6 @@
+var ident1=-1;
+var ident2=-1;
+var ident3=-1;
 // implementation of AR-Experience (aka "World")
 var World = {
 
@@ -122,7 +125,7 @@ var World = {
                 9.93603, 9.93867, 9.9386, 9.937654,
                 9.938080, 9.937046, 9.937932, 9.938255, 9.938637, 9.938880, 9.937950, 9.937640, 9.937178, 9.937408,
                 9.936547, 9.936083, 9.937604, 9.937249, 9.936307, 9.935916],
-                
+
     longuitud : [-84.05386, -84.05422, -84.0527, -84.05261, -84.05309, -84.05194, -84.05157,
                 -84.05047, -84.05105, -84.0536,
                 -84.05286, -84.052356, -84.052452, -84.051656, -84.051992, -84.051683, -84.050404, -84.049967, -84.049292,
@@ -153,67 +156,72 @@ var World = {
 
 	// called to inject new POI data
 	loadPoisFromJsonData: function loadPoisFromJsonDataFn(id1, id2, id3) {
-		World.markerList.pop();
-		 World.markerList.pop();
-		 World.markerList.pop();
+	    if(id1!=ident1||id2!=ident2||id3!=ident3){
+	        ident1=id1;
+            ident2=id2;
+            ident3=id3;
+            World.markerList.pop();
+            World.markerList.pop();
+            World.markerList.pop();
 
-		// start loading marker assets
-		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
-		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
-		World.markerDrawable_directionIndicator = new AR.ImageResource("assets/indi.png");
-
-
-		// loop through POI-information and create an AR.GeoObject (=Marker) per POI
-		
-		var singlePoi = {
-			"id": id2,
-			"latitude": parseFloat(World.latitud[id1]),
-			"longitude": parseFloat(World.longuitud[id1]),
-			"altitude": parseFloat(World.altitud),  //"altitude": parseFloat(0),
-			"title": World.edificios[id1],
-			"description": World.edificiosDesc[id1]
-		};
-
-			/*
-				To be able to deselect a marker while the user taps on the empty screen, 
-				the World object holds an array that contains each marker.
-			*/
-		World.markerList.push(new Marker(singlePoi));
+            // start loading marker assets
+            World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
+            World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
+            World.markerDrawable_directionIndicator = new AR.ImageResource("assets/indi.png");
 
 
-		singlePoi = {
-			"id": id2,
-			"latitude": parseFloat(World.latitud[id2]),
-			"longitude": parseFloat(World.longuitud[id2]),
-			"altitude": parseFloat(World.altitud),
-			"title": World.edificios[id2],
-			"description": World.edificiosDesc[id2]
-		};
+            // loop through POI-information and create an AR.GeoObject (=Marker) per POI
 
-			/*
-				To be able to deselect a marker while the user taps on the empty screen, 
-				the World object holds an array that contains each marker.
-			*/
-		World.markerList.push(new Marker(singlePoi));
+            var singlePoi = {
+                "id": id1,
+                "latitude": parseFloat(World.latitud[id1]),
+                "longitude": parseFloat(World.longuitud[id1]),
+                "altitude": parseFloat(World.altitud),  //"altitude": parseFloat(0),
+                "title": World.edificios[id1],
+                "description": World.edificiosDesc[id1]
+            };
 
-		singlePoi = {
-			"id": id3,
-			"latitude": parseFloat(World.latitud[id3]),
-			"longitude": parseFloat(World.longuitud[id3]),
-			"altitude": parseFloat(World.altitud),
-            "title": World.edificios[id3],
-            "description": World.edificiosDesc[id3]
-		};
-
-			/*
-				To be able to deselect a marker while the user taps on the empty screen, 
-				the World object holds an array that contains each marker.
-			*/
-		World.markerList.push(new Marker(singlePoi));
+                /*
+                    To be able to deselect a marker while the user taps on the empty screen,
+                    the World object holds an array that contains each marker.
+                */
+            World.markerList.push(new Marker(singlePoi));
 
 
+            singlePoi = {
+                "id": id2,
+                "latitude": parseFloat(World.latitud[id2]),
+                "longitude": parseFloat(World.longuitud[id2]),
+                "altitude": parseFloat(World.altitud),
+                "title": World.edificios[id2],
+                "description": World.edificiosDesc[id2]
+            };
 
-		World.updateStatusMessage(3 + ' places loaded');
+                /*
+                    To be able to deselect a marker while the user taps on the empty screen,
+                    the World object holds an array that contains each marker.
+                */
+            World.markerList.push(new Marker(singlePoi));
+
+            singlePoi = {
+                "id": id3,
+                "latitude": parseFloat(World.latitud[id3]),
+                "longitude": parseFloat(World.longuitud[id3]),
+                "altitude": parseFloat(World.altitud),
+                "title": World.edificios[id3],
+                "description": World.edificiosDesc[id3]
+            };
+
+                /*
+                    To be able to deselect a marker while the user taps on the empty screen,
+                    the World object holds an array that contains each marker.
+                */
+            World.markerList.push(new Marker(singlePoi));
+
+
+
+            World.updateStatusMessage(3 + ' places loaded');
+        }
 	},
 
 	// updates status message shon in small "i"-button aligned bottom center
@@ -257,7 +265,7 @@ var World = {
 			The custom function World.onLocationChanged checks with the flag World.initiallyLoadedData if the function was already called. With the first call of World.onLocationChanged an object that contains geo information will be created which will be later used to create a marker using the World.loadPoisFromJsonData function.
 		*/
 		//if (!World.initiallyLoadedData) {
-			/* 
+			/*
 				requestDataFromLocal with the geo information as parameters (latitude, longitude) creates different poi data to a random location in the user's vicinity.
 			*/
 
@@ -271,7 +279,7 @@ var World = {
 		World.currentMarker = marker;
 
 		/*
-			In this sample a POI detail panel appears when pressing a cam-marker (the blue box with title & description), 
+			In this sample a POI detail panel appears when pressing a cam-marker (the blue box with title & description),
 			compare index.html in the sample's directory.
 		*/
 		// update panel values
@@ -317,7 +325,7 @@ var World = {
 			num = 1;
 
 		}
-		
+
 		poiData.push({
 				"id": (i + 1),
 				"longitude": (lon),
@@ -326,13 +334,254 @@ var World = {
 			});
 		World.loadPoisFromJsonData(poiData);*/
 
-	}
+	},
+		targetName2Augmentations :
+    	{
+    		"Arqui" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Arquitectura.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		],
+    		"Cenizaro" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Cenizaro.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		],
+    		"ECCI" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Computacion.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		],
+    		"Economicas" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Economicas.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		],
+    		"Facio" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Rodrigo Facio.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		],
+    		"Fernando" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Fernando.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		],
+    		"Geo" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Geologia.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		],
+    		"Joaquin" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Joaquin Jimenez.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		],
+    		"Letras" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Letras.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		],
+    		"Letras2" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Letras.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		],
+    		"Monge" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Carlos Monge.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		],
+    		"Ojoche" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Ojoche.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		],
+    		"Omar" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Omar Dengo.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		],
+    		"Tinoco" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Biblioteca Tinoco.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		],
+    		"Yolanda" : [
+    			{
+    				"type": "video",
+    				"uri": "Videos/Yolanda Oreamuno.mp4",
+    				"scale": 0.40,
+    				"offsetX": -0.3,
+    				"offsetY": -0.3,
+    				"autoplay": true,
+    				"isTransparent": true
+    			}
+    		]
+    	},
+
+    	init: function() {
+
+        		this.tracker = new AR.ClientTracker("assets/project.wtc", {
+        			onLoaded: function() {
+        				console.info("tracker loaded");
+        			}
+        		});
+
+        		this.lastCamDrawables = [];
+
+        		this.trackable = new AR.Trackable2DObject(this.tracker, "*", {
+        			drawables: {
+        				cam: []
+        			},
+        			onEnterFieldOfVision: function (targetName) {
+        				if (this.lastTargetName!==targetName) {
+        					this.lastTargetName=targetName;
+
+        					// destroy old augmentations
+        					for (var i=World.trackable.drawables.cam.length-1; i>=0; i--) {
+        						World.trackable.drawables.cam[i].enabled = false;
+        						World.trackable.drawables.cam[i].destroy();
+        						World.trackable.drawables.removeCamDrawable(i);
+        					}
+
+        					// create new augmentations
+        					var augmentationsToCreate = World.targetName2Augmentations[targetName];
+        					for (var i=0; i<augmentationsToCreate.length; i++) {
+        						var drawableCreated;
+        						switch(augmentationsToCreate[i].type) {
+        						    case "video":
+        						        drawableCreated = new AR.VideoDrawable(augmentationsToCreate[i].uri, augmentationsToCreate[i].scale,
+        						        {
+        									offsetX: augmentationsToCreate[i].offsetX,
+        									offsetY: augmentationsToCreate[i].offsetY,
+        									isTransparent: augmentationsToCreate[i].isTransparent
+        								});
+        								if (augmentationsToCreate[i].autoplay) {
+        									drawableCreated.play(-1);
+        								}
+
+        						        break;
+        						    default:
+        						        break;
+        						}
+
+        						if (drawableCreated) {
+        							World.trackable.drawables.addCamDrawable(drawableCreated);
+        						}
+
+        					}
+
+        				} else {
+        					for (var i=World.trackable.drawables.cam.length-1; i>=0; i--) {
+        						World.trackable.drawables.cam[i].enabled = true;
+        						if (World.trackable.drawables.cam[i].resume) {
+        							World.trackable.drawables.cam[i].resume();
+        						}
+        					}
+        				}
+        			},
+        			onExitFieldOfVision: function onExitFieldOfVisionFn() {
+        				for (var i=World.trackable.drawables.cam.length-1; i>=0; i--) {
+        					World.trackable.drawables.cam[i].enabled = false;
+        					if (World.trackable.drawables.cam[i].pause) {
+        						World.trackable.drawables.cam[i].pause();
+        					}
+        				}
+        			}
+        		});
+        	}
 
 };
 
-/* 
-	Set a custom function where location changes are forwarded to. There is also a possibility to set AR.context.onLocationChanged to null. In this case the function will not be called anymore and no further location updates will be received. 
+/*
+	Set a custom function where location changes are forwarded to. There is also a possibility to set AR.context.onLocationChanged to null. In this case the function will not be called anymore and no further location updates will be received.
 */
+World.init();
 AR.context.onLocationChanged = World.locationChanged;
 
 /*
