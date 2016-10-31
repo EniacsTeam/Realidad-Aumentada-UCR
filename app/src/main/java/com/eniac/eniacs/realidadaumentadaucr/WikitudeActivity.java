@@ -39,18 +39,19 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
 
     private ArchitectView architectView;
     private Rutas mRuta;
-    private final String [] StringPermisos = {Manifest.permission.CAMERA,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private final String[] StringPermisos = {Manifest.permission.CAMERA, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
     private Location mLastLocation;
     private Location mCurrentLocation;
     private static final String TAG = "Wikitude";
-    private Integer id1,id2,id3;
+    private Integer id1, id2, id3;
 
     /**
      * urlListener handling "document.location= 'architectsdk://...' " calls in JavaScript"
      */
     protected ArchitectView.ArchitectUrlListener urlListener;
+
     /**
      * Este metodo es usado para inicializar la actividad. Se define la interfaz de usuario, se instancian clases auxiliares, se crea un
      * servicio de solicitud de localizacion, se inicializa el componente de interfaz de usuario que encapsula la camara y superficie de renderizacion.
@@ -71,9 +72,9 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
         }
         mGoogleApiClient.connect();
         createLocationRequest();
-        this.architectView = (ArchitectView)this.findViewById( R.id.architectView );
+        this.architectView = (ArchitectView) this.findViewById(R.id.architectView);
         final StartupConfiguration config = new StartupConfiguration("E2+3OVGKbQcv6JrSgriX+czMlLGUGf9lfex/+wxB6b1Tbo7RyIoccealOwt4Kl1mAf5QBel8wQ818kRAeJfbHB/K5XO12aC0cptyGTO8NEDypO87dn19fTA3Hx7ULASgd4zhwStTH42bsGIEMsL4SPUNd2ucuE4R15y+4kJzQFNTYWx0ZWRfX3rT9ifimN5EoNAvY/2QDMkmhwD57VrGVyq6Y8lgwAQTwocP+1IW4choWR9mq3J7yJI2wMozzbp8kB2v7thM71zjTV42qnP6WdY13rCm3Vj5EuqCRdYOTNgPlUoLwSgTVIBSDwD9Jh984S0Zlr9TDw8Yn5il6OhlLYTug9dYV2PMQzt/uQ9ukisOGt0B49iEjJn1flOmx5PCjxo8+Vcm8xtM/1Nen79Ifrf63itCHjDZaPT37qW0Tm52KZJiGo9CoeMkDfWSGuv1hrZ0sABIFciRROmaF+tf//5C+FQAt8eE6TJzcCsenx9qwyMNAgdD+RORiZqF9mnzJaIUOvBB4TrzxmU2bAVgwd5TgYylm+itjUigNNfnD8z2i/cF0w7Z77W+ZUfEgfSEPfOLCrXg16PnHXrLxKw7FK2LR6txrAPmcKrHqUAUikFBWrwTqMK3nFPti0ksA2kYpRiCOklybe74Q6jvq3OXyzb8tSEDXXeC1RJw3oiUOiA=");
-        this.architectView.onCreate( config );
+        this.architectView.onCreate(config);
 
         // set urlListener, any calls made in JS like "document.location = 'architectsdk://foo?bar=123'" is forwarded to this listener, use this to interact between JS and native Android activity/fragment
         this.urlListener = new ArchitectUrlListener() {
@@ -84,9 +85,9 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
                 // pressed "More" button on POI-detail panel
                 if ("markerselected".equalsIgnoreCase(invokedUri.getHost())) {
                     final Intent poiDetailIntent = new Intent(WikitudeActivity.this, SamplePoiDetailActivity.class);
-                    poiDetailIntent.putExtra(SamplePoiDetailActivity.EXTRAS_KEY_POI_ID, String.valueOf(invokedUri.getQueryParameter("id")) );
-                    poiDetailIntent.putExtra(SamplePoiDetailActivity.EXTRAS_KEY_POI_TITILE, String.valueOf(invokedUri.getQueryParameter("title")) );
-                    poiDetailIntent.putExtra(SamplePoiDetailActivity.EXTRAS_KEY_POI_DESCR, String.valueOf(invokedUri.getQueryParameter("description")) );
+                    poiDetailIntent.putExtra(SamplePoiDetailActivity.EXTRAS_KEY_POI_ID, String.valueOf(invokedUri.getQueryParameter("id")));
+                    poiDetailIntent.putExtra(SamplePoiDetailActivity.EXTRAS_KEY_POI_TITILE, String.valueOf(invokedUri.getQueryParameter("title")));
+                    poiDetailIntent.putExtra(SamplePoiDetailActivity.EXTRAS_KEY_POI_DESCR, String.valueOf(invokedUri.getQueryParameter("description")));
                     WikitudeActivity.this.startActivity(poiDetailIntent);
                     return true;
                 }
@@ -97,8 +98,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
         };
         this.architectView.registerUrlListener(this.urlListener);
         boolean check = askCompatibility();
-        if(check)
-        {
+        if (check) {
             requestPermission();
         }
 
@@ -110,7 +110,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     /**
      * Permite mostrar la barra superior de la aplicacion.
      */
-    public void setToolbar(){
+    public void setToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Mapa UCR");
         setSupportActionBar(toolbar);
@@ -122,7 +122,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     /**
      * Permite identificar cual item se pulso de la barra superior de la aplicacion.
      *
-     * @param  item  item seleccionado.
+     * @param item item seleccionado.
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -137,16 +137,15 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     }
 
 
-
     /**
      * Define que al clicar el boton "back" de android en esta actividad se debe retornar a la actividad del mapa.
      *
-     * @param  keyCode  codigo del boton pulsado.
-     * @param  event  evento del boton pulsado.
+     * @param keyCode codigo del boton pulsado.
+     * @param event   evento del boton pulsado.
      */
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event){
-        if(keyCode == KeyEvent.KEYCODE_BACK){
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             onBackPressed();
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
@@ -157,16 +156,16 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     /**
      * Carga la carpeta donde se tienen los archivos de imagenes para la Realidad Aumentada.
      *
-     * @param  savedInstanceState  instancia del estado de la vista.
+     * @param savedInstanceState instancia del estado de la vista.
      */
     @Override
-    protected void onPostCreate(Bundle savedInstanceState){
+    protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         architectView.onPostCreate();
 
         try {
-            this.architectView.load("prueba/index.html");/*Hay que poner ruta de directorio aqui*/
-        } catch (Exception e){
+            this.architectView.load("file:///android_asset/poi_1/index.html");/*Hay que poner ruta de directorio aqui*/
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Se cayó", Toast.LENGTH_SHORT).show();
         }
@@ -176,7 +175,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
      * Metodo para reanudar la actividad.
      */
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         architectView.onResume();
     }
@@ -185,7 +184,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
      * Metodo para destruir la actividad.
      */
     @Override
-    protected void onDestroy(){
+    protected void onDestroy() {
         super.onDestroy();
         architectView.onDestroy();
     }
@@ -194,7 +193,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
      * Metodo para pausar la actividad.
      */
     @Override
-    protected void onPause(){
+    protected void onPause() {
         super.onPause();
         architectView.onPause();
     }
@@ -202,8 +201,8 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     /**
      * Comprueba que los permisos fueron aprobados. Si este no es el caso, despliega un mensaje al usuario.
      *
-     * @param  requestCode  codigo de solicitud.
-     * @param permissions los permisos solicitados.
+     * @param requestCode  codigo de solicitud.
+     * @param permissions  los permisos solicitados.
      * @param grantResults permiso si es concedido o denegado.
      */
     @Override
@@ -223,16 +222,16 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
      *
      * @return {@code true}/{@code false} que indica si se puede preguntar por permisos.
      */
-    private boolean askCompatibility(){
+    private boolean askCompatibility() {
 
-        return(Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP_MR1);
+        return (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1);
 
     }
 
     /**
      * Metodo para preguntar permisos.
      */
-    private void requestPermission(){
+    private void requestPermission() {
         //Preguntar por permiso
         ActivityCompat.requestPermissions(this, StringPermisos, 0);
     }
@@ -246,7 +245,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
      */
     protected void onStart() {
         super.onStart();
-        if(mGoogleApiClient != null){
+        if (mGoogleApiClient != null) {
             mGoogleApiClient.connect();
         }
     }
@@ -256,11 +255,10 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
      */
     protected void onStop() {
         super.onStop();
-        if(mGoogleApiClient.isConnected()){
+        if (mGoogleApiClient.isConnected()) {
             mGoogleApiClient.disconnect();
         }
     }
-
 
 
     /**
@@ -276,16 +274,15 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     /**
      * Actualiza posicion de usuario y actualiza vista de usuario.
      *
-     * @param  bundle Conjunto de datos proveidos a los clientes por los Google Play services.
-     *                Podria ser {@code null} si ningun contenido es brindado por el servicio.
+     * @param bundle Conjunto de datos proveidos a los clientes por los Google Play services.
+     *               Podria ser {@code null} si ningun contenido es brindado por el servicio.
      */
     @Override
     public void onConnected(@Nullable Bundle bundle) {
 
         String permission = "android.permission.ACCESS_FINE_LOCATION";
         int res = WikitudeActivity.this.checkCallingOrSelfPermission(permission);
-        if (res == PackageManager.PERMISSION_GRANTED)
-        {
+        if (res == PackageManager.PERMISSION_GRANTED) {
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                     mGoogleApiClient);
             mCurrentLocation = mLastLocation;
@@ -300,8 +297,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     protected void startLocationUpdates() {
         String permission = "android.permission.ACCESS_FINE_LOCATION";
         int res = WikitudeActivity.this.checkCallingOrSelfPermission(permission);
-        if (res == PackageManager.PERMISSION_GRANTED)
-        {
+        if (res == PackageManager.PERMISSION_GRANTED) {
             LocationServices.FusedLocationApi.requestLocationUpdates(
                     mGoogleApiClient, mLocationRequest, this);
         }
@@ -311,18 +307,18 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     /**
      * Actualiza la vista cada vez que se cambia la posición del usuario.
      *
-     * @param  location  ubicacion del usuario.
+     * @param location ubicacion del usuario.
      */
     @Override
     public void onLocationChanged(Location location) {
         mCurrentLocation = location;
-        //makeUseOfNewLocation(location);
+        makeUseOfNewLocation(location);
     }
 
     /**
      * Permite re-conectarse a los servicios de google en caso de perder conexion.
      *
-     * @param  i la razon de la desconexion.
+     * @param i la razon de la desconexion.
      */
     @Override
     public void onConnectionSuspended(int i) {
@@ -335,7 +331,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     /**
      * Este metodo es llamado cuando hubo un error conectando el cliente a los servicios de Google.
      *
-     * @param  connectionResult  resultado de la conexion
+     * @param connectionResult resultado de la conexion
      */
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
@@ -364,42 +360,21 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
         id2 = ids[1];
         id3 = ids[2];
 
-       // try {
+        // try {
 
-            architectView.setLocation(location.getLatitude(), location.getLongitude(), location.getAltitude(), location.getAccuracy());
-           // this.architectView.load("poi_1/index.html");
-            architectView.callJavascript("World.loadPoisFromJsonData(" + id1 +"," + id2 + "," + id3 +")");
+        architectView.setLocation(location.getLatitude(), location.getLongitude(), location.getAltitude(), location.getAccuracy());
+        // this.architectView.load("poi_1/index.html");
+        architectView.callJavascript("World.loadPoisFromJsonData(" + id1 + "," + id2 + "," + id3 + ")");
 
         /*} catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(this, "Se cayó", Toast.LENGTH_SHORT).show();
-
         }*/
 
 
-      //  res.clear();
+        //  res.clear();
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
