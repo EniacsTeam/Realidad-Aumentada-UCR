@@ -341,8 +341,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Arquitectura.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -352,8 +352,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Cenizaro.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -363,8 +363,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Computacion.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -374,8 +374,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Economicas.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -385,8 +385,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Rodrigo Facio.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -396,8 +396,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Fernando.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -407,8 +407,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Geologia.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -418,8 +418,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Joaquin Jimenez.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -429,8 +429,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Letras.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -440,8 +440,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Letras.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -451,8 +451,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Carlos Monge.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -462,8 +462,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Ojoche.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -473,8 +473,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Omar Dengo.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -484,8 +484,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Biblioteca Tinoco.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -495,8 +495,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Yolanda Oreamuno.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
