@@ -134,7 +134,7 @@ var World = {
 
 
     //Numero de llamados a location
-    altitud : 0,
+    altitud : 1200,
 	// you may request new data from server periodically, however: in this sample data is only requested once
 	isRequestingData: false,
 	// true once data was fetched
@@ -156,13 +156,21 @@ var World = {
 
 	// called to inject new POI data
 	loadPoisFromJsonData: function loadPoisFromJsonDataFn(id1, id2, id3) {
-	    if(id1!=ident1||id2!=ident2||id3!=ident3){
+	    if(id1!=ident1 && id1!=ident2 && id1!=ident3 || id2!=ident1 && id2!=ident2 && id2!=ident3 || id3!=ident1 && id3!=ident2 && id3!=ident3){
 	        ident1=id1;
             ident2=id2;
             ident3=id3;
-            World.markerList.pop();
-            World.markerList.pop();
-            World.markerList.pop();
+            if(World.markerList.length == 3) {
+                World.markerList[0].markerObject.destroy();
+                World.markerList[1].markerObject.destroy();
+                World.markerList[2].markerObject.destroy();
+                World.markerList.pop();
+                World.markerList.pop();
+                World.markerList.pop();
+            }
+            //AR.context.destroyAll()
+
+
 
             // start loading marker assets
             World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
@@ -259,8 +267,11 @@ var World = {
 
 	// location updates, fired every time you call architectView.setLocation() in native environment
 	locationChanged: function locationChangedFn(lat, lon, alt, acc) {
+        if(alt < 1000){
+        alt = 1200;
+        }
 		World.altitud= alt; // comentado
-
+        //alert(World.altitud);
 		/*
 			The custom function World.onLocationChanged checks with the flag World.initiallyLoadedData if the function was already called. With the first call of World.onLocationChanged an object that contains geo information will be created which will be later used to create a marker using the World.loadPoisFromJsonData function.
 		*/
@@ -566,12 +577,12 @@ var World = {
         				}
         			},
         			onExitFieldOfVision: function onExitFieldOfVisionFn() {
-        				for (var i=World.trackable.drawables.cam.length-1; i>=0; i--) {
+        				/*for (var i=World.trackable.drawables.cam.length-1; i>=0; i--) {
         					World.trackable.drawables.cam[i].enabled = false;
         					if (World.trackable.drawables.cam[i].pause) {
         						World.trackable.drawables.cam[i].pause();
         					}
-        				}
+        				}*/
         			}
         		});
         	}
