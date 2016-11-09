@@ -128,7 +128,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackPressed();
+                startActivity(new Intent(WikitudeActivity.this , MapsActivity.class));
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 return true;
             default:
@@ -146,7 +146,7 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            onBackPressed();
+            startActivity(new Intent(WikitudeActivity.this , MapsActivity.class));
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         }
         return super.onKeyDown(keyCode, event);

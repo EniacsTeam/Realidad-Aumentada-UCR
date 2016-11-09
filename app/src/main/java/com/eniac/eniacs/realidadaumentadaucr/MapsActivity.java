@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.multidex.MultiDex;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -102,6 +103,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      *
      * @param savedInstanceState estado guardado de la aplicacion un valor {@code null} indica que la actividad no debe ser recreada a partir de información previa.
      */
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+        MultiDex.install(this);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -223,7 +230,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         for (int i = 0; i < mRuta.edificios.length; ++i) {
             LatLng pos = new LatLng(mRuta.elatitud[i], mRuta.elonguitud[i]);
-            marcasTodas[i] = mMap.addMarker(new MarkerOptions().position(pos).visible(false)
+            marcasTodas[i] = mMap.addMarker(new MarkerOptions().position(pos).alpha(0.3f)
                     .title(mRuta.edificios[i]).icon(BitmapDescriptorFactory.fromResource(iconVec[i])));
 
         }
@@ -283,7 +290,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         int indice;
         while (it.hasNext())
         {   indice = it.next();
-            marcasTodas[indice].setVisible(true);
+            marcasTodas[indice].setAlpha(3);
         }
         correrApuntado = true;
     }
@@ -373,7 +380,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             int indice;
             while (it.hasNext())
             {   indice = it.next();
-                marcasTodas[indice].setVisible(false);
+                marcasTodas[indice].setAlpha(0.3f);
             }
         }
         addMarkers();
