@@ -114,6 +114,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         mRuta = new Rutas();
+        LatLng start = new LatLng(9.831825, -84.210115);
+        LatLng end = new LatLng(9.837597, -84.205105);
+        mRuta.getPolyline(start,end);
         llenarIconVec();
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -156,6 +159,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         distanceVector = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
         paint  = new Paint();
         paint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP));
+
+
     }
 
     /**
