@@ -1,5 +1,6 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
+import android.graphics.Color;
 import android.location.Location;
 import android.util.Log;
 
@@ -18,6 +19,15 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 /**
  * Esta clase provee metodos que a partir de informacion con respecto a la posicion del usuario devuelve puntos de interes que podrian ser relevantes
@@ -33,7 +43,7 @@ public class Rutas {
     Map<Integer,Location> mapaEnvio;
     private Location localizacion;
     boolean usado;
-
+    String respuesta;
 
     /**
      * Constructor de {@code Rutas}.
@@ -122,31 +132,16 @@ public class Rutas {
         return retLoc;
     }
 
-    public List<LatLng> getPolyline(LatLng start, LatLng end){
+    public void getPolyline(LatLng start, LatLng end){
         System.out.println("1entré");
-        List<LatLng> polyz=new ArrayList<>();
+        //List<LatLng> polyz=new ArrayList<>();
         String startLocation = String.valueOf(start.latitude) +","+String.valueOf(start.longitude);
         String endLocation = String.valueOf(end.latitude) +","+String.valueOf(end.longitude);
         String stringUrl = "http://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation + "&destination=" + endLocation + "&sensor=false";
-        StringBuilder response = new StringBuilder();
-        try {
-            System.out.println("1.5 trying"+stringUrl);
-            URL url = new URL(stringUrl);
-            HttpURLConnection httpconn = (HttpURLConnection) url
-                    .openConnection();
-            if (httpconn.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                System.out.println("2entré");
-                BufferedReader input = new BufferedReader(
-                        new InputStreamReader(httpconn.getInputStream()),
-                        8192);
-                System.out.println("3"+input.toString());
-                String strLine = null;
-
-                while ((strLine = input.readLine()) != null) {
-                    response.append(strLine);
-                }
-                input.close();
-            }
+        //StringBuilder response = new StringBuilder();
+        getURL(stringUrl);
+        /*try {
+            StringRequest respuesta = getURL(stringUrl);
 
             String jsonOutput = response.toString();
 
@@ -167,7 +162,7 @@ public class Rutas {
             System.out.println("6 error");
         }
 
-        return polyz;
+        return polyz;*/
     }
 
     /* Method to decode polyline points */
@@ -204,4 +199,32 @@ public class Rutas {
 
         return poly;
     }
+
+    public void getURL(String stringUrl){
+        // Instantiate the RequestQueue.
+        String url ="http://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&sensor=false";
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, stringUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        leerRespuesta(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                leerRespuesta(error.toString());
+            }
+        });
+        // Add the request to the RequestQueue.
+    }
+
+    public void leerRespuesta(String texto){
+        System.out.println("he leído "+texto);
+        respuesta = texto;
+    }
 }
+
+
+
+

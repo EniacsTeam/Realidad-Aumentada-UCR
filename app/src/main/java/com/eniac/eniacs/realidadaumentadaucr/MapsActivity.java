@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
@@ -32,6 +33,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -47,6 +54,11 @@ import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -56,6 +68,7 @@ import static android.os.Build.VERSION_CODES.M;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.fab;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
 import static com.google.android.gms.internal.zznu.it;
+import static com.wikitude.architect.CameraPreviewBase.m;
 
 /**
  * Esta clase representa un mapa de Google. Contiene metodos para solicitar y manejar permisos de localizacion, para luego con ellos ayudar
@@ -65,7 +78,8 @@ import static com.google.android.gms.internal.zznu.it;
  */
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener, SensorEventListener {
-
+    String respuesta="";
+    boolean flag=false;
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
@@ -114,9 +128,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         mRuta = new Rutas();
-        LatLng start = new LatLng(9.831825, -84.210115);
-        LatLng end = new LatLng(9.837597, -84.205105);
-        mRuta.getPolyline(start,end);
         llenarIconVec();
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -238,6 +249,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             marcasTodas[i] = mMap.addMarker(new MarkerOptions().position(pos).alpha(0.3f)
                     .title(mRuta.edificios[i]).icon(BitmapDescriptorFactory.fromResource(iconVec[i])));
 
+        }
+
+        if(!flag){
+            flag=true;
+            LatLng start = new LatLng(9.937886, -84.052016);
+            LatLng end = new LatLng(9.936089, -84.051115);
+            getPolyline(start,end);
+            //getPolyline(start,end);
         }
     }
 
@@ -468,5 +487,126 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
 
+    }
+
+
+    public void getPolyline(LatLng start, LatLng end){
+        System.out.println("1entré");
+        //List<LatLng> polyz=new ArrayList<>();
+        String startLocation = String.valueOf(start.latitude) +","+String.valueOf(start.longitude);
+        String endLocation = String.valueOf(end.latitude) +","+String.valueOf(end.longitude);
+        String stringUrl = "http://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation + "&destination=" + endLocation + "&sensor=false";
+        //StringBuilder response = new StringBuilder();
+        getURL(stringUrl);
+        /*try {
+            StringRequest respuesta = getURL(stringUrl);
+
+            String jsonOutput = response.toString();
+
+            JSONObject jsonObject = new JSONObject(jsonOutput);
+
+            // routesArray contains ALL routes
+            JSONArray routesArray = jsonObject.getJSONArray("routes");
+            // Grab the first route
+            JSONObject route = routesArray.getJSONObject(0);
+
+            JSONObject poly = route.getJSONObject("overview_polyline");
+            String polyline = poly.getString("points");
+            System.out.println(polyline);
+            polyz = decodePoly(polyline);
+            System.out.println("4saliendo");
+            System.out.println("5"+polyz.toString());
+        } catch (Exception e) {
+            System.out.println("6 error");
+        }
+
+        return polyz;*/
+    }
+
+    /* Method to decode polyline points */
+    private List<LatLng> decodePoly(String encoded) {
+
+        List<LatLng> poly = new ArrayList<LatLng>();
+        int index = 0, len = encoded.length();
+        int lat = 0, lng = 0;
+
+        while (index < len) {
+            int b, shift = 0, result = 0;
+            do {
+                b = encoded.charAt(index++) - 63;
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+            int dlat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+            lat += dlat;
+
+            shift = 0;
+            result = 0;
+            do {
+                b = encoded.charAt(index++) - 63;
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+            int dlng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+            lng += dlng;
+
+            LatLng p = new LatLng((((double) lat / 1E5)),
+                    (((double) lng / 1E5)));
+            poly.add(p);
+        }
+
+        return poly;
+    }
+
+    public void getURL(String stringUrl){
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&sensor=false";
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, stringUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        leerRespuesta(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                leerRespuesta(error.toString());
+            }
+        });
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+    public void leerRespuesta(String texto){
+        System.out.println("he leído "+texto);
+        respuesta = texto;
+        flag=false;
+        List<LatLng> polyz;
+        try {
+            JSONObject jsonObject = new JSONObject(respuesta);
+            // routesArray contains ALL routes
+            JSONArray routesArray = jsonObject.getJSONArray("routes");
+            // Grab the first route
+            JSONObject route = routesArray.getJSONObject(0);
+
+            JSONObject poly = route.getJSONObject("overview_polyline");
+            String polyline = poly.getString("points");
+            System.out.println(polyline);
+            polyz = decodePoly(polyline);
+            System.out.println("4saliendo");
+            System.out.println("5"+polyz.toString());
+            for (int i = 0; i < polyz.size() - 1; i++) {
+                LatLng src = polyz.get(i);
+                LatLng dest = polyz.get(i + 1);
+                Polyline line = mMap.addPolyline(new PolylineOptions()
+                        .add(new LatLng(src.latitude, src.longitude),
+                                new LatLng(dest.latitude, dest.longitude))
+                        .width(4).color(Color.BLUE).geodesic(true));
+            }
+        } catch (Exception e) {
+            System.out.println("6 error");
+        }
     }
 }
