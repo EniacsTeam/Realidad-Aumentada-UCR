@@ -146,8 +146,12 @@ public class WikitudeActivity extends AppCompatActivity implements GoogleApiClie
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            startActivity(new Intent(WikitudeActivity.this , MapsActivity.class));
+            Intent intent = new Intent(WikitudeActivity.this , MapsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            return true;
         }
         return super.onKeyDown(keyCode, event);
     }

@@ -42,19 +42,26 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCljYcjcbR69841xYHr5kTcuPfmQ_2qWZE" />
 
-        <activity android:name=".MapsActivity"
-            android:label="@string/title_activity_maps">
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
 
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps">
         </activity>
 
         <activity
             android:name=".WikitudeActivity"
             android:configChanges="screenSize|orientation"
+            android:noHistory="true"
             android:label="@string/title_activity_maps">
 
         </activity>
