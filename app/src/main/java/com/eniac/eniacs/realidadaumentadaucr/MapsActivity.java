@@ -296,13 +296,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     /**
-<<<<<<< HEAD
+     <<<<<<< HEAD
      * Actualiza posicion de usuario y actualiza vista de usuario.
-=======
+     =======
      * Actualiza posición de usuario y actualiza
      * vista de usuario
      * <p>
->>>>>>> a4bcef7dca3a315ed285c069c5d67a42566cc828
+     >>>>>>> a4bcef7dca3a315ed285c069c5d67a42566cc828
      *
      * @param  bundle Conjunto de datos proveidos a los clientes por los Google Play services.
      *                Podria ser {@code null} si ningun contenido es brindado por el servicio.
@@ -465,4 +465,3 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 }
-
