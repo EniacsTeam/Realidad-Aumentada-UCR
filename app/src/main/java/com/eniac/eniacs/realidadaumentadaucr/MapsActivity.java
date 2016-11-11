@@ -13,6 +13,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.GradientDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -30,6 +32,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -47,8 +54,10 @@ import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +65,30 @@ import static android.os.Build.VERSION_CODES.M;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.fab;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
 import static com.google.android.gms.internal.zznu.it;
+import static com.wikitude.architect.CameraPreviewBase.m;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Esta clase representa un mapa de Google. Contiene metodos para solicitar y manejar permisos de localizacion, para luego con ellos ayudar
@@ -71,7 +104,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private LocationRequest mLocationRequest;
     private Location mLastLocation;
     private Location mCurrentLocation;
-    private static final String TAG = "MapsActivity";
     private Rutas mRuta;
     private final String[] StringPermisos = {android.Manifest.permission.CAMERA, android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private final int iconVec[] = new int[28];
@@ -94,6 +126,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private float[] orientationVals;
     private SensorManager mSensorManager;//control de sensores
     private Sensor distanceVector;
+
+    private SlidingUpPanelLayout mLayout;
+    private static final String TAG = "MapsActivity";
+    List<String> array_list;
+    TextView textView ;
+    ListView listview;
+
 
     /**
      * Este metodo es usado para inicializar la actividad. Se define la interfaz de usuario, se instancian clases auxiliares, se crea un
@@ -156,6 +195,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         distanceVector = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
         paint  = new Paint();
         paint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP));
+
+        init();            // call init method
+        setListview();    // call setListview method
+        panelListener(); // Call paneListener method
+        mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+
     }
 
     /**
@@ -234,6 +279,35 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     .title(mRuta.edificios[i]).icon(BitmapDescriptorFactory.fromResource(iconVec[i])));
 
         }
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                // setToolbar();
+                quitafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_hide);
+                fab.startAnimation(quitafab);
+                fab.setVisibility(View.GONE);
+                mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                marker.showInfoWindow();
+                return true;
+            }
+        });
+
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener()
+        {
+            @Override
+            public void onMapClick(LatLng arg0)
+            {
+                if (mLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
+                    mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+                }
+                if(fab.getVisibility() != View.VISIBLE){
+                    cargafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_show);
+                    fab.startAnimation(cargafab);
+                    fab.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
     }
 
 
@@ -463,5 +537,120 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
 
+    }
+
+    /**
+     * Initialization of the textview and SlidingUpPanelLayout
+     */
+    public void init(){
+
+        mLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
+        listview = (ListView) findViewById(R.id.soy_lista);
+    }
+
+    /**
+     *  in this method, we set array adapter to display list of item
+     *  within this method, call callback setOnItemClickListener method
+     *  It call when use click on the list of item
+     *  When user click on the list of item, slide up layout and display item of the list
+     */
+    public void setListview(){
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MapsActivity.this, "onItemClick", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        // This is the array adapter, it takes the context of the activity as a
+        // first parameter, the type of list view as a second parameter and your
+        // array as a third parameter.
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                R.layout.activity_listview,
+                array_list());
+
+        listview.setAdapter(arrayAdapter);
+        //int[] colors = {0, 0xFFFF0000, 0}; // red for the example
+        //listview.setDivider(new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT, colors));
+        ColorDrawable sage = new ColorDrawable(this.getResources().getColor(R.color.black));
+        listview.setDivider(sage);
+
+        listview.setDividerHeight(1);
+
+    }
+
+    /**
+     * this method call setPanelSlidelistener method to listen open and close of slide panel
+     */
+    public void panelListener(){
+        SlidingUpPanelLayout.PanelSlideListener listener = new SlidingUpPanelLayout.PanelSlideListener() {
+
+            // During the transition of expand and collapse onPanelSlide function will be called.
+            @Override
+            public void onPanelSlide(View panel, float slideOffset) {
+                Log.e(TAG, "onPanelSlide, offset " + slideOffset);
+            }
+
+            @Override
+            public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
+                Log.i(TAG, "onPanelStateChanged " + newState);
+            }
+
+        };
+        mLayout.addPanelSlideListener(listener);
+        mLayout.setFadeOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View view) {
+                                               mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                                           }
+    });
+    }
+
+    /**
+     * This is return type method.
+     * With in this method, we create array list
+     * @return array list
+     */
+    public List<String> array_list(){
+        array_list = Arrays.asList(
+                "This",
+                "Is",
+                "An",
+                "Example",
+                "ListView",
+                "That",
+                "You",
+                "Can",
+                "Scroll",
+                ".",
+                "It",
+                "Shows",
+                "How",
+                "Any",
+                "Scrollable",
+                "View",
+                "Can",
+                "Be",
+                "Included",
+                "As",
+                "A",
+                "Child",
+                "Of",
+                "SlidingUpPanelLayout"
+        );
+        return array_list;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mLayout != null &&
+                (mLayout.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED || mLayout.getPanelState() == SlidingUpPanelLayout.PanelState.ANCHORED)) {
+            mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

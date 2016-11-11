@@ -7,4 +7,5 @@
     <color name="ColorPrimaryDark">#1976D2</color>
     <color name="ColorPrimaryDssark">#219690</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 </resources>
