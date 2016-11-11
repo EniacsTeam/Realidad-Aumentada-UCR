@@ -67,11 +67,14 @@
                     android:layout_weight="1"
                     android:textSize="14sp"
                     android:text="Prueba"
+                    android:textColor="@color/black"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"/>
 
-                <Button
-                    android:id="@+id/follow"
+                <ImageButton
+                    android:id="@+id/direction_go"
+                    android:src="@drawable/go"
+                    android:background="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textSize="14sp"

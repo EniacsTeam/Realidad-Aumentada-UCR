@@ -29,11 +29,13 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -282,10 +284,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                // setToolbar();
                 quitafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_hide);
                 fab.startAnimation(quitafab);
                 fab.setVisibility(View.GONE);
+                textView.setText(marker.getTitle());
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                 marker.showInfoWindow();
                 return true;
@@ -546,6 +548,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         listview = (ListView) findViewById(R.id.soy_lista);
+        textView = (TextView) findViewById(R.id.name);
     }
 
     /**
@@ -645,12 +648,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     @Override
-    public void onBackPressed() {
-        if (mLayout != null &&
-                (mLayout.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED || mLayout.getPanelState() == SlidingUpPanelLayout.PanelState.ANCHORED)) {
-            mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-        } else {
-            super.onBackPressed();
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (mLayout != null &&
+                    (mLayout.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED || mLayout.getPanelState() == SlidingUpPanelLayout.PanelState.ANCHORED)) {
+                mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                return true;
+            }
+
+            else if (mLayout != null &&
+                    mLayout.getPanelState() == SlidingUpPanelLayout.PanelState.COLLAPSED) {
+                mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+                return true;
+            }
         }
+        return super.onKeyDown(keyCode,event);
     }
 }
