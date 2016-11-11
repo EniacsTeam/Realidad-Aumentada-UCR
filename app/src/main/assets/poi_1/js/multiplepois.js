@@ -80,6 +80,7 @@ var World = {
                 +"\n\nCarreras:"
                 +"\n\t\tGeología."
                 +"\n\nTeléfono: (506) 2511-5625"
+                +"\nMuseo+UCR: http://museo.ucr.ac.cr/rfb/geologia.html"
                 +"\nCorreo: geologia@ucr.ac.cr"
                 +"\nFacebook: https://www.facebook.com/ECG.UCR/"
                 +"\nWeb: http://www.geologia.ucr.ac.cr/",
@@ -94,6 +95,7 @@ var World = {
                 +"\n\t\tAdministración Pública."
                 +"\n\t\tEconomía y Estadística."
                 +"\n\nTeléfono: (506) 2511-4360"
+                +"\nMuseo+UCR: http://museo.ucr.ac.cr/rfb/economicas.html"
                 +"\nCorreo: decanato.ce@ucr.ac.cr"
                 +"\nFacebook: https://www.facebook.com/Facultad-de-Ciencias-Econ%C3%B3micas-UCR-444744115214/"
                 +"\nWeb: http://www.fce.ucr.ac.cr/",
