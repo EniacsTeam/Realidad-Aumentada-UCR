@@ -67,6 +67,7 @@ import static android.os.Build.VERSION_CODES.M;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.fab;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
 import static com.google.android.gms.internal.zznu.it;
+import static com.google.android.gms.internal.zzsr.MA;
 import static com.wikitude.architect.CameraPreviewBase.m;
 
 import android.content.Intent;
@@ -134,6 +135,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     List<String> array_list;
     TextView textView ;
     ListView listview;
+    ImageButton imageButton;
+    private  Marker marcador_actual;
 
 
     /**
@@ -290,6 +293,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 textView.setText(marker.getTitle());
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                 marker.showInfoWindow();
+                marcador_actual = marker;
                 return true;
             }
         });
@@ -372,13 +376,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     /**
-     <<<<<<< HEAD
      * Actualiza posicion de usuario y actualiza vista de usuario.
-     =======
-     * Actualiza posición de usuario y actualiza
-     * vista de usuario
-     * <p>
-     >>>>>>> a4bcef7dca3a315ed285c069c5d67a42566cc828
      *
      * @param  bundle Conjunto de datos proveidos a los clientes por los Google Play services.
      *                Podria ser {@code null} si ningun contenido es brindado por el servicio.
@@ -549,6 +547,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         listview = (ListView) findViewById(R.id.soy_lista);
         textView = (TextView) findViewById(R.id.name);
+        imageButton = (ImageButton) findViewById(R.id.direction_go);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MapsActivity.this, "Boton funciona", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /**
@@ -570,16 +575,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // This is the array adapter, it takes the context of the activity as a
         // first parameter, the type of list view as a second parameter and your
         // array as a third parameter.
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this,
-                R.layout.activity_listview,
-                array_list());
-
-        listview.setAdapter(arrayAdapter);
+        CustomListAdapter adapter=new CustomListAdapter(this, rutas_list(), descripcion_list(),duracion_list());
+        listview.setAdapter(adapter);
         //int[] colors = {0, 0xFFFF0000, 0}; // red for the example
         //listview.setDivider(new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT, colors));
-        ColorDrawable sage = new ColorDrawable(this.getResources().getColor(R.color.black));
-        listview.setDivider(sage);
+        ColorDrawable grey = new ColorDrawable(this.getResources().getColor(R.color.grey));
+        listview.setDivider(grey);
 
         listview.setDividerHeight(1);
 
@@ -617,33 +618,30 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      * With in this method, we create array list
      * @return array list
      */
-    public List<String> array_list(){
-        array_list = Arrays.asList(
-                "This",
-                "Is",
-                "An",
-                "Example",
-                "ListView",
-                "That",
-                "You",
-                "Can",
-                "Scroll",
-                ".",
-                "It",
-                "Shows",
-                "How",
-                "Any",
-                "Scrollable",
-                "View",
-                "Can",
-                "Be",
-                "Included",
-                "As",
-                "A",
-                "Child",
-                "Of",
-                "SlidingUpPanelLayout"
-        );
+    public String[] rutas_list(){
+        String[] array_list = {
+                "Ruta 1",
+                "Ruta 2",
+                "Ruta 3"
+        };
+        return array_list;
+    }
+
+    public String[]descripcion_list(){
+        String[] array_list = {
+                "Ejemplo 1",
+                "Ejemplo 2",
+                "Ejemplo 3"
+        };
+        return array_list;
+    }
+
+    public String[] duracion_list(){
+        String[] array_list = {
+                "5 min",
+                "7 min",
+                "10 min"
+        };
         return array_list;
     }
 
@@ -659,6 +657,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             else if (mLayout != null &&
                     mLayout.getPanelState() == SlidingUpPanelLayout.PanelState.COLLAPSED) {
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+                marcador_actual.hideInfoWindow();
                 return true;
             }
         }
