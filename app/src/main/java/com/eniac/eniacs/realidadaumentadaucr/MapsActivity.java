@@ -58,6 +58,7 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -98,6 +99,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Map<Integer, Location> res;
     private int apuntAnterior = -1;
     private boolean correrApuntado = false;
+    private JSONObject rutasDetalle[] = new JSONObject[3];
     FloatingActionButton fab;
     Animation cargafab;
     Animation quitafab;
@@ -115,7 +117,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      * mapa listo para usarlo, se recuperan las herramientas de interfaz de usuario con las que se quieren interactuar y se inicializan
      * las variables necesarias para manejar el sensor de rotacion del dispositivo.
      *
-     * @param savedInstanceState estado guardado de la aplicacion un valor {@code null} indica que la actividad no debe ser recreada a partir de información previa.
+     * @param newBase estado guardado de la aplicacion un valor {@code null} indica que la actividad no debe ser recreada a partir de información previa.
      */
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -496,7 +498,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void getURL(LatLng startL, LatLng endL){
         String start = startL.latitude+","+startL.longitude;
         String end = endL.latitude+","+endL.longitude;
-        String stringUrl = "https://maps.googleapis.com/maps/api/directions/json?origin="+start+"&destination="+end+"&alternatives=true&key=AIzaSyCljYcjcbR69841xYHr5kTcuPfmQ_2qWZE";
+        String stringUrl = "https://maps.googleapis.com/maps/api/directions/json?origin="+start+"&destination="+end+"&alternatives=true&type=walking&key=AIzaSyCljYcjcbR69841xYHr5kTcuPfmQ_2qWZE";
         ;
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -526,9 +528,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             // Grab the first route
             for (int i = 0; i < longitud;i++){
                 JSONObject route = routesArray.getJSONObject(i);
+                rutasDetalle[i] = route;
+                instruccionesRuta(0);
                 JSONObject poly = route.getJSONObject("overview_polyline");
                 String polyline = poly.getString("points");
                 List<LatLng> polyz= decodePoly(polyline);//decodificación de la polilinea
+                String color = "0";
+                if(i==0){
+                    color = "#008000"; //Verde
+                } else if(i==1){
+                    color = "#800080"; //Morado
+                } else {
+                    color = "#0000FF"; //Azul
+                }
+
                 for (int j = 0; j < polyz.size() - 1; j++) {
                     LatLng src = polyz.get(j);
                     LatLng dest = polyz.get(j + 1);
@@ -536,7 +549,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     rutas.add(i,mMap.addPolyline(new PolylineOptions()
                             .add(new LatLng(src.latitude, src.longitude),
                                     new LatLng(dest.latitude, dest.longitude))
-                            .width(4).color(Color.BLUE).geodesic(true)));
+                            .width(4).color(Color.parseColor(color)).geodesic(true)));
 
                 }
             }
@@ -579,6 +592,34 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
         return poly;
+    }
+
+    /**
+     * Metodo llamado para obtener la informacion sobre una ruta seleccionada.
+     *
+     * @param rutaElegida  El indice de la ruta seleccionada por el usuario
+     */
+    private int instruccionesRuta(int rutaElegida) {
+        try{
+            JSONObject distanciaJson = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONObject("distance");
+            String distancia = distanciaJson.getString("text");
+            JSONObject duracionJson = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONObject("duration");
+            String duracion = duracionJson.getString("text");
+            JSONArray pasos = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONArray("steps");
+            Log.i(TAG, "Distancia: "+ distancia+ " Distancia: "+ duracion);
+            for (int i = 0; i < pasos.length();i++) {
+                JSONObject paso = pasos.getJSONObject(i);
+                String distanciaPaso = paso.getJSONObject("distance").getString("text");
+                String duracionPaso = paso.getJSONObject("duration").getString("text");
+                String latEndPaso = paso.getJSONObject("end_location").getString("lat");
+                String lonEndPaso = paso.getJSONObject("end_location").getString("lng");
+                String mensajePaso = paso.getString("html_instructions");
+                Log.i(TAG, "Distancia Paso: "+ distanciaPaso+ " Duracion Paso: "+ duracionPaso+ " Latitud final: "+ latEndPaso+ " Longitud final: "+ lonEndPaso+ " Mensaje: "+ mensajePaso);
+            }
+        } catch (Exception e) {
+
+        }
+        return -1;
     }
 
 }
