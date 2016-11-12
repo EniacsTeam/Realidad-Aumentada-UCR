@@ -78,7 +78,7 @@ import static com.wikitude.architect.CameraPreviewBase.m;
  */
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener, SensorEventListener {
-    String respuesta="";
+    List<Polyline> rutas=new ArrayList<>();
     boolean flag=false;
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
@@ -172,6 +172,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         paint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP));
 
 
+       // String [] parameter = {"9.937886, -84.052016","9.936089, -84.051115"};
+       // GetDirection gd = new GetDirection();
+       // String stringUrl = "http://maps.googleapis.com/maps/api/directions/json?origin=" + "9.937886, -84.052016" + ",&destination=" + "9.936089, -84.051115"+ "&sensor=false";
+        //gd.execute(stringUrl);
     }
 
     /**
@@ -255,7 +259,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             flag=true;
             LatLng start = new LatLng(9.937886, -84.052016);
             LatLng end = new LatLng(9.936089, -84.051115);
-            getPolyline(start,end);
+            getURL(start,end);
         }
     }
 
@@ -489,11 +493,57 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-    public void getPolyline(LatLng start, LatLng end){
-        String startLocation = String.valueOf(start.latitude) +","+String.valueOf(start.longitude);
-        String endLocation = String.valueOf(end.latitude) +","+String.valueOf(end.longitude);
-        String stringUrl = "http://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation + "&destination=" + endLocation + "&sensor=false";
-        getURL(stringUrl);
+    public void getURL(LatLng startL, LatLng endL){
+        String start = startL.latitude+","+startL.longitude;
+        String end = endL.latitude+","+endL.longitude;
+        String stringUrl = "https://maps.googleapis.com/maps/api/directions/json?origin="+start+"&destination="+end+"&alternatives=true&key=AIzaSyCljYcjcbR69841xYHr5kTcuPfmQ_2qWZE";
+        ;
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, stringUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        dibujar(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //dibujar(error.toString());
+            }
+        });
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+    public void dibujar(String jsonRuta){
+        try {
+            JSONObject jsonObject = new JSONObject(jsonRuta);
+            // routesArray contains ALL routes
+            JSONArray routesArray = jsonObject.getJSONArray("routes");
+            int longitud = routesArray.length();
+            // Grab the first route
+            for (int i = 0; i < longitud;i++){
+                JSONObject route = routesArray.getJSONObject(i);
+                JSONObject poly = route.getJSONObject("overview_polyline");
+                String polyline = poly.getString("points");
+                List<LatLng> polyz= decodePoly(polyline);//decodificación de la polilinea
+                for (int j = 0; j < polyz.size() - 1; j++) {
+                    LatLng src = polyz.get(j);
+                    LatLng dest = polyz.get(j + 1);
+
+                    rutas.add(i,mMap.addPolyline(new PolylineOptions()
+                            .add(new LatLng(src.latitude, src.longitude),
+                                    new LatLng(dest.latitude, dest.longitude))
+                            .width(4).color(Color.BLUE).geodesic(true)));
+
+                }
+            }
+
+        } catch (Exception e) {
+
+        }
     }
 
     /* Method to decode polyline points */
@@ -531,52 +581,4 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return poly;
     }
 
-    public void getURL(String stringUrl){
-        // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(this);
-        // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, stringUrl,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        leerRespuesta(response);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                leerRespuesta(error.toString());
-            }
-        });
-        // Add the request to the RequestQueue.
-        queue.add(stringRequest);
-    }
-
-    public void leerRespuesta(String texto){
-        respuesta = texto;
-        flag=false;
-        List<LatLng> polyz;
-        try {
-            JSONObject jsonObject = new JSONObject(respuesta);
-            // routesArray contains ALL routes
-            JSONArray routesArray = jsonObject.getJSONArray("routes");
-            // Grab the first route
-            JSONObject route = routesArray.getJSONObject(0);
-
-            JSONObject poly = route.getJSONObject("overview_polyline");
-            String polyline = poly.getString("points");
-            System.out.println(polyline);
-            polyz = decodePoly(polyline);
-            System.out.println("5"+polyz.toString());
-            for (int i = 0; i < polyz.size() - 1; i++) {
-                LatLng src = polyz.get(i);
-                LatLng dest = polyz.get(i + 1);
-                Polyline line = mMap.addPolyline(new PolylineOptions()
-                        .add(new LatLng(src.latitude, src.longitude),
-                                new LatLng(dest.latitude, dest.longitude))
-                        .width(4).color(Color.BLUE).geodesic(true));
-            }
-        } catch (Exception e) {
-            System.out.println("6 error");
-        }
-    }
 }
