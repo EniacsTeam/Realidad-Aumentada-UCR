@@ -134,35 +134,10 @@ public class Rutas {
 
     public void getPolyline(LatLng start, LatLng end){
         System.out.println("1entré");
-        //List<LatLng> polyz=new ArrayList<>();
         String startLocation = String.valueOf(start.latitude) +","+String.valueOf(start.longitude);
         String endLocation = String.valueOf(end.latitude) +","+String.valueOf(end.longitude);
         String stringUrl = "http://maps.googleapis.com/maps/api/directions/json?origin=" + startLocation + "&destination=" + endLocation + "&sensor=false";
-        //StringBuilder response = new StringBuilder();
         getURL(stringUrl);
-        /*try {
-            StringRequest respuesta = getURL(stringUrl);
-
-            String jsonOutput = response.toString();
-
-            JSONObject jsonObject = new JSONObject(jsonOutput);
-
-            // routesArray contains ALL routes
-            JSONArray routesArray = jsonObject.getJSONArray("routes");
-            // Grab the first route
-            JSONObject route = routesArray.getJSONObject(0);
-
-            JSONObject poly = route.getJSONObject("overview_polyline");
-            String polyline = poly.getString("points");
-            System.out.println(polyline);
-            polyz = decodePoly(polyline);
-            System.out.println("4saliendo");
-            System.out.println("5"+polyz.toString());
-        } catch (Exception e) {
-            System.out.println("6 error");
-        }
-
-        return polyz;*/
     }
 
     /* Method to decode polyline points */
@@ -201,9 +176,7 @@ public class Rutas {
     }
 
     public void getURL(String stringUrl){
-        // Instantiate the RequestQueue.
         String url ="http://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&sensor=false";
-        // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, stringUrl,
                 new Response.Listener<String>() {
                     @Override
@@ -216,11 +189,9 @@ public class Rutas {
                 leerRespuesta(error.toString());
             }
         });
-        // Add the request to the RequestQueue.
     }
 
     public void leerRespuesta(String texto){
-        System.out.println("he leído "+texto);
         respuesta = texto;
     }
 }
