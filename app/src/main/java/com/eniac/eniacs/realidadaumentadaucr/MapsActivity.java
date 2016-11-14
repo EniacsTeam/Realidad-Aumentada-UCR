@@ -79,8 +79,9 @@ import static com.wikitude.architect.CameraPreviewBase.m;
  */
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener, SensorEventListener {
-    List<Polyline> rutas=new ArrayList<>();
-    boolean flag=false;
+    List<Polyline> rutas;
+
+    boolean flagRutas;
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
@@ -172,8 +173,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         distanceVector = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
         paint  = new Paint();
         paint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP));
-
-
+        flagRutas=false;
+        rutas=new ArrayList<>();
        // String [] parameter = {"9.937886, -84.052016","9.936089, -84.051115"};
        // GetDirection gd = new GetDirection();
        // String stringUrl = "http://maps.googleapis.com/maps/api/directions/json?origin=" + "9.937886, -84.052016" + ",&destination=" + "9.936089, -84.051115"+ "&sensor=false";
@@ -528,7 +529,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             // Grab the first route
             for (int i = 0; i < longitud;i++){
                 JSONObject route = routesArray.getJSONObject(i);
-                rutasDetalle[i] = route;
+                //rutasDetalle[i] = route;
                 instruccionesRuta(0);
                 JSONObject poly = route.getJSONObject("overview_polyline");
                 String polyline = poly.getString("points");
@@ -553,11 +554,40 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 }
             }
-
+            flagRutas=true;
         } catch (Exception e) {
 
         }
     }
+
+    /**
+     * Metodo llamado para obtener la informacion sobre una ruta seleccionada.
+     *
+     * @param rutaElegida  El indice de la ruta seleccionada por el usuario
+     */
+    private int instruccionesRuta(int rutaElegida) {
+        try{
+            JSONObject distanciaJson = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONObject("distance");
+            String distancia = distanciaJson.getString("text");
+            JSONObject duracionJson = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONObject("duration");
+            String duracion = duracionJson.getString("text");
+            JSONArray pasos = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONArray("steps");
+            Log.i(TAG, "Distancia: "+ distancia+ " Distancia: "+ duracion);
+            for (int i = 0; i < pasos.length();i++) {
+                JSONObject paso = pasos.getJSONObject(i);
+                String distanciaPaso = paso.getJSONObject("distance").getString("text");
+                String duracionPaso = paso.getJSONObject("duration").getString("text");
+                String latEndPaso = paso.getJSONObject("end_location").getString("lat");
+                String lonEndPaso = paso.getJSONObject("end_location").getString("lng");
+                String mensajePaso = paso.getString("html_instructions");
+                Log.i(TAG, "Distancia Paso: "+ distanciaPaso+ " Duracion Paso: "+ duracionPaso+ " Latitud final: "+ latEndPaso+ " Longitud final: "+ lonEndPaso+ " Mensaje: "+ mensajePaso);
+            }
+        } catch (Exception e) {
+
+        }
+        return -1;
+    }
+
 
     /* Method to decode polyline points */
     private List<LatLng> decodePoly(String encoded) {
@@ -594,32 +624,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return poly;
     }
 
-    /**
-     * Metodo llamado para obtener la informacion sobre una ruta seleccionada.
-     *
-     * @param rutaElegida  El indice de la ruta seleccionada por el usuario
-     */
-    private int instruccionesRuta(int rutaElegida) {
-        try{
-            JSONObject distanciaJson = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONObject("distance");
-            String distancia = distanciaJson.getString("text");
-            JSONObject duracionJson = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONObject("duration");
-            String duracion = duracionJson.getString("text");
-            JSONArray pasos = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONArray("steps");
-            Log.i(TAG, "Distancia: "+ distancia+ " Distancia: "+ duracion);
-            for (int i = 0; i < pasos.length();i++) {
-                JSONObject paso = pasos.getJSONObject(i);
-                String distanciaPaso = paso.getJSONObject("distance").getString("text");
-                String duracionPaso = paso.getJSONObject("duration").getString("text");
-                String latEndPaso = paso.getJSONObject("end_location").getString("lat");
-                String lonEndPaso = paso.getJSONObject("end_location").getString("lng");
-                String mensajePaso = paso.getString("html_instructions");
-                Log.i(TAG, "Distancia Paso: "+ distanciaPaso+ " Duracion Paso: "+ duracionPaso+ " Latitud final: "+ latEndPaso+ " Longitud final: "+ lonEndPaso+ " Mensaje: "+ mensajePaso);
-            }
-        } catch (Exception e) {
-
+private void borrarRutas(int index){
+    Polyline tempPoli=rutas.get(0);
+    for(int i = 0; i < rutas.size();i++){
+        if(i==index){
+            tempPoli = rutas.get(i);
+        }else{
+            rutas.get(i).remove();
         }
-        return -1;
     }
+    rutas.clear();
+    rutas.add(tempPoli);
+}
 
 }
