@@ -57,6 +57,14 @@
             android:layout_toLeftOf="@+id/imageButton3"
             android:layout_toStartOf="@+id/imageButton3"
             android:background="@drawable/ic_logo_facebook" />
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/imageButton5"
+            android:layout_alignBottom="@+id/imageButton4"
+            android:layout_toStartOf="@+id/imageButton4"
+            android:background="@drawable/ic_museo" />
     </RelativeLayout>
 
 </LinearLayout>

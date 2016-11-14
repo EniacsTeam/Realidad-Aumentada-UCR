@@ -6,11 +6,11 @@ var World = {
 
 	//Vector de locations.
 	edificios : [
-                "Facultad de Derecho","Oficina de Becas y Atención Socioeconómica",
-                "Biblioteca Luis Demetrio Tinoco","Escuela de Arquitectura","Comedor universitario","Facultad de Ingeniería",
-                "Escuela de Física y Matemáticas","Escuela de Estudios Generales","Biblioteca Carlos Monge",
-                "Sección de Educación Preescolar","Facultad de Letras","Centro de Informática","Escuela Centroamericana de Geología",
-                "Facultad de Ciencias Económicas","Escuela de Computación e Informática","Facultad de Odontología","Facultad de Medicina",
+                "Facultad de Derecho","Oficina de Becas",
+                "Biblioteca Tinoco","Escuela de Arquitectura","Comedor universitario","Facultad de Ingeniería",
+                "Escuela de Física y Matemáticas","Escuela de Generales","Biblioteca Carlos Monge",
+                "Educación Preescolar","Facultad de Letras","Centro de Informática","Escuela de Geología",
+                "Ciencias Económicas","Computación e Informática","Facultad de Odontología","Facultad de Medicina",
                 "Facultad de Farmacia","Facultad de Microbiología","Escuela de Biología","Escuela de Química",
                 "Escuela de Artes Musicales","Escuela de Bellas Artes","Facultad de Educación","Bosque Leonel Oviedo",
                 "Mariposario","Plaza 24 de abril","El Pretil"],
@@ -80,6 +80,7 @@ var World = {
                 +"\n\nCarreras:"
                 +"\n\t\tGeología."
                 +"\n\nTeléfono: (506) 2511-5625"
+                +"\nMuseo+UCR: http://museo.ucr.ac.cr/rfb/geologia.html"
                 +"\nCorreo: geologia@ucr.ac.cr"
                 +"\nFacebook: https://www.facebook.com/ECG.UCR/"
                 +"\nWeb: http://www.geologia.ucr.ac.cr/",
@@ -94,6 +95,7 @@ var World = {
                 +"\n\t\tAdministración Pública."
                 +"\n\t\tEconomía y Estadística."
                 +"\n\nTeléfono: (506) 2511-4360"
+                +"\nMuseo+UCR: http://museo.ucr.ac.cr/rfb/economicas.html"
                 +"\nCorreo: decanato.ce@ucr.ac.cr"
                 +"\nFacebook: https://www.facebook.com/Facultad-de-Ciencias-Econ%C3%B3micas-UCR-444744115214/"
                 +"\nWeb: http://www.fce.ucr.ac.cr/",
@@ -134,7 +136,7 @@ var World = {
 
 
     //Numero de llamados a location
-    altitud : 0,
+    altitud : 1200,
 	// you may request new data from server periodically, however: in this sample data is only requested once
 	isRequestingData: false,
 	// true once data was fetched
@@ -156,13 +158,21 @@ var World = {
 
 	// called to inject new POI data
 	loadPoisFromJsonData: function loadPoisFromJsonDataFn(id1, id2, id3) {
-	    if(id1!=ident1||id2!=ident2||id3!=ident3){
+	    if(id1!=ident1 && id1!=ident2 && id1!=ident3 || id2!=ident1 && id2!=ident2 && id2!=ident3 || id3!=ident1 && id3!=ident2 && id3!=ident3){
 	        ident1=id1;
             ident2=id2;
             ident3=id3;
-            World.markerList.pop();
-            World.markerList.pop();
-            World.markerList.pop();
+            if(World.markerList.length == 3) {
+                World.markerList[0].markerObject.destroy();
+                World.markerList[1].markerObject.destroy();
+                World.markerList[2].markerObject.destroy();
+                World.markerList.pop();
+                World.markerList.pop();
+                World.markerList.pop();
+            }
+            //AR.context.destroyAll()
+
+
 
             // start loading marker assets
             World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
@@ -259,8 +269,11 @@ var World = {
 
 	// location updates, fired every time you call architectView.setLocation() in native environment
 	locationChanged: function locationChangedFn(lat, lon, alt, acc) {
+        if(alt < 1000){
+        alt = 1200;
+        }
 		World.altitud= alt; // comentado
-
+        //alert(World.altitud);
 		/*
 			The custom function World.onLocationChanged checks with the flag World.initiallyLoadedData if the function was already called. With the first call of World.onLocationChanged an object that contains geo information will be created which will be later used to create a marker using the World.loadPoisFromJsonData function.
 		*/
@@ -341,8 +354,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Arquitectura.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -352,8 +365,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Cenizaro.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -363,8 +376,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Computacion.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -374,8 +387,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Economicas.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -385,8 +398,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Rodrigo Facio.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -396,8 +409,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Fernando.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -407,8 +420,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Geologia.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -418,8 +431,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Joaquin Jimenez.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -429,8 +442,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Letras.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -440,8 +453,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Letras.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -451,8 +464,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Carlos Monge.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -462,8 +475,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Ojoche.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -473,8 +486,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Omar Dengo.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -484,8 +497,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Biblioteca Tinoco.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -495,8 +508,8 @@ var World = {
     			{
     				"type": "video",
     				"uri": "Videos/Yolanda Oreamuno.mp4",
-    				"scale": 0.40,
-    				"offsetX": -0.3,
+    				"scale": 0.80,
+    				"offsetX": -0.5,
     				"offsetY": -0.3,
     				"autoplay": true,
     				"isTransparent": true
@@ -566,12 +579,12 @@ var World = {
         				}
         			},
         			onExitFieldOfVision: function onExitFieldOfVisionFn() {
-        				for (var i=World.trackable.drawables.cam.length-1; i>=0; i--) {
+        				/*for (var i=World.trackable.drawables.cam.length-1; i>=0; i--) {
         					World.trackable.drawables.cam[i].enabled = false;
         					if (World.trackable.drawables.cam[i].pause) {
         						World.trackable.drawables.cam[i].pause();
         					}
-        				}
+        				}*/
         			}
         		});
         	}
