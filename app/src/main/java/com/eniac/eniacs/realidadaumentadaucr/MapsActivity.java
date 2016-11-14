@@ -205,6 +205,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         setListview();    // call setListview method
         panelListener(); // Call paneListener method
         mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+        mLayout.setAnchorPoint(0.3f); //Para que solo se vea las 3 rutas y no se expanda completamente el panel
+        mLayout.setTouchEnabled(false); //Para que el usuario no pueda deslizar el panel
 
     }
 
@@ -551,7 +553,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MapsActivity.this, "Boton funciona", Toast.LENGTH_SHORT).show();
+                double lat = marcador_actual.getPosition().latitude;
+                Boolean condicion = false;
+                int cont = -1;
+                while (condicion==false)
+                {
+                    ++cont;
+                    if(mRuta.elatitud[cont] == lat)
+                    {
+                        condicion = true;
+                    }
+                }
+                //datoRuta(cont);
+                /*while (!flagRutas)
+                {
+                    //flagRutas == false
+                }*/
+                mLayout.setPanelState(SlidingUpPanelLayout.PanelState.ANCHORED);
+                Toast.makeText(MapsActivity.this, "Boton funciona y marcador es indice " + cont, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -567,7 +586,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MapsActivity.this, "onItemClick", Toast.LENGTH_SHORT).show();
+                //instruccionesRuta(position);
+                Toast.makeText(MapsActivity.this, "posicion " + position, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -577,8 +597,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // array as a third parameter.
         CustomListAdapter adapter=new CustomListAdapter(this, rutas_list(), descripcion_list(),duracion_list());
         listview.setAdapter(adapter);
-        //int[] colors = {0, 0xFFFF0000, 0}; // red for the example
-        //listview.setDivider(new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT, colors));
         ColorDrawable grey = new ColorDrawable(this.getResources().getColor(R.color.grey));
         listview.setDivider(grey);
 
