@@ -25,17 +25,19 @@ public class SamplePoiDetailActivity extends Activity {
     public static final String EXTRAS_KEY_POI_TITILE = "title";
     public static final String EXTRAS_KEY_POI_DESCR = "description";
 
-    public static final String[] contacto = {"Teléfono:", "Correo:", "Facebook:", "Web:"};
+    public static final String[] contacto = {"Teléfono:", "Correo:", "Facebook:",  "Web:", "Museo+UCR:"};
 
     private String tel;
     private String web;
     private String correo;
     private String face;
+    private String museo;
 
     ImageButton facebook;
     ImageButton numTel;
     ImageButton email;
     ImageButton webPage;
+    ImageButton museumPage;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -77,13 +79,14 @@ public class SamplePoiDetailActivity extends Activity {
         numTel = (ImageButton) findViewById(R.id.imageButton2);
         email = (ImageButton) findViewById(R.id.imageButton3);
         facebook = (ImageButton) findViewById(R.id.imageButton4);
+        museumPage = (ImageButton) findViewById(R.id.imageButton5);
 
         String descript = getIntent().getExtras().getString(EXTRAS_KEY_POI_DESCR);
 
         int index;
         int endIndex;
-        for (int i = 0; i < 4; i++) {
-            index = descript.indexOf(contacto[i], 0);
+        for (int i = 0; i < 5; i++) {
+            index = descript.indexOf(contacto[i],0);
             if (index != -1) {
                 switch (contacto[i]) {
                     case "Teléfono:":
@@ -143,6 +146,20 @@ public class SamplePoiDetailActivity extends Activity {
 
                         });
                         break;
+                    case "Museo+UCR:":
+                        endIndex = descript.indexOf('\n',index);
+                        museo = descript.substring(index+11,endIndex);
+                        museumPage.setOnClickListener(new View.OnClickListener() {
+
+                            @Override
+                            public void onClick(View arg0) {
+                                Uri uri = Uri.parse(museo); // missing 'http://' will cause crashed
+                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                                startActivity(intent);
+                            }
+
+                        });
+                        break;
                 }
             } else {
                 switch (contacto[i]) {
@@ -161,6 +178,10 @@ public class SamplePoiDetailActivity extends Activity {
                     case "Web:":
                         web = null;
                         webPage.setAlpha(0.3f);
+                        break;
+                    case "Museo+UCR:":
+                        museo = null;
+                        museumPage.setAlpha(0.3f);
                         break;
                 }
             }

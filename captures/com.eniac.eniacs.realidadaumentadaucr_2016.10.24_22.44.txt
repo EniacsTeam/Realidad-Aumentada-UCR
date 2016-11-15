@@ -1,0 +1,46 @@
+Applications Memory Usage (in Kilobytes):
+Uptime: 172451329 Realtime: 276703331
+
+** MEMINFO in pid 14730 [com.eniac.eniacs.realidadaumentadaucr] **
+                   Pss  Private  Private  SwapPss     Heap     Heap     Heap
+                 Total    Dirty    Clean    Dirty     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------   ------
+  Native Heap     1017      976        0        0     6144     3639     2504
+  Dalvik Heap      666      632        0        0     9450     7088     2362
+ Dalvik Other      165      164        0        0                           
+        Stack      200      200        0        0                           
+    Other dev        4        0        4        0                           
+     .so mmap      331       52      164       50                           
+    .apk mmap      515        0      344        0                           
+    .dex mmap       20        4       16        0                           
+    .oat mmap      204        0        4        0                           
+    .art mmap      685      328        0        5                           
+   Other mmap       10        4        0        0                           
+      Unknown      193      192        0        3                           
+        TOTAL     4068     2552      532       58    15594    10727     4866
+ 
+ App Summary
+                       Pss(KB)
+                        ------
+           Java Heap:      960
+         Native Heap:      976
+                Code:      584
+               Stack:      200
+            Graphics:        0
+       Private Other:      364
+              System:      984
+ 
+               TOTAL:     4068       TOTAL SWAP PSS:       58
+ 
+ Objects
+               Views:        0         ViewRootImpl:        0
+         AppContexts:        3           Activities:        0
+              Assets:        2        AssetManagers:        2
+       Local Binders:        3        Proxy Binders:        7
+       Parcel memory:        2         Parcel count:       10
+    Death Recipients:        0      OpenSSL Sockets:        0
+ 
+ SQL
+         MEMORY_USED:        0
+  PAGECACHE_OVERFLOW:        0          MALLOC_SIZE:        0
+ 

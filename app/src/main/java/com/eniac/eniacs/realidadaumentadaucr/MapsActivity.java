@@ -3,6 +3,7 @@ package com.eniac.eniacs.realidadaumentadaucr;
 import android.*;
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,9 +28,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.multidex.MultiDex;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -102,6 +106,11 @@ import java.util.List;
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener, SensorEventListener {
 
+    SearchView searchView;
+    SearchManager searchManager;
+    DrawerLayout mDrawerLayout;
+    private boolean isFirst = true;
+
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
@@ -130,6 +139,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private SensorManager mSensorManager;//control de sensores
     private Sensor distanceVector;
 
+
     private SlidingUpPanelLayout mLayout;
     private static final String TAG = "MapsActivity";
     List<String> array_list;
@@ -137,6 +147,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     ListView listview;
     ImageButton imageButton;
     private  Marker marcador_actual;
+
+
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+        MultiDex.install(this);
+    }
 
 
     /**
@@ -147,12 +165,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      *
      * @param savedInstanceState estado guardado de la aplicacion un valor {@code null} indica que la actividad no debe ser recreada a partir de información previa.
      */
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(newBase);
-        MultiDex.install(this);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -201,12 +213,63 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         paint  = new Paint();
         paint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP));
 
+
         init();            // call init method
         setListview();    // call setListview method
         panelListener(); // Call paneListener method
         mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
         mLayout.setAnchorPoint(0.3f); //Para que solo se vea las 3 rutas y no se expanda completamente el panel
         mLayout.setTouchEnabled(false); //Para que el usuario no pueda deslizar el panel
+
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        mDrawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                if(isFirst) {
+                    isFirst = false;
+                    configureSearch();
+                }
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });
+    }
+
+    private void configureSearch() {
+        // Get the SearchView and set the searchable configuration
+        searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) findViewById(R.id.search);
+        // Current activity is the searchable activity
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        //searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast t = Toast.makeText(getApplicationContext(),query,Toast.LENGTH_SHORT);
+                t.show();
+                return true;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
     }
 

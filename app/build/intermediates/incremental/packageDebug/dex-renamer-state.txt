@@ -1,0 +1,7 @@
+#Mon Nov 14 21:10:37 CST 2016
+base.0=C\:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_827807c138b38e185e3e46458a2a60c32d6b07c0
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_e0f920cd82c27a3d2f1a6cc33d8a8abb9fc9e9a4\\classes.dex
+base.1=C\:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_e0f920cd82c27a3d2f1a6cc33d8a8abb9fc9e9a4
+file.0=C\:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_827807c138b38e185e3e46458a2a60c32d6b07c0\\classes.dex
