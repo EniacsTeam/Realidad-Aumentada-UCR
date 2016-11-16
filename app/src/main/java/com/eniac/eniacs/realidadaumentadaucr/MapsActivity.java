@@ -325,13 +325,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     /**
-     <<<<<<< HEAD
      * Actualiza posicion de usuario y actualiza vista de usuario.
-     =======
      * Actualiza posición de usuario y actualiza
      * vista de usuario
      * <p>
-     >>>>>>> a4bcef7dca3a315ed285c069c5d67a42566cc828
      *
      * @param  bundle Conjunto de datos proveidos a los clientes por los Google Play services.
      *                Podria ser {@code null} si ningun contenido es brindado por el servicio.
@@ -508,6 +505,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     @Override
                     public void onResponse(String response) {
                         dibujar(response);
+                        instruccionesRuta(0,1);
+                        datosRuta(3);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -529,7 +528,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             for (int i = 0; i < longitud;i++){
                 JSONObject route = routesArray.getJSONObject(i);
                 rutasDetalle[i] = route;
-                instruccionesRuta(0);
                 JSONObject poly = route.getJSONObject("overview_polyline");
                 String polyline = poly.getString("points");
                 List<LatLng> polyz= decodePoly(polyline);//decodificación de la polilinea
@@ -595,31 +593,83 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     /**
+     * Metodo llamado para obtener la informacion sobre las rutas disponibles
+     *
+     * @param puntoElegido  El indice de la ruta seleccionada por el usuario
+     */
+    private List < String[] > datosRuta(int puntoElegido) {
+        //LatLng inicioRuta = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+        //LatLng destinoRuta = new LatLng(mRuta.elatitud[puntoElegido], mRuta.elonguitud[puntoElegido]);
+        //getURL(inicioRuta, destinoRuta);
+        int cantidadRutas = rutasDetalle.length;
+        String[] distancias = new String[cantidadRutas];
+        String[] duraciones = new String[cantidadRutas];
+
+        List < String[] > distanciaDuracion = new ArrayList < String[] > ();
+        try {
+            for (int i = 0; i < 2; i++) { //cantidadRutas
+                JSONObject distanciaJson = rutasDetalle[i].getJSONArray("legs").getJSONObject(0).getJSONObject("distance");
+                String distancia = distanciaJson.getString("text");
+                distancias[i] = distanciaJson.getString("text");
+                JSONObject duracionJson = rutasDetalle[i].getJSONArray("legs").getJSONObject(0).getJSONObject("duration");
+                String duracion = duracionJson.getString("text");
+                duraciones[i] = duracionJson.getString("text");
+                Log.i(TAG, "Distancia: " + distancia + " Duracion: " + duracion);
+            }
+            distanciaDuracion.add(distancias);
+            distanciaDuracion.add(duraciones);
+        } catch (Exception e) {
+
+        }
+        return distanciaDuracion;
+    }
+
+    /**
      * Metodo llamado para obtener la informacion sobre una ruta seleccionada.
      *
      * @param rutaElegida  El indice de la ruta seleccionada por el usuario
      */
-    private int instruccionesRuta(int rutaElegida) {
-        try{
-            JSONObject distanciaJson = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONObject("distance");
-            String distancia = distanciaJson.getString("text");
-            JSONObject duracionJson = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONObject("duration");
-            String duracion = duracionJson.getString("text");
+    private String[] instruccionesRuta(int rutaElegida, int pasoSolicitado) {
+        if (pasoSolicitado == 0) {
+            borrarRutas(rutaElegida);
+        }
+        String[] detallesPaso = new String[5];
+        try {
             JSONArray pasos = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONArray("steps");
-            Log.i(TAG, "Distancia: "+ distancia+ " Distancia: "+ duracion);
-            for (int i = 0; i < pasos.length();i++) {
-                JSONObject paso = pasos.getJSONObject(i);
-                String distanciaPaso = paso.getJSONObject("distance").getString("text");
-                String duracionPaso = paso.getJSONObject("duration").getString("text");
-                String latEndPaso = paso.getJSONObject("end_location").getString("lat");
-                String lonEndPaso = paso.getJSONObject("end_location").getString("lng");
-                String mensajePaso = paso.getString("html_instructions");
-                Log.i(TAG, "Distancia Paso: "+ distanciaPaso+ " Duracion Paso: "+ duracionPaso+ " Latitud final: "+ latEndPaso+ " Longitud final: "+ lonEndPaso+ " Mensaje: "+ mensajePaso);
-            }
+            JSONObject paso = pasos.getJSONObject(pasoSolicitado);
+            String distanciaPaso = paso.getJSONObject("distance").getString("text");
+            detallesPaso[0] = distanciaPaso;
+            String duracionPaso = paso.getJSONObject("duration").getString("text");
+            detallesPaso[1] = duracionPaso;
+            String latEndPaso = paso.getJSONObject("end_location").getString("lat");
+            detallesPaso[2] = latEndPaso;
+            String lonEndPaso = paso.getJSONObject("end_location").getString("lng");
+            detallesPaso[3] = lonEndPaso;
+            String mensajePaso = paso.getString("html_instructions");
+            detallesPaso[4] = mensajePaso;
+            Log.i(TAG, "Distancia Paso: " + distanciaPaso + " Duracion Paso: " + duracionPaso + " Latitud final: " + latEndPaso + " Longitud final: " + lonEndPaso + " Mensaje: " + mensajePaso);
         } catch (Exception e) {
 
         }
-        return -1;
+        return detallesPaso;
+    }
+
+    /**
+     * Metodo llamado para borrar rutas no requeridas.
+     *
+     * @param index  El indice de la ruta seleccionada por el usuario
+     */
+    private void borrarRutas(int index) {
+        Polyline tempPoli = rutas.get(0);
+        for (int i = 0; i < rutas.size(); i++) {
+            if (i == index) {
+                tempPoli = rutas.get(i);
+            } else {
+                rutas.get(i).remove();
+            }
+        }
+        rutas.clear();
+        rutas.add(tempPoli);
     }
 
 }
