@@ -10,89 +10,184 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="assert" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="dista" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Firebase" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72741acc-8897-49db-a4c9-56978296b048" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/animated_vector_drawable_24_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_24_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/design_24_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_analytics_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_analytics_impl_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_auth_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_auth_common_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_auth_module_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_common_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_config_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_crash_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_database_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_database_connection_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_iid_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_messaging_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_storage_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/firebase_storage_common_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/hamcrest_core_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/junit_4_12.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/library_3_3_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/mediarouter_v7_24_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/multidex_1_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/multidex_instrumentation_1_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/palette_v7_24_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_ads_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_ads_lite_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_analytics_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_analytics_impl_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_appindexing_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_appinvite_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_auth_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_auth_base_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_awareness_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_base_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_basement_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_cast_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_cast_framework_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_clearcut_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_drive_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_fitness_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_games_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_gass_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_gcm_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_identity_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_iid_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_instantapps_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_location_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_maps_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_nearby_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_panorama_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_places_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_plus_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_safetynet_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_tagmanager_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_tagmanager_api_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_tasks_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_vision_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_wallet_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_wearable_9_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_24_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_24_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_compat_24_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_core_ui_24_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_core_utils_24_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_fragment_24_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_media_compat_24_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_24_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_vector_drawable_24_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/wikitudesdk_.xml" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/GetDirection.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$10.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$11.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/Rutas$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/Rutas$2.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.volley/volley/1.0.0/jars/classes.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/GetDirection.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$10.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$11.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/Rutas$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/Rutas$2.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.volley-volley-1.0.0_148dca8a759fa598c23129511efa0e6218b52d5a/classes.dex" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/10/hamcrest-core-1.3_dd86ac4f86e78c447b5b54d08290a6d8097d0e01/classes.dex" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/10/junit-4.12_aec432b2c6c594ca843019974e91c9d591a82266/classes.dex" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/GetDirection.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$10.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$11.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/Rutas$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/Rutas$2.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/GetDirection.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$10.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$11.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/Rutas$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/Rutas$2.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/AuthFailureError.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/BuildConfig.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/Cache$Entry.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/Cache.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/CacheDispatcher$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/CacheDispatcher.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/DefaultRetryPolicy.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/ExecutorDelivery$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/ExecutorDelivery$ResponseDeliveryRunnable.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/ExecutorDelivery.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/Network.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/NetworkDispatcher.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/NetworkError.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/NetworkResponse.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/NoConnectionError.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/ParseError.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/Request$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/Request$Method.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/Request$Priority.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/Request.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/RequestQueue$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/RequestQueue$RequestFilter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/RequestQueue$RequestFinishedListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/RequestQueue.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/Response$ErrorListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/Response$Listener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/Response.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/ResponseDelivery.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/RetryPolicy.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/ServerError.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/TimeoutError.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/VolleyError.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/VolleyLog$MarkerLog$Marker.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/VolleyLog$MarkerLog.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/VolleyLog.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/AndroidAuthenticator.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/Authenticator.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/BasicNetwork.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/ByteArrayPool$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/ByteArrayPool.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/ClearCacheRequest.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/DiskBasedCache$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/DiskBasedCache$CacheHeader.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/DiskBasedCache$CountingInputStream.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/DiskBasedCache.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/HttpClientStack$HttpPatch.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/HttpClientStack.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/HttpHeaderParser.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/HttpStack.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/HurlStack$UrlRewriter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/HurlStack.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/ImageLoader$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/ImageLoader$2.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/ImageLoader$3.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/ImageLoader$4.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/ImageLoader$BatchedImageRequest.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/ImageLoader$ImageCache.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/ImageLoader$ImageContainer.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/ImageLoader$ImageListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/ImageLoader.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/ImageRequest.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/JsonArrayRequest.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/JsonObjectRequest.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/JsonRequest.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/NetworkImageView$1$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/NetworkImageView$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/NetworkImageView.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/NoCache.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/PoolingByteArrayOutputStream.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/RequestFuture.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/StringRequest.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/tmp/expandedArchives/classes.jar_2rqeye57x84ob0o6ytsvirwpj/com/android/volley/toolbox/Volley.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/johan.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_http_legacy_android_24.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/volley_1_0_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.volley/volley/1.0.0/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.android.volley/volley/1.0.0/aapt/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/buildId.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/eniac/eniacs/realidadaumentadaucr/GetDirection.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$5.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$6.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$7.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$8.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$8.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$9.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$9.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/Rutas.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/eniac/eniacs/realidadaumentadaucr/Rutas.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$5.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$6.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$7.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$8.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$8.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$9.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$9.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/MapsActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/Rutas.class" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental-verifier/debug/com/eniac/eniacs/realidadaumentadaucr/Rutas.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/zip-cache/qq4+scNTMo_4ABKanGsxeV6SWps=" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/zip-cache/qq4+scNTMo_4ABKanGsxeV6SWps=" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/instant-run.zip" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/instant-run.zip" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$5.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$6.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$7.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$8.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$8.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$9.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$9.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/MapsActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/Rutas.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/eniac/eniacs/realidadaumentadaucr/Rutas.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$1.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$2.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$3.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$4.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$5.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$6.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$7.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$8.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$8.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$9.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity$9.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/MapsActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/Rutas.class" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/com/eniac/eniacs/realidadaumentadaucr/Rutas.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/dex-renamer-state.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/file-input-save-data.txt" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/file-input-save-data.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/restart-dex/debug/build-info.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/restart-dex/debug/build-info.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/eniac/eniacs/realidadaumentadaucr/MapsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/eniac/eniacs/realidadaumentadaucr/MapsActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/eniac/eniacs/realidadaumentadaucr/Rutas.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/eniac/eniacs/realidadaumentadaucr/Rutas.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
     </list>
     <ignored path="Realidad-Aumentada-UCR.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -129,127 +224,51 @@
       <file leaf-file-name="MapsActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/eniac/eniacs/realidadaumentadaucr/MapsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
-              <caret line="148" column="36" selection-start-line="148" selection-start-column="36" selection-end-line="148" selection-end-column="36" />
+            <state relative-caret-position="102">
+              <caret line="709" column="26" selection-start-line="709" selection-start-column="26" selection-end-line="709" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7787#8297#0" expanded="true" />
-                <element signature="e#8296#8297#0" expanded="true" />
-                <element signature="e#13881#14455#0" expanded="true" />
-                <element signature="e#14454#14455#0" expanded="true" />
-                <element signature="e#14494#15111#0" expanded="true" />
-                <element signature="e#15110#15111#0" expanded="true" />
-                <element signature="e#23237#24095#0" expanded="true" />
-                <element signature="e#24094#24095#0" expanded="true" />
-                <element signature="e#24475#24804#0" expanded="true" />
-                <element signature="e#24803#24804#0" expanded="true" />
-                <element signature="e#26202#26523#0" expanded="true" />
-                <element signature="e#26522#26523#0" expanded="true" />
+                <element signature="e#8746#9256#0" expanded="true" />
+                <element signature="e#9255#9256#0" expanded="true" />
+                <element signature="e#11824#11825#0" expanded="true" />
+                <element signature="e#11868#11869#0" expanded="true" />
+                <element signature="e#15184#15758#0" expanded="true" />
+                <element signature="e#15757#15758#0" expanded="true" />
+                <element signature="e#15797#16414#0" expanded="true" />
+                <element signature="e#16413#16414#0" expanded="true" />
+                <element signature="e#24619#24948#0" expanded="true" />
+                <element signature="e#24947#24948#0" expanded="true" />
+                <element signature="e#25114#26289#0" expanded="true" />
+                <element signature="e#26288#26289#0" expanded="true" />
+                <element signature="e#28309#28630#0" expanded="true" />
+                <element signature="e#28629#28630#0" expanded="true" />
+                <element signature="e#31182#31517#0" expanded="true" />
+                <element signature="e#31516#31517#0" expanded="true" />
+                <element signature="e#31519#31701#0" expanded="true" />
+                <element signature="e#31700#31701#0" expanded="true" />
+                <element signature="e#33541#33549#0" expanded="true" />
+                <element signature="e#35451#35463#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nav_header_main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="RequestFuture.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.volley/volley/1.0.0/c79696d64f9520675054e27b77f490c17d8b4b9e/volley-1.0.0-sources.jar!/com/android/volley/toolbox/RequestFuture.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+            <state relative-caret-position="140">
+              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Rutas.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/eniac/eniacs/realidadaumentadaucr/Rutas.java">
+      <file leaf-file-name="Log.java" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/util/Log.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="70" selection-start-line="4" selection-start-column="70" selection-end-line="4" selection-end-column="70" />
+            <state relative-caret-position="242">
+              <caret line="225" column="0" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="colors.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_maps.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_maps.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2346">
-              <caret line="138" column="61" selection-start-line="138" selection-start-column="61" selection-end-line="138" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WikitudeActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/eniac/eniacs/realidadaumentadaucr/WikitudeActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2023">
-              <caret line="146" column="3" selection-start-line="146" selection-start-column="3" selection-end-line="147" selection-end-column="47" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SamplePoiDetailActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/eniac/eniacs/realidadaumentadaucr/SamplePoiDetailActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3009">
-              <caret line="219" column="25" selection-start-line="219" selection-start-column="25" selection-end-line="219" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#3450#3855#0" expanded="false" />
-                <element signature="e#3854#3855#0" expanded="false" />
-                <element signature="e#4114#4916#0" expanded="false" />
-                <element signature="e#4915#4916#0" expanded="false" />
-                <element signature="e#5179#5457#0" expanded="false" />
-                <element signature="e#5456#5457#0" expanded="false" />
-                <element signature="e#5636#6059#0" expanded="false" />
-                <element signature="e#6058#6059#0" expanded="false" />
-                <element signature="e#6322#6747#0" expanded="false" />
-                <element signature="e#6746#6747#0" expanded="false" />
-                <marker date="1479177322715" expanded="false" signature="55:345" ph="..." />
-                <marker date="1479177322715" expanded="true" signature="9909:9917" ph="{...}" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -316,6 +335,11 @@
                 <option name="description" value="Displays the sub-projects of root project 'Realidad-Aumentada-UCR'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="projects" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.volley:volley:1.0.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComAndroidVolleyVolley100Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -1294,6 +1318,11 @@
                 <option name="description" value="Displays the sub-projects of project ':app'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="projects" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.volley:volley:1.0.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareComAndroidVolleyVolley100Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -2358,7 +2387,7 @@
     <option name="modificationStamps">
       <map>
         <entry key="$PROJECT_DIR$" value="5900661109338" />
-        <entry key="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR" value="4435617670389" />
+        <entry key="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR" value="4435751283707" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -3170,9 +3199,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-4" />
-    <option name="width" value="1378" />
-    <option name="height" value="780" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -3722,19 +3752,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="0" width="1378" height="780" extended-state="1" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66713095" sideWeight="0.5028653" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5716724" sideWeight="0.49713466" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26791808" sideWeight="0.49713466" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2506964" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23549488" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29108635" sideWeight="0.49546143" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -3746,7 +3776,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6979522" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66713095" sideWeight="0.5028653" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1555387" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15506808" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -3772,7 +3802,21 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="24" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/eniac/eniacs/realidadaumentadaucr/MapsActivity.java</url>
+          <line>677</line>
+          <properties />
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/eniac/eniacs/realidadaumentadaucr/MapsActivity.java</url>
+          <line>844</line>
+          <properties class="com.eniac.eniacs.realidadaumentadaucr.MapsActivity" method="dibujar" />
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="35" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="">
@@ -3784,69 +3828,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/os/Bundle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/util/ArrayMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="484" column="0" selection-start-line="484" selection-start-column="0" selection-end-line="484" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/os/BaseBundle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="668" column="80" selection-start-line="668" selection-start-column="80" selection-end-line="668" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/content/Intent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7647" column="0" selection-start-line="7647" selection-start-column="0" selection-end-line="7647" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/os/Parcel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="315" column="0" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/app/ApplicationPackageManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="522" column="0" selection-start-line="522" selection-start-column="0" selection-end-line="522" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/content/pm/PackageManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="3384" column="0" selection-start-line="3384" selection-start-column="0" selection-end-line="3384" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-compat/24.2.1/support-compat-24.2.1-sources.jar!/android/support/v4/app/ActivityCompatApi23.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-compat/24.2.1/support-compat-24.2.1-sources.jar!/android/support/v4/app/ActivityCompat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="396" column="0" selection-start-line="396" selection-start-column="0" selection-end-line="396" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/app/Activity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
@@ -3865,20 +3846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="2706" column="0" selection-start-line="2706" selection-start-column="0" selection-end-line="2706" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/os/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/os/Looper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1495">
-          <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -3959,6 +3926,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4053,10 +4021,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/eniac/eniacs/realidadaumentadaucr/Rutas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        <state relative-caret-position="629">
+          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1479310006952" expanded="false" signature="55:63" ph="..." />
           </folding>
         </state>
       </provider>
@@ -4110,30 +4078,138 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2346">
+        <state relative-caret-position="336">
           <caret line="138" column="61" selection-start-line="138" selection-start-column="61" selection-end-line="138" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/eniac/eniacs/realidadaumentadaucr/GetDirection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.6.1/jars/classes.jar!/com/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/location/Location.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="584" column="0" selection-start-line="584" selection-start-column="0" selection-end-line="584" selection-end-column="0" />
+          <folding>
+            <element signature="e#20722#20723#0" expanded="false" />
+            <element signature="e#20754#20755#0" expanded="false" />
+            <element signature="e#21122#21123#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/9.6.1/jars/classes.jar!/com/google/android/gms/maps/model/LatLng.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="29" column="11" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
+          <folding>
+            <element signature="e#1009#1010#0" expanded="true" />
+            <element signature="e#1044#1045#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sothree.slidinguppanel/library/3.3.1/5426d69e908860a944b294f6f2a7fd9799b1ac50/library-3.3.1-sources.jar!/com/sothree/slidinguppanel/SlidingUpPanelLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="1091" column="0" selection-start-line="1091" selection-start-column="0" selection-end-line="1091" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/widget/Toast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/os/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="92" column="46" selection-start-line="92" selection-start-column="46" selection-end-line="92" selection-end-column="46" />
+          <folding>
+            <element signature="e#30052#30053#0" expanded="false" />
+            <element signature="e#30090#30091#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="22260" column="0" selection-start-line="22260" selection-start-column="0" selection-end-line="22260" selection-end-column="0" />
+          <folding>
+            <element signature="e#872600#872601#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/util/Log.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="225" column="0" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/os/Looper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.volley/volley/1.0.0/c79696d64f9520675054e27b77f490c17d8b4b9e/volley-1.0.0-sources.jar!/com/android/volley/toolbox/RequestFuture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/eniac/eniacs/realidadaumentadaucr/MapsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="148" column="36" selection-start-line="148" selection-start-column="36" selection-end-line="148" selection-end-column="36" />
+        <state relative-caret-position="102">
+          <caret line="709" column="26" selection-start-line="709" selection-start-column="26" selection-end-line="709" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7787#8297#0" expanded="true" />
-            <element signature="e#8296#8297#0" expanded="true" />
-            <element signature="e#13881#14455#0" expanded="true" />
-            <element signature="e#14454#14455#0" expanded="true" />
-            <element signature="e#14494#15111#0" expanded="true" />
-            <element signature="e#15110#15111#0" expanded="true" />
-            <element signature="e#23237#24095#0" expanded="true" />
-            <element signature="e#24094#24095#0" expanded="true" />
-            <element signature="e#24475#24804#0" expanded="true" />
-            <element signature="e#24803#24804#0" expanded="true" />
-            <element signature="e#26202#26523#0" expanded="true" />
-            <element signature="e#26522#26523#0" expanded="true" />
+            <element signature="e#8746#9256#0" expanded="true" />
+            <element signature="e#9255#9256#0" expanded="true" />
+            <element signature="e#11824#11825#0" expanded="true" />
+            <element signature="e#11868#11869#0" expanded="true" />
+            <element signature="e#15184#15758#0" expanded="true" />
+            <element signature="e#15757#15758#0" expanded="true" />
+            <element signature="e#15797#16414#0" expanded="true" />
+            <element signature="e#16413#16414#0" expanded="true" />
+            <element signature="e#24619#24948#0" expanded="true" />
+            <element signature="e#24947#24948#0" expanded="true" />
+            <element signature="e#25114#26289#0" expanded="true" />
+            <element signature="e#26288#26289#0" expanded="true" />
+            <element signature="e#28309#28630#0" expanded="true" />
+            <element signature="e#28629#28630#0" expanded="true" />
+            <element signature="e#31182#31517#0" expanded="true" />
+            <element signature="e#31516#31517#0" expanded="true" />
+            <element signature="e#31519#31701#0" expanded="true" />
+            <element signature="e#31700#31701#0" expanded="true" />
+            <element signature="e#33541#33549#0" expanded="true" />
+            <element signature="e#35451#35463#0" expanded="true" />
           </folding>
         </state>
       </provider>
