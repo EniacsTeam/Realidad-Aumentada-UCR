@@ -5,29 +5,29 @@
     density="560dpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="59184654645641"
+    timestamp="61434773107496"
     token="7055337893480814454"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="3020" />
+        duration="1392" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="65" />
+        duration="2168" />
     <task
         name="verifier"
-        duration="5" />
+        duration="1578" />
 
     <artifact
         location="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\outputs\apk\app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="59184654645641"
+        timestamp="61434773107496"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\outputs\apk\app-debug.apk"

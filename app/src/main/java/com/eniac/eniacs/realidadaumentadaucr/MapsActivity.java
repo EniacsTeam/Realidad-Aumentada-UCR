@@ -21,14 +21,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.multidex.MultiDex;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -75,7 +78,7 @@ import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
  * @author  EniacsTeam
  */
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
-        LocationListener, SensorEventListener {
+        LocationListener, SensorEventListener, NavigationView.OnNavigationItemSelectedListener {
 
     SearchView searchView;
     SearchManager searchManager;
@@ -108,6 +111,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Animation quitafab;
 
 
+    NavigationView navigationView;
     /*para los sensores*/
     private float[] rotationMatrix;
     private float[] orientationVals;
@@ -188,13 +192,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         paint  = new Paint();
         paint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP));
 
+
         init();            // call init method
         panelListener(); // Call paneListener method
         mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
         mLayout.setAnchorPoint(0.3f); //Para que solo se vea las 3 rutas y no se expanda completamente el panel
         mLayout.setTouchEnabled(false); //Para que el usuario no pueda deslizar el panel
 
-
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         mDrawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
@@ -256,6 +262,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+
+    @Override
+    public void onBackPressed() {
+
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     /**
      * Cuando la actividad ya no es visible al usuario detiene la conexión a los servicios de Google.
@@ -941,6 +957,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.Wikitude) {
+            startActivity(new Intent(MapsActivity.this, WikitudeActivity.class));
+        }else if (id == R.id.About){
+
+        }else if (id == R.id.Salir){
+            finish();
+            System.exit(0);
+        }
+        return false;
+    }
 }
 
 

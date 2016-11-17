@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Nov 17 13:08:00 CST 2016
+#Thu Nov 17 13:46:22 CST 2016
 20.base=C\:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\res\\resources-debug.ap_
 143.base=C\:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\res\\resources-debug.ap_
 493.base=C\:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\res\\resources-debug.ap_

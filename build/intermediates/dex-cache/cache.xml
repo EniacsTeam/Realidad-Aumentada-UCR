@@ -385,7 +385,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="e2feb3902823c36f57f0cb532e411009b1d97793">
+        sha1="e29216be30425776a69b8e4a409103bc38eadb72">
         <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_827807c138b38e185e3e46458a2a60c32d6b07c0\classes.dex" />
     </item>
     <item
@@ -547,7 +547,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="5ed48cd88380cd2514ea77402879fead083b376b">
+        sha1="cecc9e10efab1a285fb0f153f2f770f7af41c7bb">
         <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_e0f920cd82c27a3d2f1a6cc33d8a8abb9fc9e9a4\classes.dex" />
     </item>
     <item
