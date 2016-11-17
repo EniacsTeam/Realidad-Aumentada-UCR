@@ -3,696 +3,696 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="1ef72e72bc0d05602c366582afa9439f58bb31d6">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-common-9.6.1_f3ee4ba3896d47920fc1b91b023800f730e0cff6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="a76a6983a23788b3689524d4bed763955afbd306">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-fitness-9.6.1_75ac641034a286ea3de8feed26a6bfa385e2e39e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="2a18547ea91d258866d132c2a763185f15b01b25">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-9.6.1_9e581ea37043f243a3502d4bd7d54f7cd969487b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="ff9be0a1e75a21c372735930d8987a55b5e6065f">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-panorama-9.6.1_5630ce18a4d713f9a3bab427a1d8ffa53df0fe6d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_3d3eb4da5778e0d9b77f861aa540b3eff4c26cb9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage-common\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="159494eb362396d073d8c922b77e40c0da5fc5bc">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-common-9.6.1_5f148f812c8bc425fe00f9b31d2495e4fea1b1dc\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-instantapps\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="babb25794a7599069d34705038744c5760a9a88c">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-instantapps-9.6.1_4806c4f265867fe9eb4f5ad860cc4cf809c21221\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="0dfc12e4aacf514346ea866560c99807d032bc48">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-iid-9.6.1_44e9d715f9cc7016f27b227f3716de03a9df19d5\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="0cae6511c5705869cacf199f8abb0ea84cd10157">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-vision-9.6.1_c702bb1292c40fae8345d7b0643f61d1099961b7\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\libs\internal_impl-24.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="b6763651ec29b4c95e7bbe63fc393ffcc8c4c2c5">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_26873e6c1c3232d966a6a746564c88b49d01a0c8\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="4a36600281a648769411ef642c331851732bf29e">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tasks-9.6.1_aaac61d66fe27d466b5f2c86e773f7d16704900b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="c828add497d2b7a3de7c047bf72050cd4b7521a1">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-safetynet-9.6.1_d48780d229238e936a2c013e8d5ed80ae043fdd7\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="8c6ef5bd4072f8cda2b89d8356ea7d8acd0683aa">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-9.6.1_5692a5079a5fee81f4b988e5ca518aaeb80ed67b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="47bbb3ec4b31ba71e125241c090dabe70cbb4de7">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-9.6.1_f572af3dd9694d1c1dd0cd32ae66da9de5f6e262\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="79f521967ad7f49b34748db89df02852c2b2f87b">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-location-9.6.1_c43a48415a75a68463def8edb15bcd910003bd20\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-clearcut\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="ee0ccb43f6ab276191b7f2d77c305fa9beb26db9">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-clearcut-9.6.1_a45adf070a79ae394dfa2cca66325dedae505f0e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_e244c7ed0e4bd3018a608958315914bb0361ee55\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="c4394d46152165cd3256fb711ac94f66a28fbae1">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wearable-9.6.1_b9c4065fd5402e1ce123670b68ba44660d1abaee\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth-base\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="465f40f840e583f8b7421a3aacf3fbf08c28f00a">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-base-9.6.1_35bfd3f6814bff807d96fab520eea467eda8d355\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_542ac9898ff62603a68711ff420fa43b1db5c348\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="dfcba20b85ef3669a8ced0a8760a6df281cbd7c7">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wallet-9.6.1_13ce8c0b8fee02e0c691ed6058c6739540f7e16a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="b75ecdd04a37d31b4a0da2729fc5c558962a529b">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-9.6.1_9dfed28bc51ceb71db7b8a71e24bbd9307bf8a18\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="1e14ebe1cda8491f152083e752ca5bf73cd37bff">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-iid-9.6.1_546df13ac35b7621d65207a0b271f4b0f2123e5b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\multidex\1.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-multidex-1.0.1_bae699e02ee9430f54fe5d2aa49ebfe57e44b2b0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\.gradle\caches\modules-2\files-2.1\junit\junit\4.12\2973d150c0dc1fefe998f834810d68f278ea58ec\junit-4.12.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="2973d150c0dc1fefe998f834810d68f278ea58ec">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\junit-4.12_aec432b2c6c594ca843019974e91c9d591a82266\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="d45c048bb1c55cf963899190e507065aea8e5be9">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-games-9.6.1_c8f5cbd243af78691be61a75bad3bd1260ff1b83\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-awareness\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="90be14317e3f26d18438e8dbf8544500d1dfe07f">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-awareness-9.6.1_770308a8cdb07a95a28a88f89ec36b5428ee80e6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_4abda8d65323b50be68c8478b17d72d716f16ef0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-crash\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="4df40545c9b875855f3dd9d4928e5d07f07c20ba">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-crash-9.6.1_3f58e8ef28523b10bc1ccd9b858e1afe3b3523f4\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="6ff796a3173787afe2e712f3aec6f5b99796118e">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-lite-9.6.1_f41fec4e6d161b3cdcdaa65d8dceaa66280f0214\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_da1f9562265809b88ac1a3187caeebb7699de009\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_4cc05c554dbd6f5b6a1f2071f3a85c98561f9551\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics-impl\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="a53ac0560ab915a02c50d2e5c7b003381e6fb5e3">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-impl-9.6.1_8cee7e80cfdd549668c13edf5941e59743428852\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="0efd1b44f47c134fb245914a1d54a55adbfc2f8d">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-impl-9.6.1_f8fafa7a10677fb59b43ec30b4ff1b0aa605f4b7\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-common\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="77558e74bb2056ef38516296f13a27c4c4fc3e5c">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-common-9.6.1_985510a67a70f6df25d601edb6d48a0159bde729\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.volley\volley\1.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.volley-volley-1.0.0_148dca8a759fa598c23129511efa0e6218b52d5a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_991bbed5a78d4ee1778fb8bb3ea86f3d596dce5d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gass\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="ee61ace5f3e488fc610e1c67693c49186a441f32">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gass-9.6.1_01d19ef2bc060dd9cdf33fb58a545ea7afd62bb3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="1810ae0df0a1b9b539ce97df54e96f2bf8f5ff94">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-9.6.1_4c5850f83e3e193ee3697c071b502bb6562f50ca\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_8d6920b8e4f15b52578ae72e76fccf5d8e545dd8\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_03fef9ee2727f1b4b018dcf90055adea38a989fb\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_c8c2051b9da7aa0e09b3a08cd7981d8b0f667339\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="90e048cea18754f13b74fec0d04863c1d067f8c6">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_827807c138b38e185e3e46458a2a60c32d6b07c0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="518adc52081d41724932b41bc132e4d50a352b86">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-identity-9.6.1_c8a7ad927a3f2b14757f5182d2e806ca25a59e46\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_1b02476bb8b25bbfe7a3aebda03beb653387036f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="cc39b4bcc9e7062891db90d5a752fa9e4986f447">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appindexing-9.6.1_d504359feb1c21c6bbdbdc1cc88b7aa4bae2fc28\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\1.3\42a25dc3219429f0e5d060061f71acb49bf010a0\hamcrest-core-1.3.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="42a25dc3219429f0e5d060061f71acb49bf010a0">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\hamcrest-core-1.3_dd86ac4f86e78c447b5b54d08290a6d8097d0e01\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="da3f763afd39da1c947d9442847c837e9182a09f">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-9.6.1_92391b946317e5a51e71dea4d38d52b9f77a276a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="ad7706f8bb4a985656a8d2142f74021c8b0e03d8">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gcm-9.6.1_7213a5c8df8833654b84285a2dccdab0b65fa6aa\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_a538bd479cc562f930efc45cca662701fcc321e0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_9c0fc6b410c706ddfc51e79880dd0d1708f0f129\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-places\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="cdddf21e0a8205e9955661061d1735ed10e44a7b">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-places-9.6.1_252bdf2dda8f2eecaefaee87a79b37a4906a5549\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="8ebae43cd06058e99e08c8b4d305b72f2b9927c6">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-plus-9.6.1_85389b1699cd8fe0a579df9b3fd8261712978784\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.sothree.slidinguppanel\library\3.3.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="ab8a4903076897a8fe029433ba0c3c3f958712ce">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.sothree.slidinguppanel-library-3.3.1_b4f714bdced228485fc9bc4a9456b26a57c9c872\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="af7582c6b327449c6d32518e6a10307860b7b5d6">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-9.6.1_456864eba761f761cafcdd37258792fa09760838\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="526f4b02f1771fa7607ff1b89fe2e9bd0344fee8">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-9.6.1_b7bffbc3a2b12ad936f63f078adbe5984650ac92\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="9c0cf3d4f9d7d076f301e110b92e18ae23da12c2">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-framework-9.6.1_3f1f79fa189c2a9d796994930954a188f33de5d6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="ac8365c87591065db07f7bac8551504504832cd4">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-connection-9.6.1_2313f6d15b8ff1b878475721f63ec716ab16146f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\palette-v7\24.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="734e80dffea7bd76c18ae256822a124c30d85850">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-palette-v7-24.0.0_659871dd66d3de7c7332f892ee2e521b0dbc4f0d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
         sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_00464e7dfc12bbd4192b7f187172ed514ce6bf42\classes.dex" />
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_6d0c86cb0ce829f4ac47e241f6e8f94c32965940\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="197cb96aaac0d6459fa9809577d4c278e54bc458">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_e0f920cd82c27a3d2f1a6cc33d8a8abb9fc9e9a4\classes.dex" />
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_4b7556c5c1c760603f533ea0e46e1496bf8d9f8e\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\9.6.1\jars\classes.jar"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\9.6.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="f6aa7c76cbaa867e05dbad0afab1ef0e65c4e55f">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-nearby-9.6.1_dcc76e05b20c4f9d6a02f7641007c789d638d951\classes.dex" />
+        sha1="c4394d46152165cd3256fb711ac94f66a28fbae1">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wearable-9.6.1_a26dd523d97f20c25d3cb8cca3a79c094d57eb13\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\9.6.1\jars\classes.jar"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\9.6.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="80dd8bea08bc5fe10b10a3243b8279c856ccc690">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-messaging-9.6.1_e14fc860719f65f301b1740e0cc59c9864a7b75b\classes.dex" />
+        sha1="8ebae43cd06058e99e08c8b4d305b72f2b9927c6">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-plus-9.6.1_95c11281bc9a25808962921dc240b46990d34bd8\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-module\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="6ffe8b28ab61e5ee92ab9431a220379790c71ddf">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-module-9.6.1_ec4c1c68ae4d33052bf84981636fa57a5f59698d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="f8db47be01cbe8cfa81e9cecce5ff1371ed1ad95">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-drive-9.6.1_f62ef503e6724709a8439613defe85d995df9950\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-config\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="cf2c4e6607c77b0e671dc5ca252c5ea0d9c1ce0d">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-config-9.6.1_7ae71466543946d7b7993c59b83a38d4b4adbef0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_c411303fe796205a64a4548963a8d0188a827317\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="a136366045678579300d161de97c2211c4c4f7a0">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-9.6.1_3f6d91e4edee8b83de652bbcfc2584054a23d2fd\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="b327fbe2fad414bc38cf0ce8f7efe1a38f572837">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-mediarouter-v7-24.0.0_a0f92f358fa44634300b91bff84a2d802cab9f73\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_28dc294a17440ea6dd759c18ad9840c040fd4490\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="eccaaa9ffa6bb4bfbd2e870f01aaf69655d353be">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-9.6.1_09a08609240d4b43c51eb957f2a9dc47fab27071\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="f0e96478ca3147bc588aadb9ae467d85b42473cc">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-api-9.6.1_906e45a14c2172088796f56e98a3cac236939beb\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="0e0e0681c26a1f575d3e4c542182dd59bab75fd6">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appinvite-9.6.1_7617dc36c73b2e4431b0dc0ae509a2c7598cd824\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.6.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="a1c351dc10b92d638da57f3a6513f87cfbdc9f83">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-9.6.1_9879e3733ae5a8dcf9cf0493f0a7685a545d28cc\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\wikitudesdk\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="943826ba38df25fea857508300b31bd1f20c9301">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\intermediates-exploded-aar-wikitudesdk_1ecd481c57d715cd56074a1129fed81df50a10c5\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.2.1_aec937cb5e0660a0e1de9bc0d91ce5f9b02477b9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\9.6.1\jars\classes.jar"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\9.6.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
         sha1="62ff84124b89177abc0c27f3e38c9732f2d41617">
-        <dex dex="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-maps-9.6.1_785e18c69d23c5e867bfa9c4627bf00f085ce955\classes.dex" />
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-maps-9.6.1_4da6f7e37d489f89f36a0afd2596862d47641a91\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="66db00bba2bdb0e7bce141b1e96939c490c5a92b">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_59a1d2c6b63502291191fa10545f4b5a44c4c3bd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-common\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="77558e74bb2056ef38516296f13a27c4c4fc3e5c">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-common-9.6.1_4f77b346403a7c383b20fe9428b6083ff35e6d67\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b6763651ec29b4c95e7bbe63fc393ffcc8c4c2c5">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_c460433b21e8b38830ce4ec12826057eae71cc47\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c828add497d2b7a3de7c047bf72050cd4b7521a1">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-safetynet-9.6.1_147166abf0d7b598683c5e3ed74bae3930812432\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="010e9bd3c962fcdcd04bf33956e361d64c789cd1">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_5fe27af1c69315a3c8e70f75bc94f0291fbb965d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_a70c804fe1def197c287771ab4439c01f8f2b28f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="1ef72e72bc0d05602c366582afa9439f58bb31d6">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-common-9.6.1_cd621a89afbcbf40bae3b5d153b16e722adc62b9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ac8365c87591065db07f7bac8551504504832cd4">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-connection-9.6.1_dc4aaa61c123614f40abd3bb90c194fa5ac02a05\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="dfcba20b85ef3669a8ced0a8760a6df281cbd7c7">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wallet-9.6.1_a74e859ec2000f5e90758a4e7bae0a237253c70d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="1e14ebe1cda8491f152083e752ca5bf73cd37bff">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-iid-9.6.1_6da1231a5281c24af32f985da94e270367e65fe4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics-impl\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="a53ac0560ab915a02c50d2e5c7b003381e6fb5e3">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-impl-9.6.1_9c07f86c2c41daa424b615642a51e4ac44ba5b89\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\palette-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="734e80dffea7bd76c18ae256822a124c30d85850">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-palette-v7-24.0.0_3fa62272af3fab438bbec42185c59c722f477635\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="2a18547ea91d258866d132c2a763185f15b01b25">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-9.6.1_15f01bce391495c4b8c3ac5c7de173a8a8d6a433\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b75ecdd04a37d31b4a0da2729fc5c558962a529b">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-9.6.1_5b08a7f84d4df37ebad831f3a9e39779ca6a527a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="cc39b4bcc9e7062891db90d5a752fa9e4986f447">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appindexing-9.6.1_1a145401182bcaca3d5737ed34c1fc50a8868ad6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="f0e96478ca3147bc588aadb9ae467d85b42473cc">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-api-9.6.1_72d83c03d023b100cb2627a0cc94f3a6a44341df\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_2771c5ce28efb3cab145af0b34f8f14037c90639\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0dfc12e4aacf514346ea866560c99807d032bc48">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-iid-9.6.1_00790b58ca0626ea0c193f8035f90e121cf29a0c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\multidex\1.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-multidex-1.0.1_e2645798121d1fcfd9275ed30952a09d3aaab197\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="1810ae0df0a1b9b539ce97df54e96f2bf8f5ff94">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-9.6.1_83b01b8672f77faea979cc613de354fa4ecdbf00\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth-base\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="465f40f840e583f8b7421a3aacf3fbf08c28f00a">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-base-9.6.1_ffe221f4a97ab7a14497060553708e78fd2fd046\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_ca66612efa53bc31eb91df53de0a1a29c0fc67ab\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="526f4b02f1771fa7607ff1b89fe2e9bd0344fee8">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-9.6.1_df997fb25c7c32fc6f9fcac6927d027f6fd9a2e8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b327fbe2fad414bc38cf0ce8f7efe1a38f572837">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-mediarouter-v7-24.0.0_a1a5b6e44978d448a59687035e7f631d2e1a4835\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-places\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="cdddf21e0a8205e9955661061d1735ed10e44a7b">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-places-9.6.1_bcd2065020aab9026c9d780068eeac865a5371f2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\wikitudesdk\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="943826ba38df25fea857508300b31bd1f20c9301">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\intermediates-exploded-aar-wikitudesdk_32ed9b2070156830314108e982b4548cf65361ef\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_c0c3c2eecdb6a4b5cc99ec012abdb1c7a185fd80\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0efd1b44f47c134fb245914a1d54a55adbfc2f8d">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-impl-9.6.1_4e437ab32433a71dac7873f6db51bc32a07b681a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="47bbb3ec4b31ba71e125241c090dabe70cbb4de7">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-9.6.1_2a957a64a17b2006adac8d6e705201e65ba3d6b2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="4a36600281a648769411ef642c331851732bf29e">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tasks-9.6.1_91524b2aa9157fe8507bfc92b2d656c6ffd89aa5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\.gradle\caches\modules-2\files-2.1\junit\junit\4.12\2973d150c0dc1fefe998f834810d68f278ea58ec\junit-4.12.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="2973d150c0dc1fefe998f834810d68f278ea58ec">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\junit-4.12_bb32d32ecb15025b9a1a997a6c18989b15c415b8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="da3f763afd39da1c947d9442847c837e9182a09f">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-9.6.1_d40378eae7c8ab9450af21c6903c881dcc9de5f0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="a136366045678579300d161de97c2211c4c4f7a0">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-9.6.1_b6ca2c638de38bc36dc78dbecdc9eae51e4d308a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage-common\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="159494eb362396d073d8c922b77e40c0da5fc5bc">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-common-9.6.1_27ba5f35504d8068e2a1abe55850614bf516512c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="a76a6983a23788b3689524d4bed763955afbd306">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-fitness-9.6.1_e7a25780559aab3c64f2de61f430603f163941c4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="79f521967ad7f49b34748db89df02852c2b2f87b">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-location-9.6.1_21249e1da7b759bd90e5d983f04fe65e6c59510a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="a1c351dc10b92d638da57f3a6513f87cfbdc9f83">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-9.6.1_01bce63eae244ca74a6d1a65d755eb061a32e6b7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\1.3\42a25dc3219429f0e5d060061f71acb49bf010a0\hamcrest-core-1.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="42a25dc3219429f0e5d060061f71acb49bf010a0">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\hamcrest-core-1.3_c64a247f3ea096953e610d576b7d6fb2cd0c8e9a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_c11e573f9343f16393ffc6f9bbad6331e789faee\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_ba73ba82879de388ef3ac41f6c39b14862561240\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-crash\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="4df40545c9b875855f3dd9d4928e5d07f07c20ba">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-crash-9.6.1_27c09c32c246b24ed837b34d0f7235406b8f8bd0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9c0cf3d4f9d7d076f301e110b92e18ae23da12c2">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-framework-9.6.1_2d8d84aaba04fc472b9ee6d511b4793d9f202c82\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-awareness\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="90be14317e3f26d18438e8dbf8544500d1dfe07f">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-awareness-9.6.1_8f22862a95def8dc8d0d67a1869faa96cbc500db\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_f2824fd44a008f7d2f944b1e89315ccdaf18d519\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gass\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ee61ace5f3e488fc610e1c67693c49186a441f32">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gass-9.6.1_6ef2e61deda42f3761b730c0005749111a3ea8d2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="af7582c6b327449c6d32518e6a10307860b7b5d6">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-9.6.1_880fcfb569c3d7fd6ce756c38b168b70d69118e4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8c6ef5bd4072f8cda2b89d8356ea7d8acd0683aa">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-9.6.1_f6b7f99012ed931f6010c7505cf0efc99259c3db\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-clearcut\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ee0ccb43f6ab276191b7f2d77c305fa9beb26db9">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-clearcut-9.6.1_eef78a1adad8a814aad967dcefb0399c95b4d3c0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.volley\volley\1.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.volley-volley-1.0.0_7b1cb6e0b6a89556fc3101ffbc13bcea4486e0bf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="6ff796a3173787afe2e712f3aec6f5b99796118e">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-lite-9.6.1_25ebbc467c9ca92eb338ec63effc1f19a5524602\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ad7706f8bb4a985656a8d2142f74021c8b0e03d8">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gcm-9.6.1_1c0f6df60c950972941179ee6024b9c392c679d0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_10cd953c940accdea77ebb67004f63b8f836c70e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_9537cf2acdae4f07d4f207b469e0a6942e03dcdf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-config\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="cf2c4e6607c77b0e671dc5ca252c5ea0d9c1ce0d">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-config-9.6.1_fbd7e339524117f867befc7a135d220f8aceedb9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ff9be0a1e75a21c372735930d8987a55b5e6065f">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-panorama-9.6.1_f7bc54ad9cdbd975dca4829401282c3249422846\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="eccaaa9ffa6bb4bfbd2e870f01aaf69655d353be">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-9.6.1_880a4abf41e0fd434540b65ed40386cf43c50310\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_4511142918b69b5a6b0753dbb03cad5ea26227cd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0cae6511c5705869cacf199f8abb0ea84cd10157">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-vision-9.6.1_091f7eddff7d3987fa449e350c10d0a6a83b81c9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.sothree.slidinguppanel\library\3.3.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ab8a4903076897a8fe029433ba0c3c3f958712ce">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.sothree.slidinguppanel-library-3.3.1_b6da3b93f3e6b638ec21a0e416fba6f142ad3e49\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="80dd8bea08bc5fe10b10a3243b8279c856ccc690">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-messaging-9.6.1_bfdde8db225c2c0db5e6f74d88e8b4cc7be9ab70\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="518adc52081d41724932b41bc132e4d50a352b86">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-identity-9.6.1_6639aa19fc64ad7336fa43298c36f57a88ba5a01\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-instantapps\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="babb25794a7599069d34705038744c5760a9a88c">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-instantapps-9.6.1_fd6be954a98703ca2c7bf1c7801b6d48e6dbbea9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_e003eac8f634deb5dbf961875518a4bcbea0f45d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="f6aa7c76cbaa867e05dbad0afab1ef0e65c4e55f">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-nearby-9.6.1_5860a0b99f3948dc519214cb07b78fe72c003d14\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="f8db47be01cbe8cfa81e9cecce5ff1371ed1ad95">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-drive-9.6.1_5d851d9078b2c71bf67710341a921523a92e255f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_eff3db6f66768822d3870ec2fdc13aa5062b7b9e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth-module\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="6ffe8b28ab61e5ee92ab9431a220379790c71ddf">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-module-9.6.1_aa5fb7a4e441f02018df2ed51201b4093f4ed74a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.2.1_cac242148531a056a22ee16751c660205feecd9d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d45c048bb1c55cf963899190e507065aea8e5be9">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-games-9.6.1_1f79cec5e21e87e3babccf0eb30eae15fa2d56b9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\9.6.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0e0e0681c26a1f575d3e4c542182dd59bab75fd6">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appinvite-9.6.1_9a2abb9530d64a5d032d2bc294511d774bc94652\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_2b8ccb323a2fe3b913d345e1b129403f3559848b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\acer main\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_8ec44d09fe426c010942124cda6e88240989145f\classes.dex" />
     </item>
 
 </items>

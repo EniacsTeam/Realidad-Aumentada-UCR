@@ -176,6 +176,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private int indice_actual = -1;
     private int cantidad_rutas = 0;
 
+    //para navegar prueba
+    private int rutaElegida=0;
+    private int pasoSgt=0;
+    private boolean navegar= false;
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(newBase);
@@ -384,6 +388,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
+
+                rutaElegida=0;
+                pasoSgt=0;
+                navegar= false;
+
                 quitafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_hide);
                 fab.startAnimation(quitafab);
                 fab.setVisibility(View.GONE);
@@ -562,6 +571,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         }
         addMarkers();
+
+        if(navegar) {
+            String[] resp = instruccionesRuta(rutaElegida, pasoSgt);
+            Location pasoSgte = new Location("Paso Sgt");
+            pasoSgte.setLatitude(Double.parseDouble(resp[2]));
+            pasoSgte.setLongitude(Double.parseDouble(resp[3]));
+
+            if (mCurrentLocation.distanceTo(pasoSgte) < 5) {
+                instruccionesRuta(rutaElegida, pasoSgt);
+                LatLng current = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+                //actualizarRuta(current);
+                ++pasoSgt; //hay que ponerlo en cero cuando se haga el borrar rutas
+
+            }
+        }
+
     }
 
     /**
@@ -654,6 +679,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //instruccionesRuta(position);
+                rutaElegida=position;
+                navegar= true;
                 Toast.makeText(MapsActivity.this, "posicion " + position, Toast.LENGTH_SHORT).show();
             }
         });
@@ -956,7 +983,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             distanciaDuracion.add(distancias);
             distanciaDuracion.add(duraciones);
         } catch (Exception e) {
-
+            rutaElegida=0;
+            navegar= true;
+            pasoSgt= 0;
         }
         return distanciaDuracion;
     }
@@ -972,6 +1001,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         String[] detallesPaso = new String[5];
         try {
+
+
             JSONArray pasos = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONArray("steps");
             JSONObject paso = pasos.getJSONObject(pasoSolicitado);
             String distanciaPaso = paso.getJSONObject("distance").getString("text");
@@ -984,7 +1015,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             detallesPaso[3] = lonEndPaso;
             String mensajePaso = paso.getString("html_instructions");
             detallesPaso[4] = mensajePaso;
-            Log.i(TAG, "Distancia Paso: " + distanciaPaso + " Duracion Paso: " + duracionPaso + " Latitud final: " + latEndPaso + " Longitud final: " + lonEndPaso + " Mensaje: " + mensajePaso);
+            //Log.i(TAG, "Distancia Paso: " + distanciaPaso + " Duracion Paso: " + duracionPaso + " Latitud final: " + latEndPaso + " Longitud final: " + lonEndPaso + " Mensaje: " + mensajePaso);
+
+            Toast.makeText(MapsActivity.this, mensajePaso, Toast.LENGTH_SHORT).show();
+
         } catch (Exception e) {
 
         }
@@ -1008,4 +1042,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         rutas.clear();
         rutas.add(tempPoli);
     }
+
+    public void actualizarRuta(LatLng current) {
+        rutas.get(0).getPoints().set(0,current);
+        LatLng inicio = rutas.get(0).getPoints().get(0);//falta crear control de null
+        Location primeroL= new Location("currentL");
+        primeroL.setLatitude(current.latitude);
+        primeroL.setLongitude(current.longitude);
+
+        LatLng segundo = rutas.get(0).getPoints().get(1);//falta crear control de null
+        Location segundoL= new Location("currentL2");
+        segundoL.setLatitude(inicio.latitude);
+        segundoL.setLongitude(inicio.longitude);
+
+        if(primeroL.distanceTo(segundoL)<3) {//cambiar 3 por la distancia que deseamos utilizar de cercanía
+            rutas.get(0).getPoints().remove(0);//falta crear control de null
+        }
+    }
+
 }
