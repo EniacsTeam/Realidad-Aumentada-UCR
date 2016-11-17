@@ -1,6 +1,7 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,18 @@ public class CustomListAdapter extends ArrayAdapter<String> {
         TextView txtDuracion = (TextView) rowView.findViewById(R.id.duracion);
 
         txtRuta.setText(rutas_list[position]);
+        if(position == 0)
+        {
+            txtRuta.setTextColor(Color.parseColor("#8BC34A"));
+        }
+        if(position == 1)
+        {
+            txtRuta.setTextColor(Color.parseColor("#800080"));
+        }
+        if(position == 2)
+        {
+            txtRuta.setTextColor(Color.parseColor("#2196F3"));
+        }
         txtDescripcion.setText(descripcion_list[position]);
         txtDuracion.setText(duracion_list[position]);
         return rowView;

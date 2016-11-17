@@ -1,11 +1,7 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
-import android.*;
-import android.Manifest;
-import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -16,7 +12,6 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.GradientDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -34,18 +29,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -62,59 +53,19 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.Circle;
-import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
-import static android.os.Build.VERSION_CODES.M;
-import static com.eniac.eniacs.realidadaumentadaucr.R.id.fab;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
-import static com.google.android.gms.internal.zznu.it;
-import static com.google.android.gms.internal.zzsr.MA;
-import static com.wikitude.architect.CameraPreviewBase.m;
-
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.sothree.slidinguppanel.SlidingUpPanelLayout;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
-import static com.wikitude.architect.CameraPreviewBase.m;
-import static java.lang.Thread.sleep;
 
 
 /**
@@ -125,8 +76,6 @@ import static java.lang.Thread.sleep;
  */
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener, SensorEventListener {
-
-
 
     SearchView searchView;
     SearchManager searchManager;
@@ -240,7 +189,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         paint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP));
 
         init();            // call init method
-       // setListview();    // call setListview method
         panelListener(); // Call paneListener method
         mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
         mLayout.setAnchorPoint(0.3f); //Para que solo se vea las 3 rutas y no se expanda completamente el panel
@@ -295,13 +243,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 return false;
             }
         });
-
-
-       // String [] parameter = {"9.937886, -84.052016","9.936089, -84.051115"};
-       // GetDirection gd = new GetDirection();
-       // String stringUrl = "http://maps.googleapis.com/maps/api/directions/json?origin=" + "9.937886, -84.052016" + ",&destination=" + "9.936089, -84.051115"+ "&sensor=false";
-        //gd.execute(stringUrl);
-
     }
 
     /**
@@ -388,6 +329,25 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 fab.startAnimation(quitafab);
                 fab.setVisibility(View.GONE);
                 textView.setText(marker.getTitle());
+                if(rutas.size() != 0)
+                {
+                    borrarRutas(10);
+                }
+
+                marcador_actual = marker;
+                double lat = marcador_actual.getPosition().latitude;
+                Boolean condicion = false;
+                int cont = -1;
+                while (condicion==false)
+                {
+                    ++cont;
+                    if(mRuta.elatitud[cont] == lat)
+                    {
+                        condicion = true;
+                    }
+                }
+                indice_actual = cont;
+                datos(indice_actual);
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                 marker.showInfoWindow();
                 marcador_actual = marker;
@@ -411,13 +371,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             }
         });
-
-        /*if(!flag){
-            flag=true;
-            LatLng start = new LatLng(9.937886, -84.052016);
-            LatLng end = new LatLng(9.936089, -84.051115);
-            getURL(start,end);
-        }*/
 
     }
 
@@ -653,7 +606,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //instruccionesRuta(position);
+                borrarRutas(position);
                 Toast.makeText(MapsActivity.this, "posicion " + position, Toast.LENGTH_SHORT).show();
             }
         });
@@ -662,35 +615,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double lat = marcador_actual.getPosition().latitude;
-                Boolean condicion = false;
-                int cont = -1;
-                while (condicion==false)
+                if(flag == true)
                 {
-                    ++cont;
-                    if(mRuta.elatitud[cont] == lat)
-                    {
-                        condicion = true;
-                    }
+                    flag = false;
+                    List <String[]> result = datosRuta(indice_actual);
+                    setListview(result);
+                    mLayout.setPanelState(SlidingUpPanelLayout.PanelState.ANCHORED);
+                    Toast.makeText(MapsActivity.this, "Boton funciona y marcador es indice " + indice_actual, Toast.LENGTH_SHORT).show();
                 }
-                indice_actual = cont;
 
-                List <String[]> result = datosRuta(indice_actual);
-                setListview(result);
-
-               // datosRuta(cont);
-                /*while (!flag)
-                {
-                    //flagRutas == false
-                }*/
-
-               /* try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }*/
-                mLayout.setPanelState(SlidingUpPanelLayout.PanelState.ANCHORED);
-                Toast.makeText(MapsActivity.this, "Boton funciona y marcador es indice " + cont, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -707,16 +640,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // first parameter, the type of list view as a second parameter and your
         // array as a third parameter.
 
-        if(indice_actual != -1)
+        if(indice_actual == -1)
         {
             CustomListAdapter adapter=new CustomListAdapter(this, rutas_list(3), descripcion_list(),duracion_list());
             listview.setAdapter(adapter);
         }
-       /* else
+        else
         {
             CustomListAdapter adapter=new CustomListAdapter(this, rutas_list(cantidad_rutas), result.get(0),result.get(1));
             listview.setAdapter(adapter);
-        }*/
+        }
 
         ColorDrawable grey = new ColorDrawable(this.getResources().getColor(R.color.grey));
         listview.setDivider(grey);
@@ -744,11 +677,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         };
         mLayout.addPanelSlideListener(listener);
         mLayout.setFadeOnClickListener(new View.OnClickListener() {
-                                           @Override
-                                           public void onClick(View view) {
-                                               mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-                                           }
-    });
+            @Override
+            public void onClick(View view) {
+                mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+            }
+        });
     }
 
     /**
@@ -759,20 +692,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public String[] rutas_list(int cantidad){
         String[] array_list = new String[cantidad];
         switch (cantidad){
-           case 1:
-               array_list[0] = "Ruta 1";
-               return array_list;
-           case 2:
-              array_list[0] = "Ruta 1";
-              array_list[1] = "Ruta 2";
-               return array_list;
-           case 3:
-               array_list[0] = "Ruta 1";
-               array_list[1] = "Ruta 2";
-               array_list[2] = "Ruta 3";
-               return array_list;
+            case 1:
+                array_list[0] = "Ruta 1";
+                return array_list;
+            case 2:
+                array_list[0] = "Ruta 1";
+                array_list[1] = "Ruta 2";
+                return array_list;
+            case 3:
+                array_list[0] = "Ruta 1";
+                array_list[1] = "Ruta 2";
+                array_list[2] = "Ruta 3";
+                return array_list;
 
-       }
+        }
         return array_list;
     }
 
@@ -814,35 +747,38 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
+    public RequestQueue getQueue(){
+        Log.d("Main","Calcula");
+        RequestQueue queue = Volley.newRequestQueue(this);
+        Log.d("Main","Devuelve");
+        return queue;
+    }
+
+
     public void getURL(LatLng startL, LatLng endL){
         String start = startL.latitude+","+startL.longitude;
         String end = endL.latitude+","+endL.longitude;
         String stringUrl = "https://maps.googleapis.com/maps/api/directions/json?origin="+start+"&destination="+end+"&alternatives=true&mode=walking&key=AIzaSyCljYcjcbR69841xYHr5kTcuPfmQ_2qWZE";
-        ;
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, stringUrl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Log.d("Principal","Dibuja");
                         dibujar(response);
-                        //instruccionesRuta(0,1);
-                        //datosRuta(3);
                         flag = true;
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //dibujar(error.toString());
             }
         });
-        // Add the request to the RequestQueue.
         queue.add(stringRequest);
     }
 
-    public void dibujar(String jsonRuta){
+    public void dibujar(String jsonRuta){ //String jsonRuta
         try {
             JSONObject jsonObject = new JSONObject(jsonRuta);
             // routesArray contains ALL routes
@@ -859,11 +795,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 List<LatLng> polyz= decodePoly(polyline);//decodificación de la polilinea
                 String color = "0";
                 if(i==0){
-                    color = "#008000"; //Verde
+                    color = "#8BC34A"; //Verde
                 } else if(i==1){
                     color = "#800080"; //Morado
                 } else {
-                    color = "#0000FF"; //Azul
+                    color = "#2196F3"; //Azul
                 }
 
                 for (int j = 0; j < polyz.size() - 1; j++) {
@@ -923,22 +859,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      *
      * @param puntoElegido  El indice de la ruta seleccionada por el usuario
      */
-    private List < String[] > datosRuta(int puntoElegido) {
+    private void datos(int puntoElegido) {
         LatLng inicioRuta = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
         LatLng destinoRuta = new LatLng(mRuta.elatitud[puntoElegido], mRuta.elonguitud[puntoElegido]);
         getURL(inicioRuta, destinoRuta);
-
-        /*while (!flag)
-            {
-                    //flagRutas == false
-            }*/
-       /* try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }*/
-        flag = false;
-        cantidad_rutas = 2;
+    }
+    private List < String[] > datosRuta(int puntoElegido) {
+        //cantidad_rutas = 2;
         String[] distancias = new String[cantidad_rutas];
         String[] duraciones = new String[cantidad_rutas];
 
@@ -976,6 +903,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             JSONObject paso = pasos.getJSONObject(pasoSolicitado);
             String distanciaPaso = paso.getJSONObject("distance").getString("text");
             detallesPaso[0] = distanciaPaso;
+            detallesPaso[0] = distanciaPaso;
             String duracionPaso = paso.getJSONObject("duration").getString("text");
             detallesPaso[1] = duracionPaso;
             String latEndPaso = paso.getJSONObject("end_location").getString("lat");
@@ -1006,6 +934,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         }
         rutas.clear();
-        rutas.add(tempPoli);
+        if(index != 10)
+        {
+            rutas.add(tempPoli);
+        }
+
     }
+
 }
+
+
