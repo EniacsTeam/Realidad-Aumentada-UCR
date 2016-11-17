@@ -55,6 +55,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+        <provider
+            android:name="com.eniac.eniacs.realidadaumentadaucr.SuggestionProvider"
+            android:authorities="com.eniac.eniacs.realidadaumentadaucr.SuggestionProvider"
+            android:enabled="true"
+            android:exported="true" />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
