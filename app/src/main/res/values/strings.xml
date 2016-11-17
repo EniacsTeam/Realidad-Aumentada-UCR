@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Realidad Aumentada UCR</string>
     <string name="title_activity_maps">Mapa UCR</string>
-    <string name="search_hint">Buscar Escuela de Arquitectura</string>
+    <string name="search_hint">Buscar</string>
 </resources>

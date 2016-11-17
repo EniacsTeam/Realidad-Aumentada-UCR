@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.eniac.eniacs.realidadaumentadaucr.SamplePoiDetailActivity" >
+
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="bold" android:id="@+id/poi_title"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="2dp"
+        style="@style/RtlOverlay.Widget.AppCompat.PopupMenuItem.Text" />
+
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/poi_description"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="2dp"
+        style="@android:style/Widget.Holo.CompoundButton.RadioButton" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/imageButton"
+            android:background="@drawable/ic_blue_heading_icons_world"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp" />
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/imageButton2"
+            android:layout_alignBottom="@+id/imageButton"
+            android:layout_toLeftOf="@+id/imageButton"
+            android:layout_toStartOf="@+id/imageButton"
+            android:background="@drawable/ic_phoneicon_01" />
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/imageButton3"
+            android:layout_alignBottom="@+id/imageButton2"
+            android:layout_toLeftOf="@+id/imageButton2"
+            android:layout_toStartOf="@+id/imageButton2"
+            android:background="@drawable/ic_mail_1454731_1280" />
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/imageButton4"
+            android:layout_alignBottom="@+id/imageButton3"
+            android:layout_toLeftOf="@+id/imageButton3"
+            android:layout_toStartOf="@+id/imageButton3"
+            android:background="@drawable/ic_logo_facebook" />
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/imageButton5"
+            android:layout_alignBottom="@+id/imageButton4"
+            android:layout_toStartOf="@+id/imageButton4"
+            android:background="@drawable/ic_museo" />
+    </RelativeLayout>
+
+</LinearLayout>
