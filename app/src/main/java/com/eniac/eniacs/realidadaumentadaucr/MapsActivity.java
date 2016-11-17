@@ -573,16 +573,29 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         addMarkers();
 
         if(navegar) {
-            String[] resp = instruccionesRuta(rutaElegida, pasoSgt);
-            Location pasoSgte = new Location("Paso Sgt");
-            pasoSgte.setLatitude(Double.parseDouble(resp[2]));
-            pasoSgte.setLongitude(Double.parseDouble(resp[3]));
 
-            if (mCurrentLocation.distanceTo(pasoSgte) < 5) {
-                instruccionesRuta(rutaElegida, pasoSgt);
-                LatLng current = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
-                //actualizarRuta(current);
+            Location pasoSgte = new Location("Paso Sgt");
+            String[] resp;
+            if(pasoSgt==0) {
+                resp = instruccionesRuta(rutaElegida, pasoSgt);
+                pasoSgte.setLatitude(Double.parseDouble(resp[2]));
+                pasoSgte.setLongitude(Double.parseDouble(resp[3]));
+                Toast.makeText(MapsActivity.this, resp[4], Toast.LENGTH_SHORT).show();
+
+            }
+
+
+            if (mCurrentLocation.distanceTo(pasoSgte) < 10 || pasoSgt==0 ) {
+
+                resp = instruccionesRuta(rutaElegida, pasoSgt);
                 ++pasoSgt; //hay que ponerlo en cero cuando se haga el borrar rutas
+                pasoSgte.setLatitude(Double.parseDouble(resp[2]));
+                pasoSgte.setLongitude(Double.parseDouble(resp[3]));
+
+                Toast.makeText(MapsActivity.this, resp[4], Toast.LENGTH_SHORT).show();
+               // LatLng current = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+                //actualizarRuta(current);
+
 
             }
         }
@@ -1017,7 +1030,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             detallesPaso[4] = mensajePaso;
             //Log.i(TAG, "Distancia Paso: " + distanciaPaso + " Duracion Paso: " + duracionPaso + " Latitud final: " + latEndPaso + " Longitud final: " + lonEndPaso + " Mensaje: " + mensajePaso);
 
-            Toast.makeText(MapsActivity.this, mensajePaso, Toast.LENGTH_SHORT).show();
+
 
         } catch (Exception e) {
 
