@@ -65,6 +65,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import static android.media.CamcorderProfile.get;
 import static android.os.Build.VERSION_CODES.M;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.fab;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
@@ -258,12 +260,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         }
 
-        if(!flag){
-            flag=true;
             LatLng start = new LatLng(9.937886, -84.052016);
             LatLng end = new LatLng(9.936089, -84.051115);
             getURL(start,end);
-        }
     }
 
 
@@ -295,7 +294,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 break;
 
         }
-
     }
 
 
@@ -555,6 +553,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             }
             flagRutas=true;
+
+            actualizarRuta(new LatLng(12,12));
         } catch (Exception e) {
 
         }
@@ -624,7 +624,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return poly;
     }
 
-private void borrarRutas(int index){
+    private void borrarRutas(int index){
     Polyline tempPoli=rutas.get(0);
     for(int i = 0; i < rutas.size();i++){
         if(i==index){
@@ -637,4 +637,20 @@ private void borrarRutas(int index){
     rutas.add(tempPoli);
 }
 
+    public void actualizarRuta(LatLng current) {
+        rutas.get(0).getPoints().set(0,current);
+        LatLng inicio = rutas.get(0).getPoints().get(0);//falta crear control de null
+        Location primeroL= new Location("currentL");
+        primeroL.setLatitude(current.latitude);
+        primeroL.setLongitude(current.longitude);
+
+        LatLng segundo = rutas.get(0).getPoints().get(1);//falta crear control de null
+        Location segundoL= new Location("currentL2");
+        segundoL.setLatitude(inicio.latitude);
+        segundoL.setLongitude(inicio.longitude);
+
+        if(primeroL.distanceTo(segundoL)<3) {//cambiar 3 por la distancia que deseamos utilizar de cercanía
+            rutas.get(0).getPoints().remove(0);//falta crear control de null
+        }
+    }
 }
