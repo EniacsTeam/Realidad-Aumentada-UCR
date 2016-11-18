@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Nov 17 22:46:36 CST 2016
+#Fri Nov 18 00:04:15 CST 2016
 20.base=C\:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\com.google.android.gms-play-services-fitness-9.6.1_75ac641034a286ea3de8feed26a6bfa385e2e39e
 143.base=C\:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\res\\resources-debug.ap_
 493.base=C\:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\res\\resources-debug.ap_

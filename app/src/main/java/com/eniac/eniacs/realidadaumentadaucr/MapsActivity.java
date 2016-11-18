@@ -64,6 +64,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -145,6 +146,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Location pasoSgte = new Location("Paso Sgt");
     String[] resp;
     TextToSpeech tts;
+    private LatLng pos_actual;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -563,8 +565,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         }
         addMarkers();
-
         if(navegar) {
+            /*Para que la camara siga al usuario*/
+            pos_actual = new LatLng(location.getLatitude(),location.getLongitude());
+            CameraPosition cameraPosition = new CameraPosition.Builder()
+                    .target(pos_actual)
+                    .bearing(location.getBearing())
+                    .zoom(18)
+                    .build();
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
             if (mCurrentLocation.distanceTo(pasoSgte) < 10 || pasoSgt==0 ) {
 
