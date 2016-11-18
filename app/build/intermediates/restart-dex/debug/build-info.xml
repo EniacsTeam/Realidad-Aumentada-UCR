@@ -5,22 +5,22 @@
     density="560dpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="94865506141040"
+    timestamp="96281656067387"
     token="7055337893480814454"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="767" />
+        duration="818" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="29" />
+        duration="100" />
     <task
         name="verifier"
-        duration="2" />
+        duration="16" />
 
     <artifact
         location="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
@@ -34,7 +34,7 @@
             type="MAIN" />
     </build>
     <build
-        timestamp="94865506141040"
+        timestamp="96281656067387"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"

@@ -1,5 +1,7 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
+import android.*;
+import android.Manifest;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +19,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -47,6 +51,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -68,6 +75,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
 
@@ -79,7 +87,7 @@ import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
  * @author  EniacsTeam
  */
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
-        LocationListener, SensorEventListener, NavigationView.OnNavigationItemSelectedListener {
+        LocationListener, SensorEventListener, NavigationView.OnNavigationItemSelectedListener, TextToSpeech.OnInitListener {
 
     SearchView searchView;
     SearchManager searchManager;
@@ -95,7 +103,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Location mLastLocation;
     private Location mCurrentLocation;
     private Rutas mRuta;
-    private final String[] StringPermisos = {android.Manifest.permission.CAMERA, android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private final String[] StringPermisos = {Manifest.permission.CAMERA, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private final int iconVec[] = new int[28];
     private final String wordVec[] = {"derecho", "oficbecas", "biblio", "arqui", "comedor", "inge", "fisicamate", "generales", "biblio", "preescolar",
             "letras", "centinform", "geologia", "economicas", "ecci", "odonto", "medicina", "farmacia", "microbiologia", "biolo", "quimica", "musica",
@@ -136,6 +144,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private boolean navegar= false;
     Location pasoSgte = new Location("Paso Sgt");
     String[] resp;
+    TextToSpeech tts;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -159,11 +168,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mRuta = new Rutas();
         llenarIconVec();
         if (mGoogleApiClient == null) {
+            // ATTENTION: This "addApi(AppIndex.API)"was auto-generated to implement the App Indexing API.
+            // See https://g.co/AppIndexing/AndroidStudio for more information.
             mGoogleApiClient = new GoogleApiClient.Builder(this)
                     .addConnectionCallbacks(this)
                     .addOnConnectionFailedListener(this)
                     .addApi(LocationServices.API)
-                    .build();
+                    .addApi(AppIndex.API).build();
         }
         //requestPermission();
         createLocationRequest();
@@ -185,7 +196,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 quitafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_hide);
                 fab.startAnimation(quitafab);
-                startActivity(new Intent(MapsActivity.this ,WikitudeActivity.class));
+                startActivity(new Intent(MapsActivity.this, WikitudeActivity.class));
 
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
@@ -195,9 +206,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         rotationMatrix = new float[9];
         orientationVals = new float[3];
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);//obtenemos el servicio
-        mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         distanceVector = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
-        paint  = new Paint();
+        paint = new Paint();
         paint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP));
 
 
@@ -219,7 +230,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             @Override
             public void onDrawerOpened(View drawerView) {
-                if(isFirst) {
+                if (isFirst) {
                     isFirst = false;
                     configureSearch();
                 }
@@ -235,6 +246,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             }
         });
+
+        tts = new TextToSpeech(this, this);
+       // Locale loc = new Locale ("spa", "ESP");
+       // tts.setLanguage(loc);
     }
 
     private void configureSearch() {
@@ -268,6 +283,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (mGoogleApiClient != null) {
             mGoogleApiClient.connect();
         }
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.start(mGoogleApiClient, getIndexApiAction());
     }
 
 
@@ -285,7 +303,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      * Cuando la actividad ya no es visible al usuario detiene la conexión a los servicios de Google.
      */
     protected void onStop() {
-        super.onStop();
+        super.onStop();// ATTENTION: This was auto-generated to implement the App Indexing API.
+// See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.end(mGoogleApiClient, getIndexApiAction());
         if (mGoogleApiClient.isConnected()) {
             mGoogleApiClient.disconnect();
         }
@@ -555,6 +575,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     pasoSgte.setLongitude(Double.parseDouble(resp[3]));
 
                     textView.setText(Html.fromHtml(resp[4]));
+                    String aux = textView.getText().toString();
+                    tts.speak(aux,TextToSpeech.QUEUE_FLUSH, null);
                    // Toast.makeText(MapsActivity.this, resp[4], Toast.LENGTH_SHORT).show();
                     // LatLng current = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
                     //actualizarRuta(current);
@@ -1014,6 +1036,27 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             System.exit(0);
         }
         return false;
+    }
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    public Action getIndexApiAction() {
+        Thing object = new Thing.Builder()
+                .setName("Maps Page") // TODO: Define a title for the content shown.
+                // TODO: Make sure this auto-generated URL is correct.
+                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+                .build();
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onInit(int status) {
+
     }
 }
 
