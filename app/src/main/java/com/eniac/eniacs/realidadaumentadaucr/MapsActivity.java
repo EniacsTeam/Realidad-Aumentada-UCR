@@ -29,6 +29,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -128,6 +129,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private  Marker marcador_actual;
     private int indice_actual = -1;
     private int cantidad_rutas = 0;
+
+    //para navegar prueba
+    private int rutaElegida=0;
+    private int pasoSgt=0;
+    private boolean navegar= false;
+    Location pasoSgte = new Location("Paso Sgt");
+    String[] resp;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -341,13 +349,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
+                //rutaElegida=0;
+                pasoSgt=0;
+                navegar= false;
+
                 quitafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_hide);
                 fab.startAnimation(quitafab);
                 fab.setVisibility(View.GONE);
                 textView.setText(marker.getTitle());
                 if(rutas.size() != 0)
                 {
-                    borrarRutas(10);
+                    //  borrarRutas(10);
                 }
 
                 marcador_actual = marker;
@@ -531,6 +543,26 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         }
         addMarkers();
+
+        if(navegar) {
+
+            if (mCurrentLocation.distanceTo(pasoSgte) < 10 || pasoSgt==0 ) {
+
+                resp = instruccionesRuta(rutaElegida, pasoSgt);
+                if(resp[0]!= "-1") {
+                    ++pasoSgt; //hay que ponerlo en cero cuando se haga el borrar rutas
+                    pasoSgte.setLatitude(Double.parseDouble(resp[2]));
+                    pasoSgte.setLongitude(Double.parseDouble(resp[3]));
+
+                    textView.setText(Html.fromHtml(resp[4]));
+                   // Toast.makeText(MapsActivity.this, resp[4], Toast.LENGTH_SHORT).show();
+                    // LatLng current = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+                    //actualizarRuta(current);
+                }
+
+            }
+        }
+
     }
 
     /**
@@ -622,8 +654,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                borrarRutas(position);
-                Toast.makeText(MapsActivity.this, "posicion " + position, Toast.LENGTH_SHORT).show();
+                rutaElegida=position;
+                navegar= true;
+                mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                //imageButton.setEnabled(false);
+                //imageButton.setVisibility(View.INVISIBLE);
+                // borrarRutas(position);
+                //Toast.makeText(MapsActivity.this, "posicion " + position, Toast.LENGTH_SHORT).show();
             }
         });
         textView = (TextView) findViewById(R.id.name);
@@ -911,14 +948,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      */
     private String[] instruccionesRuta(int rutaElegida, int pasoSolicitado) {
         if (pasoSolicitado == 0) {
-            borrarRutas(rutaElegida);
+            //borrarRutas(rutaElegida);
         }
         String[] detallesPaso = new String[5];
         try {
+
+
             JSONArray pasos = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONArray("steps");
             JSONObject paso = pasos.getJSONObject(pasoSolicitado);
             String distanciaPaso = paso.getJSONObject("distance").getString("text");
-            detallesPaso[0] = distanciaPaso;
             detallesPaso[0] = distanciaPaso;
             String duracionPaso = paso.getJSONObject("duration").getString("text");
             detallesPaso[1] = duracionPaso;
@@ -928,9 +966,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             detallesPaso[3] = lonEndPaso;
             String mensajePaso = paso.getString("html_instructions");
             detallesPaso[4] = mensajePaso;
-            Log.i(TAG, "Distancia Paso: " + distanciaPaso + " Duracion Paso: " + duracionPaso + " Latitud final: " + latEndPaso + " Longitud final: " + lonEndPaso + " Mensaje: " + mensajePaso);
-        } catch (Exception e) {
+            //Log.i(TAG, "Distancia Paso: " + distanciaPaso + " Duracion Paso: " + duracionPaso + " Latitud final: " + latEndPaso + " Longitud final: " + lonEndPaso + " Mensaje: " + mensajePaso);
 
+
+
+        } catch (Exception e) {
+            // rutaElegida=0;
+            navegar= false;
+            detallesPaso[0]="-1";
+            //pasoSgt= 0;
         }
         return detallesPaso;
     }
