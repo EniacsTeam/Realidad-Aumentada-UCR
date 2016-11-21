@@ -1,11 +1,7 @@
 package com.eniac.eniacs.realidadaumentadaucr;
 
-import android.*;
-import android.Manifest;
-import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -50,20 +46,13 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.Circle;
-import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import static android.os.Build.VERSION_CODES.M;
-import static com.eniac.eniacs.realidadaumentadaucr.R.id.fab;
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
-import static com.google.android.gms.internal.zznu.it;
 
 /**
  * Esta clase representa un mapa de Google. Contiene metodos para solicitar y manejar permisos de localizacion, para luego con ellos ayudar
@@ -110,7 +99,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private SensorManager mSensorManager;//control de sensores
     private Sensor distanceVector;
 
-
+    /**
+     * Establece el nuevo contexto base para este {@code ContextWrapper}. Todas las llamadas seran delegadas
+     * a este contexto base.
+     *
+     * @param newBase El nuevo contexto base para este "wrapper".
+     */
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(newBase);
@@ -204,6 +198,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
 
+    /**
+     * Este metodo maneja los {@code Intent} que son retornados al hacer una busqueda y desempeña una funcion especifica dependiendo
+     * si es busqueda textual o por sugerencias.
+     *
+     * @param intent el nuevo {@code Intent} que fue empezado para la actividad.
+     */
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
@@ -252,6 +252,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+    /**
+     * Configura la barra de busqueda con los parametros del {@code SearchManager} respectivo.
+     */
     private void configureSearch() {
         // Get the SearchView and set the searchable configuration
         searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -271,6 +274,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+    /**
+     * Metodo llamado al hacer uso del boton de retorno del dispositivo. Su funcion si el menu esta abierto es cerrarlo,
+     * en caso contrario llama el metodo de la superclase.
+     *
+     */
     @Override
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -569,6 +577,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
+    /**
+     * Metodo llamado al cliquear sobre un item dentro del {@code NavigationDrawer}.
+     *
+     * @param item el item seleccionado
+     * @return verdadero para mostrar el item como el item seleccionado
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -580,6 +594,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
            finish();
            System.exit(0);
         }
-        return false;
+        return true;
     }
 }
