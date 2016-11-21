@@ -231,6 +231,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             int result = mCursor.getInt(mCursor.getColumnIndex(SuggestionProvider.Edificios.COL_ID));
                             Toast.makeText(this, "Cursor by: " + Integer.toString(result), Toast.LENGTH_SHORT).show();
 
+                            mDrawerLayout.closeDrawers();
                             mMap.animateCamera(CameraUpdateFactory.newLatLng(marcasTodas[result-1].getPosition()), 250, null);
                             markerListener.onMarkerClick(marcasTodas[result-1]);
                         }
@@ -245,6 +246,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             String uri = intent.getDataString();
             Toast.makeText(this, "Suggestion: "+ uri, Toast.LENGTH_SHORT).show();
 
+            mDrawerLayout.closeDrawers();
             mMap.animateCamera(CameraUpdateFactory.newLatLng(marcasTodas[Integer.parseInt(uri)-1].getPosition()), 250, null);
             markerListener.onMarkerClick(marcasTodas[Integer.parseInt(uri)-1]);
         }
