@@ -250,8 +250,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
         tts = new TextToSpeech(this, this);
-       // Locale loc = new Locale ("spa", "ESP");
-       // tts.setLanguage(loc);
+        Locale loc = new Locale ("us", "ESP");
+        tts.setLanguage(loc);
     }
 
     private void configureSearch() {
@@ -585,6 +585,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                     textView.setText(Html.fromHtml(resp[4]));
                     String aux = textView.getText().toString();
+                    textView.setTextSize(15);
                     tts.speak(aux,TextToSpeech.QUEUE_FLUSH, null);
                    // Toast.makeText(MapsActivity.this, resp[4], Toast.LENGTH_SHORT).show();
                     // LatLng current = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
@@ -688,8 +689,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 rutaElegida=position;
                 navegar= true;
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-                //imageButton.setEnabled(false);
-                //imageButton.setVisibility(View.INVISIBLE);
+                imageButton.setEnabled(false);
+                imageButton.setVisibility(View.INVISIBLE);
                 // borrarRutas(position);
                 //Toast.makeText(MapsActivity.this, "posicion " + position, Toast.LENGTH_SHORT).show();
             }
@@ -842,7 +843,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void getURL(LatLng startL, LatLng endL){
         String start = startL.latitude+","+startL.longitude;
         String end = endL.latitude+","+endL.longitude;
-        String stringUrl = "https://maps.googleapis.com/maps/api/directions/json?origin="+start+"&destination="+end+"&alternatives=true&mode=walking&key=AIzaSyCljYcjcbR69841xYHr5kTcuPfmQ_2qWZE";
+        String stringUrl = "https://maps.googleapis.com/maps/api/directions/json?origin="+start+"&destination="+end+"&alternatives=true&mode=walking&language=es&key=AIzaSyCljYcjcbR69841xYHr5kTcuPfmQ_2qWZE";
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         // Request a string response from the provided URL.
