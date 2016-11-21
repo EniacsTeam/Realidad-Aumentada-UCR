@@ -5,7 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by Xinia on 16/11/2016.
+ * Esta clase representa la base de datos de la aplicacion, por lo que tiene metodos para crear una base de datos, en este caso una base de eficios.
+ *
+ * @author  EniacsTeam
  */
 public class EdificiosSqliteHelper extends SQLiteOpenHelper {
 
@@ -24,12 +26,25 @@ public class EdificiosSqliteHelper extends SQLiteOpenHelper {
             "Escuela de Artes Musicales","Escuela de Bellas Artes","Facultad de Educación","Bosque Leonel Oviedo",
             "Mariposario","Plaza 24 de Abril","El Pretil"};
 
+    /**
+     * Crea un objeto "helper" para crear, abrir, y/o manejar una base de datos.
+     *
+     * @param contexto para abrir o crear la base de datos.
+     * @param nombre del archivo de la base de datos o {@code null} para una base "in-memory".
+     * @param factory para crear objetos {@code Cursor} o {@code null} para el preestablecido
+     * @param version numero de la base de datos.
+     */
     public EdificiosSqliteHelper(Context contexto, String nombre,
                                  SQLiteDatabase.CursorFactory factory, int version) {
 
         super(contexto, nombre, factory, version);
     }
 
+    /**
+     * Llamado cuando la base de datos es creada por primera vez. Aqui sucede la creacion de la tabla y el poblamiento de respectivo.
+     *
+     * @param db la base de datos
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Se ejecuta la sentencia SQL de creación de la tabla
@@ -44,6 +59,13 @@ public class EdificiosSqliteHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Este metodo es llamado cuando el numero de version de la base es aumentado y se encarga de realizar las actualizaciones necesarias.
+     *
+     * @param db la base de datos.
+     * @param versionAnterior la version vieja de la base.
+     * @param versionNueva la nueva version de la base.
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int versionAnterior, int versionNueva) {
         //NOTA: Por simplicidad del ejemplo aquí utilizamos directamente la opción de
