@@ -628,34 +628,40 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     private void borrarRutas(int index){
-   /* Polyline tempPoli=rutas.get(0);
+   ArrayList<Polyline> tempPoli=rutas.get(0);
     for(int i = 0; i < rutas.size();i++){
         if(i==index){
             tempPoli = rutas.get(i);
         }else{
-            rutas.get(i).remove();
+            for (int j = 0 ;j < rutas.get(i).size();j++){
+                    rutas.get(i).get(j).setVisible(false);
+            }
         }
     }
     rutas.clear();
-    rutas.add(tempPoli);*/
+        if(index!=10){
+            rutas.add(tempPoli);
+        }
 }
 
     public void actualizarRuta(LatLng current) {
-        rutas.get(0).get(0).getPoints().set(0,current);
+        rutas.get(0).get(0).getPoints().set(0,current);//insercion del current a la cabeza de la ruta
 
-        LatLng inicio = rutas.get(0).get(0).getPoints().get(0);//falta crear control de null
-        Location primeroL= new Location("currentL");
-        primeroL.setLatitude(current.latitude);
-        primeroL.setLongitude(current.longitude);
-
+        //el conjunto de ellos dos forman la primer polylinea
+        LatLng primero = rutas.get(0).get(0).getPoints().get(0);//falta crear control de null
         LatLng segundo = rutas.get(0).get(0).getPoints().get(1);//falta crear control de null
-        Location segundoL= new Location("currentL2");
-        segundoL.setLatitude(inicio.latitude);
-        segundoL.setLongitude(inicio.longitude);
 
-        if(primeroL.distanceTo(segundoL)<3) {//cambiar 3 por la distancia que deseamos utilizar de cercanía
+        Location inicioRuta= new Location("currentL1");
+        inicioRuta.setLatitude(primero.latitude);
+        inicioRuta.setLongitude(primero.longitude);
+
+        Location segundoRuta= new Location("currentL2");
+        segundoRuta.setLatitude(segundo.latitude);
+        segundoRuta.setLongitude(segundo.longitude);
+
+        if(inicioRuta.distanceTo(segundoRuta)<3) {//cambiar 3 por la distancia que deseamos utilizar de cercanía
             rutas.get(0).get(0).setVisible(false);//falta crear control de null
-            rutas.get(0).get(0).getPoints().remove(0);//falta crear control de null
+            rutas.get(0).get(0).remove();//falta crear control de null
         }
     }
 
