@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -23,13 +24,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.multidex.MultiDex;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -67,12 +72,13 @@ import static com.google.android.gms.internal.zznu.it;
  * @author  EniacsTeam
  */
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
-        LocationListener, SensorEventListener {
+        LocationListener, SensorEventListener, NavigationView.OnNavigationItemSelectedListener {
 
     SearchView searchView;
     SearchManager searchManager;
     DrawerLayout mDrawerLayout;
     private boolean isFirst = true;
+    private GoogleMap.OnMarkerClickListener markerListener;
 
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
@@ -96,6 +102,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Animation cargafab;
     Animation quitafab;
 
+    NavigationView navigationView;
 
     /*para los sensores*/
     private float[] rotationMatrix;
@@ -166,6 +173,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         paint  = new Paint();
         paint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP));
 
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         mDrawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
@@ -194,26 +204,58 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            Toast.makeText(this, "Searching by: "+ query, Toast.LENGTH_SHORT).show();
+
+            if (!TextUtils.isEmpty(query)) {
+                String[] mProjection = {SuggestionProvider.Edificios.COL_ID, SuggestionProvider.Edificios.COL_NOMBRE};
+                String mSelectionClause = SuggestionProvider.Edificios.COL_NOMBRE + " LIKE ? ";
+                String[] mSelectionArgs = new String[]{"%"+query+"%"};
+                Cursor mCursor = getContentResolver().query(
+                        SuggestionProvider.CONTENT_URI,
+                        mProjection,
+                        mSelectionClause,
+                        mSelectionArgs,
+                        null
+                );
+
+                boolean found = false;
+                if(mCursor != null) {
+                    if(mCursor.getCount() == 1) {
+                        if(mCursor.moveToFirst()) {
+                            found = true;
+                            int result = mCursor.getInt(mCursor.getColumnIndex(SuggestionProvider.Edificios.COL_ID));
+                            Toast.makeText(this, "Cursor by: " + Integer.toString(result), Toast.LENGTH_SHORT).show();
+
+                            mMap.animateCamera(CameraUpdateFactory.newLatLng(marcasTodas[result-1].getPosition()), 250, null);
+                            markerListener.onMarkerClick(marcasTodas[result-1]);
+                        }
+                    }
+                }
+                if (!found) {
+                    Toast.makeText(this, query+" no es válido.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+            String uri = intent.getDataString();
+            Toast.makeText(this, "Suggestion: "+ uri, Toast.LENGTH_SHORT).show();
+
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(marcasTodas[Integer.parseInt(uri)-1].getPosition()), 250, null);
+            markerListener.onMarkerClick(marcasTodas[Integer.parseInt(uri)-1]);
+        }
+    }
+
     private void configureSearch() {
         // Get the SearchView and set the searchable configuration
         searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchView = (SearchView) findViewById(R.id.search);
         // Current activity is the searchable activity
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        //searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Toast t = Toast.makeText(getApplicationContext(),query,Toast.LENGTH_SHORT);
-                t.show();
-                return true;
-            }
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
     }
 
     /**
@@ -227,6 +269,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     /**
      * Cuando la actividad ya no es visible al usuario detiene la conexión a los servicios de Google.
@@ -354,13 +404,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     /**
-     <<<<<<< HEAD
      * Actualiza posicion de usuario y actualiza vista de usuario.
-     =======
-     * Actualiza posición de usuario y actualiza
-     * vista de usuario
-     * <p>
-     >>>>>>> a4bcef7dca3a315ed285c069c5d67a42566cc828
      *
      * @param  bundle Conjunto de datos proveidos a los clientes por los Google Play services.
      *                Podria ser {@code null} si ningun contenido es brindado por el servicio.
@@ -521,5 +565,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
 
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.Wikitude) {
+            startActivity(new Intent(MapsActivity.this, WikitudeActivity.class));
+        }else if (id == R.id.About){
+
+        }else if (id == R.id.Salir){
+           finish();
+           System.exit(0);
+        }
+        return false;
     }
 }

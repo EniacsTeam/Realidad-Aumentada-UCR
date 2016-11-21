@@ -31,12 +31,13 @@ public class SuggestionProvider extends ContentProvider {
 
         //Nombres de columnas
         public static final String COL_NOMBRE = "nombre";
+        public static final String COL_ID = "_id";
     }
 
     //Base de datos
     private EdificiosSqliteHelper edbh;
     private static final String BD_NOMBRE = "DBEdificios";
-    private static final int BD_VERSION = 1;
+    private static final int BD_VERSION = 3;
     private static final String TABLA_EDIFICIOS = "Edificios";
 
     //UriMatcher
@@ -65,6 +66,7 @@ public class SuggestionProvider extends ContentProvider {
     static {
         PROJECTION_MAP.put("_id", "_id");
         PROJECTION_MAP.put(SearchManager.SUGGEST_COLUMN_TEXT_1, "nombre AS " + SearchManager.SUGGEST_COLUMN_TEXT_1);
+        PROJECTION_MAP.put(SearchManager.SUGGEST_COLUMN_INTENT_DATA, "_id AS " + SearchManager.SUGGEST_COLUMN_INTENT_DATA);
     }
 
     @Nullable

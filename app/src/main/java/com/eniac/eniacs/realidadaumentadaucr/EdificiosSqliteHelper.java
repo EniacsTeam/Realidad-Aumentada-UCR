@@ -56,5 +56,13 @@ public class EdificiosSqliteHelper extends SQLiteOpenHelper {
 
         //Se crea la nueva versión de la tabla
         db.execSQL(sqlCreate);
+
+        //Insertamos los 28 edificios
+        for(int i = 0; i < 28; i++)
+        {
+            //Insertamos los datos en la tabla Edificios
+            db.execSQL("INSERT INTO Edificios (nombre) " +
+                    "VALUES ('" + edificios[i] + "')");
+        }
     }
 }

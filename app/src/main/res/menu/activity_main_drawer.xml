@@ -3,34 +3,18 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_audiotrack"
-            android:title="Accelerometer" />
+            android:id="@+id/Wikitude"
+            android:icon="@android:drawable/ic_menu_camera"
+            android:title="Realidad Aumentada" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_action_name"
-            android:title="Magnetic field" />
+            android:id="@+id/About"
+            android:icon="@android:drawable/ic_menu_help"
+            android:title="About" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/common_google_signin_btn_icon_dark"
-            android:title="Orientation" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_cast_off_light"
-            android:title="Tools" />
-    </group>
+            android:id="@+id/Salir"
+            android:icon="@android:drawable/ic_menu_close_clear_cancel"
+            android:title="Salir" />
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/quantum_ic_play_circle_filled_white_36"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_tv_dark"
-                android:title="Send" />
-        </menu>
-    </item>
+    </group>
 
 </menu>
