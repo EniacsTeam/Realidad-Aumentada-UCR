@@ -81,8 +81,7 @@ import static com.wikitude.architect.CameraPreviewBase.m;
  */
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         LocationListener, SensorEventListener {
-    List<Polyline> rutas;
-
+    ArrayList<ArrayList<Polyline>> rutas;
     boolean flagRutas;
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
@@ -176,7 +175,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         paint  = new Paint();
         paint.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP));
         flagRutas=false;
-        rutas=new ArrayList<>();
+        rutas=new ArrayList<ArrayList<Polyline>>();
        // String [] parameter = {"9.937886, -84.052016","9.936089, -84.051115"};
        // GetDirection gd = new GetDirection();
        // String stringUrl = "http://maps.googleapis.com/maps/api/directions/json?origin=" + "9.937886, -84.052016" + ",&destination=" + "9.936089, -84.051115"+ "&sensor=false";
@@ -523,12 +522,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             JSONObject jsonObject = new JSONObject(jsonRuta);
             // routesArray contains ALL routes
             JSONArray routesArray = jsonObject.getJSONArray("routes");
+
+            ArrayList<Polyline> tempP = new ArrayList<>();
+
             int longitud = routesArray.length();
             // Grab the first route
+
             for (int i = 0; i < longitud;i++){
                 JSONObject route = routesArray.getJSONObject(i);
                 //rutasDetalle[i] = route;
-                instruccionesRuta(0);
+                //instruccionesRuta(0);
                 JSONObject poly = route.getJSONObject("overview_polyline");
                 String polyline = poly.getString("points");
                 List<LatLng> polyz= decodePoly(polyline);//decodificación de la polilinea
@@ -540,21 +543,21 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 } else {
                     color = "#0000FF"; //Azul
                 }
-
+                tempP.clear();
                 for (int j = 0; j < polyz.size() - 1; j++) {
                     LatLng src = polyz.get(j);
                     LatLng dest = polyz.get(j + 1);
 
-                    rutas.add(i,mMap.addPolyline(new PolylineOptions()
+                    tempP.add(mMap.addPolyline(new PolylineOptions()
                             .add(new LatLng(src.latitude, src.longitude),
                                     new LatLng(dest.latitude, dest.longitude))
                             .width(4).color(Color.parseColor(color)).geodesic(true)));
-
                 }
+                rutas.add(i,tempP);
             }
             flagRutas=true;
 
-            actualizarRuta(new LatLng(12,12));
+            //actualizarRuta(new LatLng(12,12));
         } catch (Exception e) {
 
         }
@@ -625,7 +628,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     private void borrarRutas(int index){
-    Polyline tempPoli=rutas.get(0);
+   /* Polyline tempPoli=rutas.get(0);
     for(int i = 0; i < rutas.size();i++){
         if(i==index){
             tempPoli = rutas.get(i);
@@ -634,23 +637,38 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
     rutas.clear();
-    rutas.add(tempPoli);
+    rutas.add(tempPoli);*/
 }
 
     public void actualizarRuta(LatLng current) {
-        rutas.get(0).getPoints().set(0,current);
-        LatLng inicio = rutas.get(0).getPoints().get(0);//falta crear control de null
+        rutas.get(0).get(0).getPoints().set(0,current);
+
+        LatLng inicio = rutas.get(0).get(0).getPoints().get(0);//falta crear control de null
         Location primeroL= new Location("currentL");
         primeroL.setLatitude(current.latitude);
         primeroL.setLongitude(current.longitude);
 
-        LatLng segundo = rutas.get(0).getPoints().get(1);//falta crear control de null
+        LatLng segundo = rutas.get(0).get(0).getPoints().get(1);//falta crear control de null
         Location segundoL= new Location("currentL2");
         segundoL.setLatitude(inicio.latitude);
         segundoL.setLongitude(inicio.longitude);
 
         if(primeroL.distanceTo(segundoL)<3) {//cambiar 3 por la distancia que deseamos utilizar de cercanía
-            rutas.get(0).getPoints().remove(0);//falta crear control de null
+            rutas.get(0).get(0).setVisible(false);//falta crear control de null
+            rutas.get(0).get(0).getPoints().remove(0);//falta crear control de null
+        }
+    }
+
+
+    public void actualizarRuta(View view) {
+        //Log.d("eliminando punto",rutas.get(0).getPoints().get(0).toString());
+        List<Polyline> probe1 = rutas.get(0);
+        String locations="";
+        for (int i = 0 ;i < probe1.size();i++){
+            locations+=" "+probe1.get(i).getPoints().toString()+" ";
+            if(i%2==0){
+                probe1.get(i).setVisible(false);
+            }
         }
     }
 }
