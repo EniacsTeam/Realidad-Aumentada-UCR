@@ -19,6 +19,11 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+/**
+ * Esta clase representa el menu usado para desplegar la informacion en los marcadores de Wikitude.
+ *
+ * @author  EniacsTeam
+ */
 public class SamplePoiDetailActivity extends Activity {
 
     public static final String EXTRAS_KEY_POI_ID = "id";
@@ -45,10 +50,10 @@ public class SamplePoiDetailActivity extends Activity {
     private GoogleApiClient client;
 
     /**
-     * @param pm  The {@link PackageManager}. You can find this class through {@link
+     * @param pm  El {@link PackageManager}. Puede encontrar esta clase a traves de {@link
      *            Context!getPackageManager()}.
-     * @param url The full URL to the Facebook page or profile.
-     * @return An intent that will open the Facebook page/profile.
+     * @param url El URL completo de la pagina o perfil de Facebook.
+     * @return Un {@code Intent} que abrira el perfil o pagina de Facebook.
      */
     public static Intent newFacebookIntent(PackageManager pm, String url) {
         Uri uri = Uri.parse(url);
@@ -67,8 +72,9 @@ public class SamplePoiDetailActivity extends Activity {
 
 
     /**
+     * Este metodo es llamado cuando la actividad esta iniciando y se encarga de cargar toda la informacion correspondiente.
      *
-     * @param savedInstanceState
+     * @param savedInstanceState estado guardado de la aplicacion un valor {@code null} indica que la actividad no debe ser recreada a partir de información previa.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
