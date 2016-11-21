@@ -3,4 +3,8 @@
     <string name="title_activity_maps">Mapa UCR</string>
     <string name="action_settings">Settings</string>
     <string name="search_hint">Buscar</string>
+    <string name="quit">¿Salir del modo navegación?</string>
+    <string name="really_quit">Se eliminarán las rutas calculadas</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
 </resources>

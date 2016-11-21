@@ -4,6 +4,7 @@ import android.*;
 import android.Manifest;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -31,6 +32,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.text.Html;
@@ -95,9 +97,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     DrawerLayout mDrawerLayout;
     private boolean isFirst = true;
 
-    List<Polyline> rutas=new ArrayList<>();
-    boolean flag=false;
-
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
@@ -147,6 +146,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     String[] resp;
     TextToSpeech tts;
     private LatLng pos_actual;
+    ArrayList<ArrayList<Polyline>> rutas;
+    boolean flagRutas;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -252,6 +253,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         tts = new TextToSpeech(this, this);
         Locale loc = new Locale ("us", "ESP");
         tts.setLanguage(loc);
+
+        flagRutas=false;
+        rutas=new ArrayList<ArrayList<Polyline>>();
     }
 
     private void configureSearch() {
@@ -371,36 +375,39 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                //rutaElegida=0;
-                pasoSgt=0;
-                navegar= false;
-
-                quitafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_hide);
-                fab.startAnimation(quitafab);
-                fab.setVisibility(View.GONE);
-                textView.setText(marker.getTitle());
-                if(rutas.size() != 0)
+                if(navegar != true)
                 {
-                    //  borrarRutas(10);
-                }
+                    //rutaElegida=0;
+                    pasoSgt=0;
+                    navegar= false;
 
-                marcador_actual = marker;
-                double lat = marcador_actual.getPosition().latitude;
-                Boolean condicion = false;
-                int cont = -1;
-                while (condicion==false)
-                {
-                    ++cont;
-                    if(mRuta.elatitud[cont] == lat)
+                    quitafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_hide);
+                    fab.startAnimation(quitafab);
+                    fab.setVisibility(View.GONE);
+                    textView.setText(marker.getTitle());
+                    if(rutas.size() != 0)
                     {
-                        condicion = true;
+                        borrarRutas(10);
                     }
+
+                    marcador_actual = marker;
+                    double lat = marcador_actual.getPosition().latitude;
+                    Boolean condicion = false;
+                    int cont = -1;
+                    while (condicion==false)
+                    {
+                        ++cont;
+                        if(mRuta.elatitud[cont] == lat)
+                        {
+                            condicion = true;
+                        }
+                    }
+                    indice_actual = cont;
+                    datos(indice_actual);
+                    mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                    marker.showInfoWindow();
+                    marcador_actual = marker;
                 }
-                indice_actual = cont;
-                datos(indice_actual);
-                mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-                marker.showInfoWindow();
-                marcador_actual = marker;
                 return true;
             }
         });
@@ -410,15 +417,21 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onMapClick(LatLng arg0)
             {
-                if (mLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
-                    mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+                if(navegar != true)
+                {
+                    if(rutas.size() != 0)
+                    {
+                        borrarRutas(10);
+                    }
+                    if (mLayout.getPanelState() != SlidingUpPanelLayout.PanelState.HIDDEN) {
+                        mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+                    }
+                    if(fab.getVisibility() != View.VISIBLE){
+                        cargafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_show);
+                        fab.startAnimation(cargafab);
+                        fab.setVisibility(View.VISIBLE);
+                    }
                 }
-                if(fab.getVisibility() != View.VISIBLE){
-                    cargafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_show);
-                    fab.startAnimation(cargafab);
-                    fab.setVisibility(View.VISIBLE);
-                }
-
             }
         });
 
@@ -691,7 +704,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                 imageButton.setEnabled(false);
                 imageButton.setVisibility(View.INVISIBLE);
-                // borrarRutas(position);
+                 borrarRutas(position);
                 //Toast.makeText(MapsActivity.this, "posicion " + position, Toast.LENGTH_SHORT).show();
             }
         });
@@ -700,13 +713,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(flag == true)
+                if(flagRutas == true)
                 {
-                    flag = false;
+                    flagRutas = false;
                     List <String[]> result = datosRuta(indice_actual);
                     setListview(result);
                     mLayout.setPanelState(SlidingUpPanelLayout.PanelState.ANCHORED);
-                    Toast.makeText(MapsActivity.this, "Boton funciona y marcador es indice " + indice_actual, Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -815,6 +827,33 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if(navegar == true)
+            {
+                new AlertDialog.Builder(this)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle(R.string.quit)
+                        .setMessage(R.string.really_quit)
+                        .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                //Stop the activity
+                                navegar = false;
+                                borrarRutas(10);
+                                imageButton.setEnabled(true);
+                                imageButton.setVisibility(View.VISIBLE);
+                                mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+                                mMap.setMinZoomPreference(13);
+                            }
+
+                        })
+                        .setNegativeButton(R.string.no, null)
+                        .show();
+
+                return true;
+            }
+
             if (mLayout != null &&
                     (mLayout.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED || mLayout.getPanelState() == SlidingUpPanelLayout.PanelState.ANCHORED)) {
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
@@ -853,7 +892,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     public void onResponse(String response) {
                         Log.d("Principal","Dibuja");
                         dibujar(response);
-                        flag = true;
+                        flagRutas = true;
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -863,18 +902,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         queue.add(stringRequest);
     }
 
-    public void dibujar(String jsonRuta){ //String jsonRuta
+    public void dibujar(String jsonRuta){
         try {
             JSONObject jsonObject = new JSONObject(jsonRuta);
             // routesArray contains ALL routes
             JSONArray routesArray = jsonObject.getJSONArray("routes");
+
+            ArrayList<Polyline> tempP = new ArrayList<>();
+
             int longitud = routesArray.length();
             cantidad_rutas = longitud;
-            //cantidad_rutas = 2;
             // Grab the first route
+
             for (int i = 0; i < longitud;i++){
                 JSONObject route = routesArray.getJSONObject(i);
                 rutasDetalle[i] = route;
+                //instruccionesRuta(0);
                 JSONObject poly = route.getJSONObject("overview_polyline");
                 String polyline = poly.getString("points");
                 List<LatLng> polyz= decodePoly(polyline);//decodificación de la polilinea
@@ -886,19 +929,21 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 } else {
                     color = "#2196F3"; //Azul
                 }
-
+                tempP.clear();
                 for (int j = 0; j < polyz.size() - 1; j++) {
                     LatLng src = polyz.get(j);
                     LatLng dest = polyz.get(j + 1);
 
-                    rutas.add(i,mMap.addPolyline(new PolylineOptions()
+                    tempP.add(mMap.addPolyline(new PolylineOptions()
                             .add(new LatLng(src.latitude, src.longitude),
                                     new LatLng(dest.latitude, dest.longitude))
                             .width(4).color(Color.parseColor(color)).geodesic(true)));
-
                 }
+                rutas.add(i,tempP);
             }
+            flagRutas=true;
 
+            //actualizarRuta(new LatLng(12,12));
         } catch (Exception e) {
 
         }
@@ -1016,22 +1061,23 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      *
      * @param index  El indice de la ruta seleccionada por el usuario
      */
-    private void borrarRutas(int index) {
-        Polyline tempPoli = rutas.get(0);
-        for (int i = 0; i < rutas.size(); i++) {
-            if (i == index) {
+    private void borrarRutas(int index){
+        ArrayList<Polyline> tempPoli=rutas.get(0);
+        for(int i = 0; i < rutas.size();i++){
+            if(i==index){
                 tempPoli = rutas.get(i);
-            } else {
-                rutas.get(i).remove();
+            }else{
+                for (int j = 0 ;j < rutas.get(i).size();j++){
+                    rutas.get(i).get(j).setVisible(false);
+                }
             }
         }
         rutas.clear();
-        if(index != 10)
-        {
+        if(index!=10){
             rutas.add(tempPoli);
         }
-
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -1067,6 +1113,27 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onInit(int status) {
 
+    }
+
+    public void actualizarRuta(LatLng current) {
+        rutas.get(0).get(0).getPoints().set(0,current);//insercion del current a la cabeza de la ruta
+
+        //el conjunto de ellos dos forman la primer polylinea
+        LatLng primero = rutas.get(0).get(0).getPoints().get(0);//falta crear control de null
+        LatLng segundo = rutas.get(0).get(0).getPoints().get(1);//falta crear control de null
+
+        Location inicioRuta= new Location("currentL1");
+        inicioRuta.setLatitude(primero.latitude);
+        inicioRuta.setLongitude(primero.longitude);
+
+        Location segundoRuta= new Location("currentL2");
+        segundoRuta.setLatitude(segundo.latitude);
+        segundoRuta.setLongitude(segundo.longitude);
+
+        if(inicioRuta.distanceTo(segundoRuta)<3) {//cambiar 3 por la distancia que deseamos utilizar de cercanía
+            rutas.get(0).get(0).setVisible(false);//falta crear control de null
+            rutas.get(0).get(0).remove();//falta crear control de null
+        }
     }
 }
 

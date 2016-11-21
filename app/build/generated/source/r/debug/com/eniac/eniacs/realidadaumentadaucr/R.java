@@ -4541,18 +4541,22 @@ containing a value of this type.
         public static final int mr_controller_stop=0x7f090059;
         public static final int mr_system_route_name=0x7f09005a;
         public static final int mr_user_route_category_name=0x7f09005b;
+        public static final int no=0x7f09007d;
         public static final int place_autocomplete_clear_button=0x7f09005c;
         public static final int place_autocomplete_search_hint=0x7f09005d;
-        public static final int search_hint=0x7f09007d;
+        public static final int quit=0x7f09007e;
+        public static final int really_quit=0x7f09007f;
+        public static final int search_hint=0x7f090080;
         public static final int search_menu_title=0x7f09005e;
         public static final int status_bar_notification_info_overflow=0x7f09005f;
-        public static final int store_picture_message=0x7f09007e;
-        public static final int store_picture_title=0x7f09007f;
-        public static final int tagmanager_preview_dialog_button=0x7f090080;
-        public static final int tagmanager_preview_dialog_message=0x7f090081;
-        public static final int tagmanager_preview_dialog_title=0x7f090082;
-        public static final int title_activity_maps=0x7f090083;
+        public static final int store_picture_message=0x7f090081;
+        public static final int store_picture_title=0x7f090082;
+        public static final int tagmanager_preview_dialog_button=0x7f090083;
+        public static final int tagmanager_preview_dialog_message=0x7f090084;
+        public static final int tagmanager_preview_dialog_title=0x7f090085;
+        public static final int title_activity_maps=0x7f090086;
         public static final int wallet_buy_button_place_holder=0x7f090060;
+        public static final int yes=0x7f090087;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0b008d;
