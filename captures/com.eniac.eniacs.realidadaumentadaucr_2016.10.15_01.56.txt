@@ -1,0 +1,50 @@
+Applications Memory Usage (in Kilobytes):
+Uptime: 8182076 Realtime: 8711656
+
+** MEMINFO in pid 32256 [com.eniac.eniacs.realidadaumentadaucr] **
+                   Pss  Private  Private  SwapPss     Heap     Heap     Heap
+                 Total    Dirty    Clean    Dirty     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------   ------
+  Native Heap    10606    10580        0        0    30720    16946    13773
+  Dalvik Heap    31601    31560        0        0    25095    15057    10038
+ Dalvik Other     1897     1896        0        0                           
+        Stack      748      748        0        0                           
+       Ashmem        2        0        0        0                           
+      Gfx dev    15550     9320        0        0                           
+    Other dev        8        0        8        0                           
+     .so mmap     1820      120      636       47                           
+    .apk mmap      773        0      264        0                           
+    .ttf mmap       10        0        0        0                           
+    .dex mmap    14044      344    12568        0                           
+    .oat mmap     2213        0      352        0                           
+    .art mmap     2063      824      696        1                           
+   Other mmap        9        4        0        0                           
+   EGL mtrack   118904   118904        0        0                           
+      Unknown     2953     2952        0        4                           
+        TOTAL   203253   177252    14524       52    55815    32003    23811
+ 
+ App Summary
+                       Pss(KB)
+                        ------
+           Java Heap:    33080
+         Native Heap:    10580
+                Code:    14284
+               Stack:      748
+            Graphics:   128224
+       Private Other:     4860
+              System:    11477
+ 
+               TOTAL:   203253       TOTAL SWAP PSS:       52
+ 
+ Objects
+               Views:       34         ViewRootImpl:        1
+         AppContexts:        3           Activities:        1
+              Assets:        5        AssetManagers:        5
+       Local Binders:       18        Proxy Binders:       24
+       Parcel memory:       12         Parcel count:       48
+    Death Recipients:        3      OpenSSL Sockets:        2
+ 
+ SQL
+         MEMORY_USED:        0
+  PAGECACHE_OVERFLOW:        0          MALLOC_SIZE:        0
+ 
