@@ -32,16 +32,16 @@
         "source": "C:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
     },
     {
-        "merged": "C:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\res\\merged\\debug\\anim\\fab_show.xml",
-        "source": "C:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\src\\main\\res\\anim\\fab_show.xml"
-    },
-    {
         "merged": "C:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
         "source": "C:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\anim\\abc_popup_enter.xml"
     },
     {
         "merged": "C:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\res\\merged\\debug\\anim\\fab_hide.xml",
         "source": "C:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\src\\main\\res\\anim\\fab_hide.xml"
+    },
+    {
+        "merged": "C:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\res\\merged\\debug\\anim\\fab_show.xml",
+        "source": "C:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\src\\main\\res\\anim\\fab_show.xml"
     },
     {
         "merged": "C:\\Users\\Francisco\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",

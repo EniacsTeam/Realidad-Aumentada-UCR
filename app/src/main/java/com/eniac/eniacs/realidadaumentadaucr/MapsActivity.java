@@ -37,6 +37,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -87,7 +88,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import static com.eniac.eniacs.realidadaumentadaucr.R.id.map;
-
+import static com.eniac.eniacs.realidadaumentadaucr.R.id.textView;
+import static com.wikitude.architect.CameraPreviewBase.m;
 
 
 /**
@@ -231,7 +233,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         init();            // call init method
         panelListener(); // Call paneListener method
         mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
-        mLayout.setAnchorPoint(0.3f); //Para que solo se vea las 3 rutas y no se expanda completamente el panel
+        //mLayout.setAnchorPoint(0.3f); //Para que solo se vea las 3 rutas y no se expanda completamente el panel
         mLayout.setTouchEnabled(false); //Para que el usuario no pueda deslizar el panel
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -305,12 +307,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         if(mCursor.moveToFirst()) {
                             found = true;
                             int result = mCursor.getInt(mCursor.getColumnIndex(SuggestionProvider.Edificios.COL_ID));
-                           // Toast.makeText(this, "Cursor by: " + Integer.toString(result), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Cursor by: " + Integer.toString(result), Toast.LENGTH_SHORT).show();
 
                             mDrawerLayout.closeDrawers();
                             mMap.animateCamera(CameraUpdateFactory.newLatLng(marcasTodas[result-1].getPosition()), 250, null);
-                            //markerListener.onMarkerClick(marcasTodas[result-1]);
-                            //marcasTodas[result-1].showInfoWindow();
                             indice_actual = result -1;
                             quitafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_hide);
                             fab.startAnimation(quitafab);
@@ -327,7 +327,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                             mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                             marcador_actual = marcasTodas[result-1];
-                            //imageButton.performClick();
+
                         }
                     }
                 }
@@ -338,29 +338,26 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
             String uri = intent.getDataString();
-            //Toast.makeText(this, "Suggestion: "+ uri, Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(this, "Suggestion: "+ uri, Toast.LENGTH_SHORT).show();
             mDrawerLayout.closeDrawers();
-            mMap.animateCamera(CameraUpdateFactory.newLatLng(marcasTodas[Integer.parseInt(uri)-1].getPosition()), 250, null);
-           // markerListener.onMarkerClick(marcasTodas[Integer.parseInt(uri)-1]);
-            //marcasTodas[Integer.parseInt(uri)-1].showInfoWindow();
-            indice_actual = Integer.parseInt(uri)-1;
+            indice_actual = (Integer.parseInt(uri)-1);
             quitafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_hide);
             fab.startAnimation(quitafab);
             fab.setVisibility(View.GONE);
-            textView.setText(marcasTodas[Integer.parseInt(uri)-1].getTitle());
+            textView.setText(marcasTodas[indice_actual].getTitle());
 
-            datos(Integer.parseInt(uri)-1);
+            datos(indice_actual);
 
-            InputMethodManager inputManager = (InputMethodManager)
+            /*InputMethodManager inputManager = (InputMethodManager)
                     getSystemService(Context.INPUT_METHOD_SERVICE);
 
             inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                    InputMethodManager.HIDE_NOT_ALWAYS);
+                    InputMethodManager.HIDE_NOT_ALWAYS);*/
 
+            marcador_actual = marcasTodas[indice_actual];
             mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-            marcador_actual = marcasTodas[Integer.parseInt(uri)-1];
-           // imageButton.performClick();
+
+
 
         }
     }
@@ -688,7 +685,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     .build();
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-            if (mCurrentLocation.distanceTo(pasoSgte) < 10 || pasoSgt==0 ) {
+            if (mCurrentLocation.distanceTo(pasoSgte) < 15 || pasoSgt==0 ) {
 
                 resp = instruccionesRuta(rutaElegida, pasoSgt);
                 if(resp[0]!= "-1") {
@@ -701,8 +698,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     textView.setTextSize(15);
                     tts.speak(aux,TextToSpeech.QUEUE_FLUSH, null);
                    // Toast.makeText(MapsActivity.this, resp[4], Toast.LENGTH_SHORT).show();
-                    // LatLng current = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
-                    //actualizarRuta(current);
+                    LatLng current = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+                    actualizarRuta(current);
                 }
 
             }
@@ -851,6 +848,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         ColorDrawable grey = new ColorDrawable(this.getResources().getColor(R.color.grey));
         listview.setDivider(grey);
         listview.setDividerHeight(1);
+
+
+
+        listview.measure(View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        float list_height = listview.getMeasuredHeight() * listview.getCount() + (listview.getCount() * listview.getDividerHeight()) + (listview.getCount()* 10)+ (listview.getCount()*20);
+        
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        float anchor = (list_height/metrics.heightPixels);
+        mLayout.setAnchorPoint(anchor);
+        //Toast.makeText(this, "Anchor es " + anchor , Toast.LENGTH_SHORT).show();
+
 
     }
 
