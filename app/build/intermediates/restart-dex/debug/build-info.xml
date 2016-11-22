@@ -5,36 +5,43 @@
     density="560dpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="16343632885464"
+    timestamp="62260731271790"
     token="7055337893480814454"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="469" />
+        duration="532" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="47" />
+        duration="39" />
     <task
         name="verifier"
-        duration="8" />
+        duration="2" />
 
     <artifact
         location="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
         type="DEX" />
 
     <build
-        timestamp="10567936284395"
+        timestamp="58562951214483"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="16343632885464"
+        timestamp="60932300844611"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+            type="RESOURCES" />
+    </build>
+    <build
+        timestamp="62260731271790"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"

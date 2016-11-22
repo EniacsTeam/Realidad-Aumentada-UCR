@@ -249,6 +249,46 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             @Override
             public void onDrawerOpened(View drawerView) {
+                if(navegar == true)
+                {
+                    new AlertDialog.Builder(drawerView.getContext())
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setTitle(R.string.quit)
+                            .setMessage(R.string.really_quit)
+                            .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    //Stop the activity
+                                    navegar = false;
+                                    tts.stop();
+                                    borrarRutas(10);
+                                    imageButton.setEnabled(true);
+                                    imageButton.setVisibility(View.VISIBLE);
+                                    mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+                                    mMap.setMinZoomPreference(13);
+                                    cargafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_show);
+                                    fab.startAnimation(cargafab);
+                                    fab.setVisibility(View.VISIBLE);
+                                    mMap.getUiSettings().setCompassEnabled(false);
+                                }
+
+                            })
+                            .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    mDrawerLayout.closeDrawers();
+
+                                }
+
+                            })
+                            .show()
+                            .setCanceledOnTouchOutside(false);
+
+                }
                 if (isFirst) {
                     isFirst = false;
                     configureSearch();
@@ -701,6 +741,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     LatLng current = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
                     actualizarRuta(current);
                 }
+                if (resp[0] == "-1")
+                {
+                    borrarRutas(10);
+                }
 
             }
         }
@@ -801,7 +845,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                 imageButton.setEnabled(false);
                 imageButton.setVisibility(View.INVISIBLE);
-                 borrarRutas(position);
+                borrarRutas(position);
+                mMap.getUiSettings().setCompassEnabled(true);
                 //Toast.makeText(MapsActivity.this, "posicion " + position, Toast.LENGTH_SHORT).show();
             }
         });
@@ -951,6 +996,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                                 //Stop the activity
                                 navegar = false;
+                                tts.stop();
                                 borrarRutas(10);
                                 imageButton.setEnabled(true);
                                 imageButton.setVisibility(View.VISIBLE);
@@ -959,6 +1005,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                 cargafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_show);
                                 fab.startAnimation(cargafab);
                                 fab.setVisibility(View.VISIBLE);
+                                mMap.getUiSettings().setCompassEnabled(false);
                             }
 
                         })
@@ -993,7 +1040,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-    public void getURL(LatLng startL, LatLng endL){
+    public void getURL(final LatLng startL, LatLng endL){
         String start = startL.latitude+","+startL.longitude;
         String end = endL.latitude+","+endL.longitude;
         String stringUrl = "https://maps.googleapis.com/maps/api/directions/json?origin="+start+"&destination="+end+"&alternatives=true&mode=walking&language=es&key=AIzaSyCljYcjcbR69841xYHr5kTcuPfmQ_2qWZE";
@@ -1005,7 +1052,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     @Override
                     public void onResponse(String response) {
                         Log.d("Principal","Dibuja");
-                        dibujar(response);
+                        dibujar(response, startL);
                         flagRutas = true;
                     }
                 }, new Response.ErrorListener() {
@@ -1016,14 +1063,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         queue.add(stringRequest);
     }
 
-    public void dibujar(String jsonRuta){
+    public void dibujar(String jsonRuta, LatLng start){
         try {
             JSONObject jsonObject = new JSONObject(jsonRuta);
             // routesArray contains ALL routes
             JSONArray routesArray = jsonObject.getJSONArray("routes");
 
-            ArrayList<Polyline> tempP = new ArrayList<>();
-
+            ArrayList<Polyline> tempP;
             int longitud = routesArray.length();
             cantidad_rutas = longitud;
             // Grab the first route
@@ -1043,7 +1089,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 } else {
                     color = "#2196F3"; //Azul
                 }
-                tempP.clear();
+                tempP = new ArrayList<>();
+
+                //dibujar línea de la entrada a la primer unión con calle
+                tempP.add(mMap.addPolyline(new PolylineOptions()
+                        .add(new LatLng(start.latitude, start.longitude),
+                                new LatLng(polyz.get(0).latitude, polyz.get(0).longitude))
+                        .width(4).color(Color.parseColor("#7e7e7e")).geodesic(true)));
+
+
                 for (int j = 0; j < polyz.size() - 1; j++) {
                     LatLng src = polyz.get(j);
                     LatLng dest = polyz.get(j + 1);
@@ -1056,8 +1110,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 rutas.add(i,tempP);
             }
             flagRutas=true;
-
-            //actualizarRuta(new LatLng(12,12));
         } catch (Exception e) {
 
         }
@@ -1176,7 +1228,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      * @param index  El indice de la ruta seleccionada por el usuario
      */
     private void borrarRutas(int index){
-        ArrayList<Polyline> tempPoli=rutas.get(0);
+        ArrayList<Polyline> tempPoli = new ArrayList<>();
         for(int i = 0; i < rutas.size();i++){
             if(i==index){
                 tempPoli = rutas.get(i);
@@ -1236,23 +1288,25 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     public void actualizarRuta(LatLng current) {
-        rutas.get(0).get(0).getPoints().set(0,current);//insercion del current a la cabeza de la ruta
-
-        //el conjunto de ellos dos forman la primer polylinea
-        LatLng primero = rutas.get(0).get(0).getPoints().get(0);//falta crear control de null
-        LatLng segundo = rutas.get(0).get(0).getPoints().get(1);//falta crear control de null
 
         Location inicioRuta= new Location("currentL1");
-        inicioRuta.setLatitude(primero.latitude);
-        inicioRuta.setLongitude(primero.longitude);
+        inicioRuta.setLatitude(current.latitude);
+        inicioRuta.setLongitude(current.longitude);
 
+        LatLng segundo = rutas.get(0).get(0).getPoints().get(1);//falta crear control de null
         Location segundoRuta= new Location("currentL2");
         segundoRuta.setLatitude(segundo.latitude);
         segundoRuta.setLongitude(segundo.longitude);
 
         if(inicioRuta.distanceTo(segundoRuta)<3) {//cambiar 3 por la distancia que deseamos utilizar de cercanía
-            rutas.get(0).get(0).setVisible(false);//falta crear control de null
-            rutas.get(0).get(0).remove();//falta crear control de null
+            rutas.get(0).get(0).setVisible(false);
+            rutas.get(0).remove(0);
+        }else{
+            List<LatLng> pol = rutas.get(0).get(0).getPoints();
+            pol.add(0,current);
+            pol.remove(1);
+            rutas.get(0).get(0).setPoints(pol);
+            rutas.get(0).get(0).setVisible(true);
         }
     }
 }
