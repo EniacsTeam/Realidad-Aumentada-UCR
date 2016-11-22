@@ -854,7 +854,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         listview.measure(View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED),
                 View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
         float list_height = listview.getMeasuredHeight() * listview.getCount() + (listview.getCount() * listview.getDividerHeight()) + (listview.getCount()* 10)+ (listview.getCount()*20);
-        
+
 
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
