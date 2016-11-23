@@ -42,6 +42,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
@@ -261,6 +262,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                 public void onClick(DialogInterface dialog, int which) {
 
                                     //Stop the activity
+                                    /*getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                                     navegar = false;
                                     tts.stop();
                                     borrarRutas(10);
@@ -272,6 +274,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                     fab.startAnimation(cargafab);
                                     fab.setVisibility(View.VISIBLE);
                                     mMap.getUiSettings().setCompassEnabled(false);
+                                    pasoSgt = 0;*/
+                                    navegar_off(1);
                                 }
 
                             })
@@ -355,6 +359,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             quitafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_hide);
                             fab.startAnimation(quitafab);
                             fab.setVisibility(View.GONE);
+                            borrarRutas(10);
+                            listview.setAdapter(null);
                             textView.setText(marcasTodas[result-1].getTitle());
 
                             datos(result-1);
@@ -378,22 +384,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
             String uri = intent.getDataString();
-            Toast.makeText(this, "Suggestion: "+ uri, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Suggestion: "+ uri, Toast.LENGTH_SHORT).show();
             mDrawerLayout.closeDrawers();
             indice_actual = (Integer.parseInt(uri)-1);
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(marcasTodas[indice_actual].getPosition()), 250, null);
             quitafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_hide);
             fab.startAnimation(quitafab);
             fab.setVisibility(View.GONE);
-            textView.setText(marcasTodas[indice_actual].getTitle());
-
+            borrarRutas(10);
+            listview.setAdapter(null);
             datos(indice_actual);
-
-            /*InputMethodManager inputManager = (InputMethodManager)
-                    getSystemService(Context.INPUT_METHOD_SERVICE);
-
-            inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                    InputMethodManager.HIDE_NOT_ALWAYS);*/
-
+            textView.setText(marcasTodas[indice_actual].getTitle());
             marcador_actual = marcasTodas[indice_actual];
             mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
 
@@ -741,10 +742,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     tts.speak(aux,TextToSpeech.QUEUE_FLUSH, null);
                    // Toast.makeText(MapsActivity.this, resp[4], Toast.LENGTH_SHORT).show();
                 }
-                if (resp[0] == "-1")
-                {
-                    borrarRutas(10);
-                }
 
             }
         }
@@ -842,6 +839,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 rutaElegida=position;
                 navegar= true;
+                getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                 imageButton.setEnabled(false);
                 imageButton.setVisibility(View.INVISIBLE);
@@ -995,6 +993,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             public void onClick(DialogInterface dialog, int which) {
 
                                 //Stop the activity
+                               /* getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                                 navegar = false;
                                 tts.stop();
                                 borrarRutas(10);
@@ -1006,6 +1005,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                 fab.startAnimation(cargafab);
                                 fab.setVisibility(View.VISIBLE);
                                 mMap.getUiSettings().setCompassEnabled(false);
+                                pasoSgt = 0;*/
+                                navegar_off(1);
                             }
 
                         })
@@ -1215,7 +1216,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         } catch (Exception e) {
             // rutaElegida=0;
-            navegar= false;
+            navegar_off(0);
             detallesPaso[0]="-1";
             //pasoSgt= 0;
         }
@@ -1292,22 +1293,50 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         Location inicioRuta= new Location("currentL1");
         inicioRuta.setLatitude(current.latitude);
         inicioRuta.setLongitude(current.longitude);
+        try
+        {
+            LatLng segundo = rutas.get(0).get(0).getPoints().get(1);//falta crear control de null
+            Location segundoRuta= new Location("currentL2");
+            segundoRuta.setLatitude(segundo.latitude);
+            segundoRuta.setLongitude(segundo.longitude);
 
-        LatLng segundo = rutas.get(0).get(0).getPoints().get(1);//falta crear control de null
-        Location segundoRuta= new Location("currentL2");
-        segundoRuta.setLatitude(segundo.latitude);
-        segundoRuta.setLongitude(segundo.longitude);
-
-        if(inicioRuta.distanceTo(segundoRuta)<15 ) {//cambiar 3 por la distancia que deseamos utilizar de cercanía
-            rutas.get(0).get(0).setVisible(false);
-            rutas.get(0).remove(0);
-        }else{
-            List<LatLng> pol = rutas.get(0).get(0).getPoints();
-            pol.add(0,current);
-            pol.remove(1);
-            rutas.get(0).get(0).setPoints(pol);
-            rutas.get(0).get(0).setVisible(true);
+            if(inicioRuta.distanceTo(segundoRuta)<15 ) {//cambiar 3 por la distancia que deseamos utilizar de cercanía
+                rutas.get(0).get(0).setVisible(false);
+                rutas.get(0).remove(0);
+            }else{
+                List<LatLng> pol = rutas.get(0).get(0).getPoints();
+                pol.add(0,current);
+                pol.remove(1);
+                rutas.get(0).get(0).setPoints(pol);
+                rutas.get(0).get(0).setVisible(true);
+            }
         }
+        catch (Exception e)
+        {
+
+        }
+
+    }
+
+    public void navegar_off(int cond){
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        navegar = false;
+        tts.stop();
+        if(cond == 0)
+        {
+            textView.setText("Ha llegado a su destino");
+            tts.speak("Ha llegado a su destino",TextToSpeech.QUEUE_FLUSH, null);
+        }
+        borrarRutas(10);
+        imageButton.setEnabled(true);
+        imageButton.setVisibility(View.VISIBLE);
+        mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+        mMap.setMinZoomPreference(13);
+        cargafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_show);
+        fab.startAnimation(cargafab);
+        fab.setVisibility(View.VISIBLE);
+        mMap.getUiSettings().setCompassEnabled(false);
+        pasoSgt = 0;
     }
 }
 
