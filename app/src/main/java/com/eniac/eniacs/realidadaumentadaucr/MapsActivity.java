@@ -724,6 +724,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     .zoom(18)
                     .build();
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+            LatLng current = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+            actualizarRuta(current);
 
             if (mCurrentLocation.distanceTo(pasoSgte) < 15 || pasoSgt==0 ) {
 
@@ -738,8 +740,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     textView.setTextSize(15);
                     tts.speak(aux,TextToSpeech.QUEUE_FLUSH, null);
                    // Toast.makeText(MapsActivity.this, resp[4], Toast.LENGTH_SHORT).show();
-                    LatLng current = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
-                    actualizarRuta(current);
                 }
                 if (resp[0] == "-1")
                 {
@@ -1298,7 +1298,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         segundoRuta.setLatitude(segundo.latitude);
         segundoRuta.setLongitude(segundo.longitude);
 
-        if(inicioRuta.distanceTo(segundoRuta)<3) {//cambiar 3 por la distancia que deseamos utilizar de cercanía
+        if(inicioRuta.distanceTo(segundoRuta)<15 ) {//cambiar 3 por la distancia que deseamos utilizar de cercanía
             rutas.get(0).get(0).setVisible(false);
             rutas.get(0).remove(0);
         }else{
