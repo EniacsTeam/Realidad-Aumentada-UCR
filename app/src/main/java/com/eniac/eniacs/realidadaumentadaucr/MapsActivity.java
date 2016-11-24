@@ -1213,8 +1213,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         String[] detallesPaso = new String[5];
         try {
-
-
             JSONArray pasos = rutasDetalle[rutaElegida].getJSONArray("legs").getJSONObject(0).getJSONArray("steps");
             JSONObject paso = pasos.getJSONObject(pasoSolicitado);
             String distanciaPaso = paso.getJSONObject("distance").getString("text");

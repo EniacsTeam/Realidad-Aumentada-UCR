@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\johan\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\common_ic_googleplayservices.png",
+        "source": "C:\\Users\\johan\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.6.1\\res\\drawable-ldpi-v4\\common_ic_googleplayservices.png"
+    },
+    {
         "merged": "C:\\Users\\kenca\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\common_ic_googleplayservices.png",
         "source": "C:\\Users\\kenca\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\9.6.1\\res\\drawable-ldpi-v4\\common_ic_googleplayservices.png"
     }

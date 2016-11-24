@@ -1,7 +1,7 @@
-#Wed Nov 23 23:10:51 CST 2016
-base.0=C\:\\Users\\kenca\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_f1fe9f81c3c43285265b8e3c19bc2432ffe2ff82
+#Thu Nov 24 14:57:15 CST 2016
+base.0=C\:\\Users\\johan\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.1=classes.dex
 renamed.0=classes2.dex
-file.1=C\:\\Users\\kenca\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_25a08bad327cd2db77d6ade492bd43799ce97d7e\\classes.dex
-base.1=C\:\\Users\\kenca\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_25a08bad327cd2db77d6ade492bd43799ce97d7e
-file.0=C\:\\Users\\kenca\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_f1fe9f81c3c43285265b8e3c19bc2432ffe2ff82\\classes.dex
+file.1=C\:\\Users\\johan\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
+base.1=C\:\\Users\\johan\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+file.0=C\:\\Users\\johan\\Documents\\GitHub\\Realidad-Aumentada-UCR\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes2.dex
