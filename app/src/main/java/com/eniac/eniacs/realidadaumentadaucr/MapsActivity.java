@@ -152,6 +152,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private  Marker marcador_actual;
     private int indice_actual = -1;
     private int cantidad_rutas = 0;
+    boolean busqueda = false;
 
     //para navegar prueba
     private int rutaElegida=0;
@@ -215,6 +216,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 quitafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_hide);
                 fab.startAnimation(quitafab);
+                fab.setVisibility(View.GONE);
                 startActivity(new Intent(MapsActivity.this, WikitudeActivity.class));
 
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -287,7 +289,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             @Override
             public void onDrawerClosed(View drawerView) {
-
             }
 
             @Override
@@ -357,7 +358,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                                     InputMethodManager.HIDE_NOT_ALWAYS);
 
-                            mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                            //mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+                            busqueda = true;
                             marcador_actual = marcasTodas[result-1];
 
                         }
@@ -382,7 +384,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             datos(indice_actual);
             textView.setText(marcasTodas[indice_actual].getTitle());
             marcador_actual = marcasTodas[indice_actual];
-            mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+            //mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+            busqueda = true;
 
 
 
@@ -552,8 +555,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     }
                     if(fab.getVisibility() != View.VISIBLE){
                         cargafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_show);
-                        fab.startAnimation(cargafab);
                         fab.setVisibility(View.VISIBLE);
+                        fab.startAnimation(cargafab);
                     }
                 }
             }
@@ -766,6 +769,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             startLocationUpdates();
         }
         mSensorManager.registerListener(this, distanceVector, SensorManager.SENSOR_DELAY_UI);
+        if(busqueda == true){
+            busqueda = false;
+            mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        }else{
+            if(fab.getVisibility() != View.VISIBLE){
+                cargafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_show);
+                fab.setVisibility(View.VISIBLE);
+                fab.startAnimation(cargafab);
+            }
+        }
+
     }
 
     /**
@@ -970,6 +984,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return array_list;
     }
 
+
+    /**
+     * Metodo que es llamado cuando se preciona el boton back del celular, toma una accion dependiendo de lo que se este enseñando en pantalla.
+     * @param keyCode
+     * @param event
+     * @return
+     */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -990,7 +1011,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         })
                         .setNegativeButton(R.string.no, null)
                         .show();
-
                 return true;
             }
 
@@ -1005,6 +1025,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
                 marcador_actual.hideInfoWindow();
                 borrarRutas(10); //borro rutas si salgo del panel
+                if(fab.getVisibility() != View.VISIBLE){
+                    cargafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_show);
+                    fab.setVisibility(View.VISIBLE);
+                    fab.startAnimation(cargafab);
+                }
                 return true;
             }
         }
@@ -1012,7 +1037,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-
+    /**
+     * Metodo que toma la latitud-longitud del origen y destino y hace una peticion a Google para que retorne las rutas posibles.
+     * @param startL
+     * @param endL
+     */
     public void getURL(final LatLng startL, LatLng endL){
         String start = startL.latitude+","+startL.longitude;
         String end = endL.latitude+","+endL.longitude;
@@ -1036,6 +1065,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         queue.add(stringRequest);
     }
 
+    /**
+     * Metodo que dibujas las distintas posibles rutas a escoger.
+     * @param jsonRuta
+     * @param start
+     */
     public void dibujar(String jsonRuta, LatLng start){
         try {
             JSONObject jsonObject = new JSONObject(jsonRuta);
@@ -1088,6 +1122,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+    /**
+     * Metodo que decodifica el string encoded y lo convierte en un vector de latitud-longitud para construir las rutas.
+     * @param encoded
+     * @return
+     */
     /* Method to decode polyline points */
     private List<LatLng> decodePoly(String encoded) {
 
@@ -1133,6 +1172,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         LatLng destinoRuta = new LatLng(mRuta.elatitud[puntoElegido], mRuta.elonguitud[puntoElegido]);
         getURL(inicioRuta, destinoRuta);
     }
+
+    /**
+     * Toma el dato de distancia y duracion de las rutas dadas por Google.
+     * @param puntoElegido
+     * @return
+     */
     private List < String[] > datosRuta(int puntoElegido) {
         //cantidad_rutas = 2;
         String[] distancias = new String[cantidad_rutas];

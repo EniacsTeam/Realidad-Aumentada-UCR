@@ -9,9 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by Francisco on 11/11/2016.
- */
+
 
 public class CustomListAdapter extends ArrayAdapter<String> {
 
@@ -30,6 +28,13 @@ public class CustomListAdapter extends ArrayAdapter<String> {
         this.duracion_list = duracion_list;
     }
 
+    /**
+     * Asigna los datos de la ruta, como el nombre, descripcion y duración. Además asigna el color del nombre de la ruta mostrado dependiendo de la ruta.
+     * @param position
+     * @param view
+     * @param parent
+     * @return
+     */
     public View getView(int position,View view,ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.activity_listview, null,true);

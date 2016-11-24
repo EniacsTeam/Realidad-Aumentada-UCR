@@ -1,37 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
     abi="arm64-v8a,armeabi-v7a,armeabi"
-    api-level="24"
-    density="560dpi"
+    api-level="23"
+    density="xxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="171866910576993"
-    token="7055337893480814454"
-    verifier="FULL_BUILD_REQUESTED" >
+    timestamp="699689503091729"
+    token="-2979292010092538393"
+    verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="8370" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="866" />
+        duration="0" />
     <task
         name="verifier"
-        duration="19" />
-
-    <artifact
-        location="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\outputs\apk\app-debug.apk"
-        type="MAIN" />
+        duration="0" />
 
     <build
-        timestamp="171866910576993"
+        timestamp="694948867038726"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\Francisco\Documents\GitHub\Realidad-Aumentada-UCR\app\build\outputs\apk\app-debug.apk"
+            location="C:\Users\kenca\Documents\GitHub\Realidad-Aumentada-UCR\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
+    <build
+        timestamp="699235918193928"
+        verifier="FIELD_ADDED" >
+        <artifact
+            location="C:\Users\kenca\Documents\GitHub\Realidad-Aumentada-UCR\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="699689503091729"
+        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>
