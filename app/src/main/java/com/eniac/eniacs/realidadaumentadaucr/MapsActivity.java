@@ -261,21 +261,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
 
-                                    //Stop the activity
-                                    /*getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                                    navegar = false;
-                                    tts.stop();
-                                    borrarRutas(10);
-                                    imageButton.setEnabled(true);
-                                    imageButton.setVisibility(View.VISIBLE);
-                                    mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
-                                    mMap.setMinZoomPreference(13);
-                                    cargafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_show);
-                                    fab.startAnimation(cargafab);
-                                    fab.setVisibility(View.VISIBLE);
-                                    mMap.getUiSettings().setCompassEnabled(false);
-                                    pasoSgt = 0;*/
-                                    navegar_off(1);
+                                    navegar_off(1); //salir de modo navegacion
                                 }
 
                             })
@@ -836,7 +822,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         listview = (ListView) findViewById(R.id.soy_lista);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { //al presionar un item del listview, me dirige en modo
+                                                                                               //navegacion a ruta seleccionada
                 rutaElegida=position;
                 navegar= true;
                 getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -866,10 +853,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     /**
-     *  in this method, we set array adapter to display list of item
-     *  within this method, call callback setOnItemClickListener method
-     *  It call when use click on the list of item
-     *  When user click on the list of item, slide up layout and display item of the list
+     *  Metodo para llenar el listview
+     *  @param result  lista de arrays donde en su primer array tiene la descripcion de las rutas
+     *                 y en el segundo la duracion de cada ruta
      */
     public void setListview(List <String[]> result){
 
@@ -936,8 +922,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     /**
-     * This is return type method.
-     * With in this method, we create array list
+     * Metodo para llenar el listview con la cantidad de rutas en el json
+     *  @param cantidad  indica el numero de rutas
      * @return array list
      */
     public String[] rutas_list(int cantidad){
@@ -960,6 +946,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return array_list;
     }
 
+    /**
+     * Metodo para llenar el listview y que se utiliza en caso de que el json no tenga informacion
+     */
     public String[]descripcion_list(){
         String[] array_list = {
                 "Ejemplo 1",
@@ -969,6 +958,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return array_list;
     }
 
+    /**
+     * Metodo para llenar el listview y que se utiliza en caso de que el json no tenga informacion
+     */
     public String[] duracion_list(){
         String[] array_list = {
                 "5 min",
@@ -981,7 +973,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if(navegar == true)
+            if(navegar == true) //desplegar mensaje si desea salir de modo navegacion
             {
                 new AlertDialog.Builder(this)
                         .setIcon(android.R.drawable.ic_dialog_alert)
@@ -992,20 +984,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                //Stop the activity
-                               /* getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                                navegar = false;
-                                tts.stop();
-                                borrarRutas(10);
-                                imageButton.setEnabled(true);
-                                imageButton.setVisibility(View.VISIBLE);
-                                mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
-                                mMap.setMinZoomPreference(13);
-                                cargafab = AnimationUtils.loadAnimation(getApplication(), R.anim.fab_show);
-                                fab.startAnimation(cargafab);
-                                fab.setVisibility(View.VISIBLE);
-                                mMap.getUiSettings().setCompassEnabled(false);
-                                pasoSgt = 0;*/
                                 navegar_off(1);
                             }
 
@@ -1032,13 +1010,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return super.onKeyDown(keyCode,event);
     }
 
-
-    public RequestQueue getQueue(){
-        Log.d("Main","Calcula");
-        RequestQueue queue = Volley.newRequestQueue(this);
-        Log.d("Main","Devuelve");
-        return queue;
-    }
 
 
     public void getURL(final LatLng startL, LatLng endL){
@@ -1288,6 +1259,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
+    /**
+     * Metodo para borrar ruta a medida que el usuario se mueve
+     *
+     * @param current es la posicion actual
+     */
     public void actualizarRuta(LatLng current) {
 
         Location inicioRuta= new Location("currentL1");
@@ -1318,6 +1294,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
+    /**
+     * Metodo para quitar modo navegacion
+     *
+     * @param cond es para saber si se llamo al terminar la ruta o por el dialogo
+     */
     public void navegar_off(int cond){
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         navegar = false;
