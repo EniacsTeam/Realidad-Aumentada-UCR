@@ -1004,6 +1004,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     mLayout.getPanelState() == SlidingUpPanelLayout.PanelState.COLLAPSED) {
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
                 marcador_actual.hideInfoWindow();
+                borrarRutas(10); //borro rutas si salgo del panel
                 return true;
             }
         }
